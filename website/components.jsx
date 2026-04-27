@@ -70,8 +70,10 @@ function Header({ route, onRoute }) {
           <a href="#/dla-klienta" className="btn btn-primary" style={{padding: '10px 16px', fontSize: 12}}>
             Zamów transport
           </a>
-          <button className="menu-btn" onClick={() => setOpen(o => !o)} aria-label="Menu">
-            {open ? 'Zamknij' : 'Menu'}
+          <button className={`menu-btn ${open ? 'is-open' : ''}`} onClick={() => setOpen(o => !o)} aria-label={open ? 'Zamknij menu' : 'Otwórz menu'}>
+            <span className="menu-burger" aria-hidden="true">
+              <span/><span/><span/>
+            </span>
           </button>
         </div>
       </div>

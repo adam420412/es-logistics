@@ -28,6 +28,15 @@
 </head>
 <body data-theme="dark" data-accent="mono" data-density="regular" data-lion="featured" data-hero-bg="photo">
 <div id="app">
+  <div id="boot-loader" style="position:fixed;inset:0;background:#0a0a0a;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:24px;z-index:9999;font-family:'Barlow','Inter',system-ui,sans-serif">
+    <img src="assets/lew.png" alt="" style="width:96px;height:96px;object-fit:contain;animation:bootpulse 1.6s ease-in-out infinite"/>
+    <div style="font-style:italic;font-weight:700;font-size:14px;letter-spacing:.18em;text-transform:uppercase;color:#888">ES Logistics</div>
+    <div style="width:120px;height:2px;background:#222;overflow:hidden;border-radius:1px"><div style="width:40%;height:100%;background:#f5f5f5;animation:bootbar 1.2s ease-in-out infinite"></div></div>
+  </div>
+  <style>
+    @keyframes bootpulse { 0%,100%{opacity:.7;transform:scale(1)} 50%{opacity:1;transform:scale(1.04)} }
+    @keyframes bootbar { 0%{transform:translateX(-100%)} 100%{transform:translateX(350%)} }
+  </style>
   <noscript>
     <div style="padding:60px 24px;text-align:center;font-family:system-ui;color:#f5f5f5;background:#0a0a0a;min-height:100vh">
       <h1 style="font-size:32px;margin:0 0 16px">ES Logistics — Spedycja międzynarodowa</h1>
@@ -36,14 +45,15 @@
   </noscript>
 </div>
 
-<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
-<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
 <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
 
 <script type="text/babel" src="tweaks-panel.jsx"></script>
 <script type="text/babel" src="components.jsx"></script>
 <script type="text/babel" src="pages.jsx"></script>
 <script type="text/babel" src="forms.jsx"></script>
+<script type="text/babel" src="enhancements.jsx"></script>
 
 <script type="text/babel">
 const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
@@ -69,20 +79,26 @@ function App() {
 
   let page;
   switch (route) {
+    case '/':
+    case '': page = <HomePage heroVariant={t.heroVariant}/>; break;
     case '/o-nas': page = <AboutPage/>; break;
     case '/uslugi': page = <ServicesPage/>; break;
     case '/dla-klienta': page = <ClientPage/>; break;
     case '/dla-przewoznika': page = <CarrierPage/>; break;
     case '/kontakt': page = <ContactPage/>; break;
     case '/legal': page = <LegalPage/>; break;
-    default: page = <HomePage heroVariant={t.heroVariant}/>;
+    default: page = <NotFoundPage/>;
   }
 
   return (
     <>
+      <SkipLink/>
       <Header route={route}/>
-      {page}
+      <div id="main-content" className="page-fade" key={route}>{page}</div>
       <Footer/>
+      <CookieBanner/>
+      <BackToTop/>
+      <MobileCTA/>
 
       <TweaksPanel>
         <TweakSection label="Motyw" />
@@ -114,6 +130,14 @@ function App() {
 }
 
 ReactDOM.createRoot(document.getElementById('app')).render(<App/>);
+setTimeout(() => {
+  const boot = document.getElementById('boot-loader');
+  if (boot) {
+    boot.style.transition = 'opacity .4s ease';
+    boot.style.opacity = '0';
+    setTimeout(() => boot.remove(), 400);
+  }
+}, 600);
 </script>
 </body>
 </html>

@@ -476,4 +476,30 @@ function ServicesPage() {
   );
 }
 
-Object.assign(window, { HomePage, AboutPage, ServicesPage });
+// ═════════════════════════════════════════════════════════════════════════════
+// 404 NOT FOUND
+// ═════════════════════════════════════════════════════════════════════════════
+function NotFoundPage() {
+  useReveal();
+  return (
+    <main>
+      <header className="page-header" style={{minHeight: '60vh', display: 'flex', alignItems: 'center'}}>
+        <div className="corner-lion"><LionGraphic/></div>
+        <div className="container scroll-reveal">
+          <div className="crumb">Błąd 404</div>
+          <h1 style={{fontSize: 'clamp(80px, 12vw, 180px)', lineHeight: 1, fontStyle: 'italic'}}>
+            <em style={{color: 'var(--accent)'}}>404.</em>
+          </h1>
+          <h2 style={{marginTop: 16, fontStyle: 'italic'}}>Tej strony tu nie ma —<br/>ale Twój ładunek dowieziemy.</h2>
+          <p className="lead" style={{marginTop: 24}}>Sprawdź adres URL albo wróć do strony głównej. W razie problemów napisz do nas — odpowiadamy w 24h.</p>
+          <div style={{marginTop: 36, display: 'flex', gap: 14, flexWrap: 'wrap'}}>
+            <a href="#/" className="btn btn-primary"><span>Strona główna</span><span className="btn-arrow"></span></a>
+            <a href="#/kontakt" className="btn btn-ghost">Kontakt</a>
+          </div>
+        </div>
+      </header>
+    </main>
+  );
+}
+
+Object.assign(window, { HomePage, AboutPage, ServicesPage, NotFoundPage });
