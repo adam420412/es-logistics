@@ -1,0 +1,18 @@
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+  <g>
+    
+    <path d="M100 20&#xA;             C 70 20, 48 38, 42 64&#xA;             C 28 60, 18 72, 22 86&#xA;             C 10 92, 8 108, 18 118&#xA;             C 12 130, 22 144, 36 142&#xA;             C 36 156, 50 168, 64 162&#xA;             C 70 176, 88 180, 100 170&#xA;             C 112 180, 130 176, 136 162&#xA;             C 150 168, 164 156, 164 142&#xA;             C 178 144, 188 130, 182 118&#xA;             C 192 108, 190 92, 178 86&#xA;             C 182 72, 172 60, 158 64&#xA;             C 152 38, 130 20, 100 20 Z"></path>
+    
+    <path fill="#ffffff" fill-opacity="0" d="M100 60 C 84 60, 72 76, 72 96 C 72 120, 86 138, 100 138 C 114 138, 128 120, 128 96 C 128 76, 116 60, 100 60 Z"></path>
+    
+    <ellipse cx="86" cy="92" rx="3.6" ry="5" fill="#ffffff"></ellipse>
+    <ellipse cx="114" cy="92" rx="3.6" ry="5" fill="#ffffff"></ellipse>
+    
+    <path d="M100 108 L 94 116 L 100 122 L 106 116 Z" fill="#ffffff"></path>
+    
+    <path d="M100 122 L 100 132 M 100 132 C 96 134, 92 132, 92 128 M 100 132 C 104 134, 108 132, 108 128" stroke="#ffffff" stroke-width="2" stroke-linecap="round" fill="none"></path>
+    
+    <path d="M82 116 L 70 118 M 118 116 L 130 118" stroke="#ffffff" stroke-width="1.2" stroke-linecap="round" opacity="0.6"></path>
+  </g>
+</svg>

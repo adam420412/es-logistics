@@ -1,0 +1,3960 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>ES Logistics — Spedycja międzynarodowa | Poznań</title>
+<meta name="description" content="11 lat doświadczenia w branży TSL. Organizujemy transport drogowy w Polsce i Europie."/>
+<link rel="icon" type="image/png" href="assets/favicon.png"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,700;1,400;1,700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+/* ES Logistics — design tokens & global styles */
+:root {
+  /* Brand monochrome scale (księga znaku) */
+  --white: #FFFFFF;
+  --gray-50: #F0F0F0;
+  --gray-100: #D2D2D2;
+  --gray-300: #AAAAAA;
+  --gray-500: #6D6E71;
+  --gray-700: #414141;
+  --gray-800: #353535;
+  --black: #000000;
+
+  /* Semantic — dark mode defaults */
+  --bg: #0a0a0a;
+  --bg-elev: #141414;
+  --bg-elev-2: #1c1c1c;
+  --surface: #181818;
+  --border: rgba(255,255,255,0.08);
+  --border-strong: rgba(255,255,255,0.18);
+  --text: #f5f5f5;
+  --text-dim: #a8a8a8;
+  --text-muted: #6e6e6e;
+  --accent: #f5f5f5;
+  --accent-ink: #0a0a0a;
+
+  /* Typography */
+  --font-display: 'Barlow', 'Inter', system-ui, sans-serif;
+  --font-body: 'Outfit', 'Inter', system-ui, sans-serif;
+
+  /* Spacing rhythm */
+  --section-y: 120px;
+  --container: 1280px;
+  --gutter: 32px;
+}
+
+[data-theme="light"] {
+  --bg: #ffffff;
+  --bg-elev: #f7f7f5;
+  --bg-elev-2: #efefec;
+  --surface: #fafaf8;
+  --border: rgba(0,0,0,0.08);
+  --border-strong: rgba(0,0,0,0.16);
+  --text: #0a0a0a;
+  --text-dim: #4a4a4a;
+  --text-muted: #8a8a8a;
+  --accent: #0a0a0a;
+  --accent-ink: #ffffff;
+}
+
+[data-density="airy"] {
+  --section-y: 160px;
+}
+[data-density="dense"] {
+  --section-y: 84px;
+}
+
+/* Accent variants */
+[data-accent="mono"] {}
+[data-accent="blue"] {
+  --accent: #3B82F6;
+  --accent-ink: #ffffff;
+}
+[data-accent="emerald"] {
+  --accent: #10B981;
+  --accent-ink: #ffffff;
+}
+[data-accent="amber"] {
+  --accent: #F59E0B;
+  --accent-ink: #0a0a0a;
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+  margin: 0;
+  text-wrap: balance;
+}
+
+h1 { font-size: clamp(40px, 6.4vw, 92px); line-height: 1.08; }
+h2 { font-size: clamp(32px, 4.6vw, 64px); }
+h3 { font-size: clamp(22px, 2.4vw, 32px); }
+h4 { font-size: 20px; letter-spacing: -0.01em; }
+
+p { margin: 0; text-wrap: pretty; }
+
+a { color: inherit; text-decoration: none; }
+
+.container {
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
+
+.section { padding: var(--section-y) 0; }
+
+.eyebrow {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-style: italic;
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+}
+
+.rule {
+  height: 1px;
+  background: var(--border);
+  border: 0;
+  margin: 0;
+}
+
+/* ─────────────── Buttons ─────────────── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 22px;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  border-radius: 2px;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: transform .15s ease, background .2s ease, color .2s ease, border-color .2s ease;
+  white-space: nowrap;
+}
+.btn:hover { transform: translateY(-1px); }
+.btn:active { transform: translateY(0); }
+
+.btn-primary {
+  background: var(--accent);
+  color: var(--accent-ink);
+  border-color: var(--accent);
+}
+.btn-primary:hover { filter: brightness(1.08); }
+
+.btn-ghost {
+  background: transparent;
+  color: var(--text);
+  border-color: var(--border-strong);
+}
+.btn-ghost:hover { border-color: var(--text); background: rgba(255,255,255,0.04); }
+[data-theme="light"] .btn-ghost:hover { background: rgba(0,0,0,0.04); }
+
+.btn-arrow::after {
+  content: "→";
+  font-family: var(--font-body);
+  transition: transform .2s ease;
+}
+.btn:hover .btn-arrow::after,
+.btn-arrow:hover::after { transform: translateX(4px); }
+
+/* ─────────────── Header ─────────────── */
+.site-header {
+  position: fixed; inset: 0 0 auto 0;
+  z-index: 100;
+  backdrop-filter: blur(14px) saturate(140%);
+  -webkit-backdrop-filter: blur(14px) saturate(140%);
+  background: color-mix(in srgb, var(--bg) 72%, transparent);
+  border-bottom: 1px solid var(--border);
+}
+.site-header .nav {
+  display: flex; align-items: center; justify-content: space-between;
+  height: 76px;
+}
+.brand-lockup {
+  display: flex; align-items: center; gap: 12px;
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  font-size: 18px;
+}
+.brand-lockup .lion-mark {
+  width: 32px; height: 32px;
+  display: inline-flex; align-items: center; justify-content: center;
+  border: 1px solid var(--border-strong);
+  border-radius: 2px;
+}
+.brand-lockup .lion-mark svg { width: 22px; height: 22px; fill: var(--text); }
+.brand-wordmark { display: flex; flex-direction: column; line-height: 1; gap: 3px; }
+.brand-wordmark .top { font-size: 16px; }
+.brand-wordmark .sub {
+  font-family: var(--font-body); font-weight: 400;
+  font-size: 9px; letter-spacing: 0.32em; color: var(--text-dim);
+  text-transform: uppercase;
+}
+
+.nav-links {
+  display: flex; align-items: center; gap: 28px;
+  list-style: none; margin: 0; padding: 0;
+}
+.nav-links a {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 14px;
+  color: var(--text-dim);
+  position: relative;
+  padding: 6px 0;
+  transition: color .2s ease;
+  white-space: nowrap;
+}
+.nav-links a:hover { color: var(--text); }
+.nav-links a.active { color: var(--text); }
+.nav-links a.active::after {
+  content: "";
+  position: absolute; left: 0; right: 0; bottom: -2px;
+  height: 1px; background: var(--accent);
+}
+
+.nav-actions { display: flex; align-items: center; gap: 16px; }
+.lang-switch {
+  display: flex; gap: 2px;
+  font-family: var(--font-display);
+  font-weight: 700; font-size: 11px; letter-spacing: 0.1em;
+}
+.lang-switch button {
+  appearance: none; border: 0; background: transparent;
+  color: var(--text-muted); padding: 4px 7px; cursor: pointer;
+  border-radius: 2px; font: inherit; letter-spacing: inherit;
+}
+.lang-switch button.active { color: var(--text); background: var(--bg-elev-2); }
+
+.menu-btn { display: none; }
+
+@media (max-width: 1080px) {
+  .nav-links, .lang-switch { display: none; }
+  .menu-btn {
+    display: inline-flex; appearance: none; border: 1px solid var(--border-strong);
+    background: transparent; color: var(--text); padding: 8px 12px;
+    font-family: var(--font-display); font-weight: 700; letter-spacing: 0.08em;
+    font-size: 12px; text-transform: uppercase; cursor: pointer; border-radius: 2px;
+  }
+  .mobile-menu-open .nav-links {
+    display: flex; flex-direction: column; gap: 18px;
+    position: absolute; top: 76px; left: 0; right: 0;
+    background: var(--bg); padding: 24px var(--gutter) 32px;
+    border-bottom: 1px solid var(--border);
+  }
+  .mobile-menu-open .lang-switch {
+    display: flex; position: absolute; top: 76px; right: var(--gutter); padding: 28px 0;
+  }
+}
+@media (max-width: 1080px) and (min-width: 901px) {
+  .menu-btn { display: inline-flex; appearance: none; border: 1px solid var(--border-strong); background: transparent; color: var(--text); padding: 8px 12px; font-family: var(--font-display); font-weight: 700; letter-spacing: 0.08em; font-size: 12px; text-transform: uppercase; cursor: pointer; border-radius: 2px; }
+}
+
+/* ─────────────── Hero ─────────────── */
+.hero {
+  position: relative;
+  min-height: 92vh;
+  display: flex; align-items: center;
+  padding-top: 76px;
+  overflow: hidden;
+  isolation: isolate;
+}
+.hero-bg {
+  position: absolute; inset: 0;
+  z-index: -2;
+  background: linear-gradient(180deg, #1a1a1a 0%, #0a0a0a 100%);
+}
+[data-theme="light"] .hero-bg {
+  background: linear-gradient(180deg, #f5f5f3 0%, #ebebe7 100%);
+}
+.hero-bg.photo {
+  background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 60%);
+  background-image:
+    radial-gradient(ellipse 80% 60% at 70% 40%, rgba(80,80,80,0.4), transparent 70%),
+    radial-gradient(ellipse 60% 80% at 20% 80%, rgba(40,40,40,0.6), transparent 70%);
+}
+.hero-overlay {
+  position: absolute; inset: 0; z-index: -1;
+  background:
+    linear-gradient(180deg, transparent 0%, transparent 60%, var(--bg) 100%),
+    linear-gradient(90deg, color-mix(in srgb, var(--bg) 85%, transparent) 0%, transparent 60%);
+}
+
+.hero-content {
+  position: relative; z-index: 2;
+  max-width: 980px;
+  padding: 60px 0;
+}
+.hero-eyebrow {
+  display: inline-flex; align-items: center; gap: 14px;
+  margin-bottom: 36px;
+}
+.hero-eyebrow::before {
+  content: ""; width: 40px; height: 1px; background: var(--accent);
+}
+.hero-eyebrow span {
+  font-family: var(--font-display); font-weight: 700; font-style: italic;
+  letter-spacing: 0.18em; font-size: 11px; text-transform: uppercase;
+  color: var(--text-dim);
+}
+.hero h1 {
+  font-style: italic;
+  font-weight: 700;
+}
+.hero h1 .accent { color: var(--accent); font-style: italic; }
+.hero-sub {
+  margin-top: 44px;
+  max-width: 620px;
+  font-size: 18px;
+  color: var(--text-dim);
+  line-height: 1.55;
+}
+.hero-cta { margin-top: 44px; display: flex; gap: 14px; flex-wrap: wrap; }
+
+.hero-lion {
+  position: absolute;
+  right: -6%;
+  bottom: -10%;
+  width: 760px;
+  max-width: 56vw;
+  z-index: 0;
+  opacity: 0.10;
+  pointer-events: none;
+}
+[data-lion="subtle"] .hero-lion { opacity: 0.04; width: 420px; }
+[data-lion="editorial"] .hero-lion {
+  opacity: 0.16; width: 900px; right: -10%; bottom: -16%;
+}
+.hero-lion svg { width: 100%; height: auto; fill: var(--text); }
+
+.hero-meta {
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  z-index: 3;
+  border-top: 1px solid var(--border);
+  background: color-mix(in srgb, var(--bg) 80%, transparent);
+  backdrop-filter: blur(8px);
+}
+.hero-meta-inner {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+}
+.hero-meta-cell {
+  padding: 22px 28px;
+  border-left: 1px solid var(--border);
+  display: flex; flex-direction: column; gap: 6px;
+}
+.hero-meta-cell:first-child { border-left: 0; }
+.hero-meta-cell .k {
+  font-family: var(--font-display); font-weight: 700;
+  font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--text-muted);
+}
+.hero-meta-cell .v {
+  font-family: var(--font-display); font-weight: 700;
+  font-size: 18px; letter-spacing: -0.01em;
+}
+@media (max-width: 800px) {
+  .hero-meta-inner { grid-template-columns: repeat(2, 1fr); }
+  .hero-meta-cell:nth-child(3) { border-left: 0; border-top: 1px solid var(--border); }
+  .hero-meta-cell:nth-child(4) { border-top: 1px solid var(--border); }
+}
+
+/* Hero variants */
+[data-hero-bg="split"] .hero-bg {
+  background: linear-gradient(90deg, var(--bg) 0% 50%, #1a1a1a 50% 100%);
+}
+[data-hero-bg="type"] .hero-bg { background: var(--bg); }
+[data-hero-bg="type"] .hero-overlay { display: none; }
+[data-hero-bg="type"] .hero-lion { opacity: 0.05; }
+
+/* ─────────────── Section header ─────────────── */
+.section-head {
+  display: grid;
+  grid-template-columns: minmax(180px, 280px) 1fr;
+  gap: 64px;
+  align-items: end;
+  margin-bottom: 64px;
+}
+.section-head .num {
+  font-family: var(--font-display); font-weight: 700;
+  font-size: 14px; letter-spacing: 0.16em; color: var(--text-muted);
+  display: flex; align-items: center; gap: 12px;
+}
+.section-head .num::after {
+  content: ""; flex: 1; height: 1px; background: var(--border);
+}
+.section-head .lead { color: var(--text-dim); max-width: 720px; font-size: 17px; }
+.section-head h2 { margin-bottom: 20px; }
+.section-head h2 em { font-style: italic; color: var(--accent); }
+@media (max-width: 800px) {
+  .section-head { grid-template-columns: 1fr; gap: 24px; }
+}
+
+/* ─────────────── Trust bar ─────────────── */
+.trust-bar {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+.trust-cell {
+  padding: 24px 28px;
+  border-left: 1px solid var(--border);
+  display: flex; align-items: center; gap: 14px;
+}
+.trust-cell:first-child { border-left: 0; }
+.trust-cell .ico {
+  width: 32px; height: 32px; display: flex; align-items: center; justify-content: center;
+  color: var(--accent);
+}
+.trust-cell .lbl { font-size: 14px; color: var(--text-dim); }
+.trust-cell strong { color: var(--text); display: block; font-family: var(--font-display); font-weight: 700; font-size: 15px; }
+@media (max-width: 900px) {
+  .trust-bar { grid-template-columns: repeat(2, 1fr); }
+  .trust-cell:nth-child(3) { border-left: 0; border-top: 1px solid var(--border); }
+  .trust-cell:nth-child(4) { border-top: 1px solid var(--border); }
+}
+
+/* ─────────────── Services grid ─────────────── */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+}
+.service-card {
+  background: var(--bg);
+  padding: 44px 40px;
+  display: flex; flex-direction: column; gap: 20px;
+  min-height: 320px;
+  position: relative;
+  transition: background .25s ease;
+}
+.service-card:hover { background: var(--bg-elev); }
+.service-card .num {
+  font-family: var(--font-display); font-weight: 700;
+  font-size: 11px; letter-spacing: 0.18em; color: var(--text-muted);
+}
+.service-card h3 { font-style: italic; }
+.service-card p { color: var(--text-dim); flex: 1; }
+.service-card .arrow {
+  align-self: flex-start;
+  width: 44px; height: 44px;
+  border: 1px solid var(--border-strong);
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 50%;
+  transition: background .2s ease, color .2s ease, border-color .2s ease;
+}
+.service-card:hover .arrow {
+  background: var(--accent); color: var(--accent-ink); border-color: var(--accent);
+}
+.service-card .badge {
+  position: absolute; top: 24px; right: 28px;
+  font-family: var(--font-display); font-weight: 700;
+  font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--text-muted);
+  border: 1px solid var(--border);
+  padding: 4px 8px; border-radius: 2px;
+}
+@media (max-width: 800px) { .services-grid { grid-template-columns: 1fr; } }
+
+/* ─────────────── Why us ─────────────── */
+.why-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  border-top: 1px solid var(--border);
+}
+.why-item {
+  padding: 40px 32px 40px 0;
+  border-right: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  display: flex; flex-direction: column; gap: 16px;
+}
+.why-item:nth-child(3n) { border-right: 0; }
+.why-item:nth-last-child(-n+3) { border-bottom: 0; }
+.why-item .n {
+  font-family: var(--font-display); font-weight: 700; font-style: italic;
+  font-size: 14px; letter-spacing: 0.08em; color: var(--accent);
+}
+.why-item h4 { font-family: var(--font-display); font-weight: 700; font-size: 22px; line-height: 1.15; }
+.why-item p { color: var(--text-dim); font-size: 15px; }
+@media (max-width: 800px) {
+  .why-grid { grid-template-columns: 1fr; }
+  .why-item { border-right: 0; padding-right: 0; }
+  .why-item:nth-last-child(-n+3) { border-bottom: 1px solid var(--border); }
+  .why-item:last-child { border-bottom: 0; }
+}
+
+/* ─────────────── Split CTA ─────────────── */
+.split-cta {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+}
+.split-panel {
+  padding: 56px 48px;
+  display: flex; flex-direction: column; gap: 20px;
+  background: var(--bg);
+  position: relative;
+  overflow: hidden;
+  min-height: 380px;
+}
+.split-panel.dark { background: var(--bg-elev); }
+.split-panel .tag {
+  font-family: var(--font-display); font-weight: 700;
+  font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--text-muted);
+}
+.split-panel h3 {
+  font-style: italic;
+  font-size: clamp(28px, 3vw, 42px);
+  font-weight: 700;
+}
+.split-panel p { color: var(--text-dim); max-width: 460px; }
+.split-panel .actions { margin-top: auto; display: flex; gap: 12px; flex-wrap: wrap; }
+.split-panel .corner-lion {
+  position: absolute; right: -40px; bottom: -40px;
+  width: 280px; opacity: 0.08; pointer-events: none;
+}
+.split-panel .corner-lion svg { width: 100%; fill: var(--text); }
+[data-lion="subtle"] .split-panel .corner-lion { opacity: 0.03; }
+[data-lion="editorial"] .split-panel .corner-lion { opacity: 0.14; width: 360px; }
+@media (max-width: 800px) { .split-cta { grid-template-columns: 1fr; } }
+
+/* ─────────────── Stats ─────────────── */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+.stat {
+  padding: 56px 28px;
+  border-left: 1px solid var(--border);
+  display: flex; flex-direction: column; gap: 6px;
+}
+.stat:first-child { border-left: 0; }
+.stat .v {
+  font-family: var(--font-display); font-weight: 700; font-style: italic;
+  font-size: clamp(48px, 5.5vw, 80px);
+  letter-spacing: -0.03em; line-height: 1;
+  color: var(--text);
+}
+.stat .v .unit { color: var(--accent); }
+.stat .l {
+  font-family: var(--font-body); font-weight: 400;
+  font-size: 14px; color: var(--text-dim);
+  margin-top: 8px;
+}
+@media (max-width: 800px) {
+  .stats-grid { grid-template-columns: repeat(2, 1fr); }
+  .stat:nth-child(3), .stat:nth-child(4) { border-top: 1px solid var(--border); }
+  .stat:nth-child(3) { border-left: 0; }
+}
+
+/* ─────────────── Process ─────────────── */
+.process {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  position: relative;
+}
+.process::before {
+  content: ""; position: absolute;
+  top: 32px; left: 32px; right: 32px;
+  height: 1px; background: var(--border);
+  z-index: 0;
+}
+.process-step {
+  padding: 0 24px 0 0;
+  position: relative; z-index: 1;
+}
+.process-step .dot {
+  width: 64px; height: 64px;
+  background: var(--bg);
+  border: 1px solid var(--border-strong);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-display); font-weight: 700; font-style: italic;
+  font-size: 22px;
+  margin-bottom: 24px;
+}
+.process-step.active .dot { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+.process-step h4 { font-family: var(--font-display); font-weight: 700; font-size: 20px; margin-bottom: 8px; }
+.process-step p { color: var(--text-dim); font-size: 15px; }
+@media (max-width: 800px) {
+  .process { grid-template-columns: 1fr; gap: 32px; }
+  .process::before { display: none; }
+}
+
+/* ─────────────── Testimonials ─────────────── */
+.testimonials {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+.testimonial {
+  padding: 36px 32px;
+  border: 1px solid var(--border);
+  background: var(--bg-elev);
+  display: flex; flex-direction: column; gap: 20px;
+}
+.testimonial blockquote {
+  margin: 0;
+  font-family: var(--font-display); font-weight: 700; font-style: italic;
+  font-size: 22px; line-height: 1.3;
+  letter-spacing: -0.01em;
+}
+.testimonial-meta { display: flex; align-items: center; gap: 14px; padding-top: 8px; border-top: 1px solid var(--border); }
+.testimonial-meta .av {
+  width: 44px; height: 44px; border-radius: 50%;
+  background: var(--bg-elev-2);
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-display); font-weight: 700; font-size: 14px;
+  color: var(--text-dim);
+}
+.testimonial-meta .who { display: flex; flex-direction: column; }
+.testimonial-meta .who b { font-family: var(--font-display); font-weight: 700; font-size: 14px; }
+.testimonial-meta .who span { font-size: 13px; color: var(--text-muted); }
+@media (max-width: 800px) { .testimonials { grid-template-columns: 1fr; } }
+
+/* ─────────────── Contact / Footer ─────────────── */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 64px;
+}
+.contact-info { display: flex; flex-direction: column; gap: 28px; }
+.contact-row {
+  display: grid;
+  grid-template-columns: 110px 1fr;
+  gap: 24px;
+  padding: 18px 0;
+  border-top: 1px solid var(--border);
+}
+.contact-row:last-child { border-bottom: 1px solid var(--border); }
+.contact-row .k { font-family: var(--font-display); font-weight: 700; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-muted); }
+.contact-row .v { font-size: 16px; }
+.contact-row .v small { color: var(--text-muted); display: block; margin-top: 2px; font-size: 13px; }
+.map-frame {
+  border: 1px solid var(--border);
+  background: var(--bg-elev);
+  aspect-ratio: 4/3;
+  position: relative;
+  overflow: hidden;
+}
+.map-frame iframe { width: 100%; height: 100%; border: 0; filter: grayscale(0.6) contrast(0.95); }
+[data-theme="dark"] .map-frame iframe, :root .map-frame iframe { filter: grayscale(1) invert(0.92) contrast(0.85); }
+[data-theme="light"] .map-frame iframe { filter: grayscale(0.4) contrast(0.95); }
+@media (max-width: 800px) { .contact-grid { grid-template-columns: 1fr; gap: 32px; } }
+
+/* ─────────────── Forms ─────────────── */
+.form {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+.form .full { grid-column: span 2; }
+.field { display: flex; flex-direction: column; gap: 8px; }
+.field label {
+  font-family: var(--font-display); font-weight: 700;
+  font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--text-dim);
+}
+.field label .req { color: var(--accent); }
+.field input, .field select, .field textarea {
+  appearance: none;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid var(--border-strong);
+  padding: 12px 0;
+  font: inherit;
+  color: var(--text);
+  font-family: var(--font-body); font-size: 16px;
+  outline: none;
+  transition: border-color .2s ease;
+  border-radius: 0;
+}
+.field input:focus, .field select:focus, .field textarea:focus { border-color: var(--accent); }
+.field textarea { resize: vertical; min-height: 100px; }
+.field .err { color: #ff6b6b; font-size: 12px; min-height: 14px; }
+.field.has-err input, .field.has-err select, .field.has-err textarea { border-color: #ff6b6b; }
+.field input::placeholder, .field textarea::placeholder { color: var(--text-muted); }
+
+.consent { display: flex; gap: 12px; align-items: flex-start; font-size: 13px; color: var(--text-dim); grid-column: span 2; }
+.consent input { width: 18px; height: 18px; accent-color: var(--accent); margin-top: 2px; flex: none; }
+
+@media (max-width: 700px) {
+  .form { grid-template-columns: 1fr; }
+  .form .full { grid-column: span 1; }
+  .consent { grid-column: span 1; }
+}
+
+.form-success {
+  padding: 32px;
+  border: 1px solid var(--accent);
+  background: color-mix(in srgb, var(--accent) 8%, var(--bg));
+  display: flex; flex-direction: column; gap: 8px;
+}
+.form-success h4 { font-family: var(--font-display); font-style: italic; font-size: 22px; color: var(--accent); }
+
+/* ─────────────── Footer ─────────────── */
+.site-footer {
+  background: var(--bg-elev);
+  border-top: 1px solid var(--border);
+  padding: 80px 0 32px;
+  margin-top: 0;
+}
+.footer-top {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr 1fr;
+  gap: 48px;
+  padding-bottom: 56px;
+  border-bottom: 1px solid var(--border);
+}
+.footer-col h5 {
+  font-family: var(--font-display); font-weight: 700;
+  font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 16px;
+}
+.footer-col ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px; }
+.footer-col a { color: var(--text-dim); font-size: 14px; }
+.footer-col a:hover { color: var(--text); }
+.footer-bottom {
+  display: flex; justify-content: space-between; align-items: center;
+  padding-top: 28px;
+  font-size: 12px;
+  color: var(--text-muted);
+  flex-wrap: wrap; gap: 12px;
+}
+.footer-bottom .reg { font-family: var(--font-display); letter-spacing: 0.08em; }
+@media (max-width: 800px) {
+  .footer-top { grid-template-columns: 1fr 1fr; gap: 32px; }
+}
+
+/* ─────────────── Page header (subpages) ─────────────── */
+.page-header {
+  padding: calc(76px + 80px) 0 80px;
+  border-bottom: 1px solid var(--border);
+  position: relative;
+  overflow: hidden;
+}
+.page-header .crumb {
+  font-family: var(--font-display); font-weight: 700;
+  font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 24px;
+}
+.page-header h1 {
+  font-size: clamp(40px, 5.6vw, 80px);
+  font-style: italic;
+  max-width: 1000px;
+}
+.page-header h1 em { color: var(--accent); font-style: italic; }
+.page-header .lead {
+  margin-top: 24px;
+  max-width: 680px;
+  color: var(--text-dim);
+  font-size: 18px;
+}
+.page-header .corner-lion {
+  position: absolute; right: -2%; top: 30%; width: 480px;
+  opacity: 0.08; pointer-events: none;
+}
+[data-lion="subtle"] .page-header .corner-lion { opacity: 0.03; }
+[data-lion="editorial"] .page-header .corner-lion { opacity: 0.14; width: 580px; }
+.page-header .corner-lion svg { width: 100%; fill: var(--text); }
+
+/* ─────────────── Carrier benefits ─────────────── */
+.benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+}
+.benefit {
+  background: var(--bg);
+  padding: 36px 32px;
+  display: flex; flex-direction: column; gap: 14px;
+  min-height: 240px;
+}
+.benefit .ico {
+  width: 36px; height: 36px;
+  color: var(--accent);
+  margin-bottom: 4px;
+}
+.benefit h4 { font-family: var(--font-display); font-weight: 700; font-size: 18px; }
+.benefit p { color: var(--text-dim); font-size: 14px; }
+@media (max-width: 800px) { .benefits-grid { grid-template-columns: 1fr; } }
+
+.requirements {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0;
+  border: 1px solid var(--border);
+}
+.req-item {
+  padding: 28px 32px;
+  border-right: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  display: flex; gap: 18px; align-items: flex-start;
+}
+.req-item:nth-child(2n) { border-right: 0; }
+.req-item:nth-last-child(-n+2) { border-bottom: 0; }
+.req-item .num {
+  font-family: var(--font-display); font-weight: 700; font-style: italic;
+  font-size: 22px; color: var(--accent); flex: none; min-width: 36px;
+}
+.req-item h4 { font-family: var(--font-display); font-weight: 700; font-size: 16px; margin-bottom: 4px; }
+.req-item p { color: var(--text-dim); font-size: 14px; }
+@media (max-width: 700px) {
+  .requirements { grid-template-columns: 1fr; }
+  .req-item { border-right: 0; }
+  .req-item:nth-last-child(2) { border-bottom: 1px solid var(--border); }
+}
+
+/* ─────────────── Misc utilities ─────────────── */
+.scroll-reveal { opacity: 0; transform: translateY(20px); transition: opacity .8s ease, transform .8s ease; }
+.scroll-reveal.in { opacity: 1; transform: translateY(0); }
+
+.divider-with-lion {
+  display: flex; align-items: center; gap: 32px;
+  padding: 60px 0;
+}
+.divider-with-lion .l { flex: 1; height: 1px; background: var(--border); }
+.divider-with-lion svg { width: 56px; height: 56px; fill: var(--text-muted); opacity: 0.5; }
+
+/* Smooth focus rings */
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+
+/* ─────────── ES Logistics dodatki — integracja z assetami ─────────── */
+:root { --lion-filter: none; }
+[data-theme="light"] { --lion-filter: brightness(0) invert(0); }
+
+/* Hero z prawdziwym zdjęciem ciężarówki/biura zamiast abstrakcji */
+.hero-bg.photo {
+  background:
+    linear-gradient(180deg, rgba(10,10,10,0.55) 0%, rgba(10,10,10,0.92) 100%),
+    linear-gradient(90deg, rgba(10,10,10,0.85) 0%, rgba(10,10,10,0.2) 60%, rgba(10,10,10,0.55) 100%),
+    url('assets/photo-1.jpeg') center/cover no-repeat !important;
+  background-color: #0a0a0a !important;
+}
+[data-theme="light"] .hero-bg.photo {
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.6) 0%, rgba(255,255,255,0.95) 100%),
+    linear-gradient(90deg, rgba(255,255,255,0.85) 0%, rgba(255,255,255,0.3) 60%, rgba(255,255,255,0.6) 100%),
+    url('assets/photo-1.jpeg') center/cover no-repeat !important;
+  background-color: #ffffff !important;
+  filter: grayscale(0.2);
+}
+
+/* ─────────────── Kierunki obsługi (Countries) ─────────────── */
+.countries-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+}
+.country-tile {
+  background: var(--bg);
+  padding: 28px 20px;
+  display: flex; flex-direction: column; gap: 8px;
+  transition: background .2s ease;
+  position: relative;
+}
+.country-tile:hover { background: var(--bg-elev); }
+.country-tile:hover .country-code { color: var(--accent); }
+.country-code {
+  font-family: var(--font-display);
+  font-weight: 700; font-style: italic;
+  font-size: 32px;
+  letter-spacing: -0.02em;
+  color: var(--text);
+  transition: color .2s ease;
+  line-height: 1;
+}
+.country-name {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--text);
+}
+.country-tag {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-top: auto;
+}
+@media (max-width: 1080px) { .countries-grid { grid-template-columns: repeat(4, 1fr); } }
+@media (max-width: 700px)  { .countries-grid { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 480px)  { .countries-grid { grid-template-columns: repeat(2, 1fr); } }
+
+/* ─────────────── Zaufali nam — logos strip (placeholder) ─────────────── */
+.logos-strip {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+}
+.logo-cell {
+  background: var(--bg);
+  padding: 32px 28px;
+  display: flex; flex-direction: column; gap: 10px;
+  min-height: 140px;
+  transition: background .2s ease;
+}
+.logo-cell:hover { background: var(--bg-elev); }
+.logo-mono {
+  font-size: 22px;
+  color: var(--accent);
+  line-height: 1;
+}
+.logo-label {
+  font-family: var(--font-body);
+  font-size: 14px;
+  color: var(--text-dim);
+  line-height: 1.4;
+  margin-top: auto;
+}
+@media (max-width: 800px) { .logos-strip { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 480px) { .logos-strip { grid-template-columns: 1fr; } }
+
+/* ─────────────── FAQ ─────────────── */
+.faq-list {
+  display: flex; flex-direction: column;
+  border-top: 1px solid var(--border);
+}
+.faq-item {
+  border-bottom: 1px solid var(--border);
+}
+.faq-item summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 28px 0;
+  display: grid;
+  grid-template-columns: 60px 1fr 32px;
+  gap: 20px;
+  align-items: center;
+  transition: color .2s ease;
+}
+.faq-item summary::-webkit-details-marker { display: none; }
+.faq-item summary:hover { color: var(--accent); }
+.faq-num {
+  font-family: var(--font-display);
+  font-weight: 700; font-style: italic;
+  font-size: 14px;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+}
+.faq-q {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(18px, 2vw, 22px);
+  line-height: 1.3;
+  color: var(--text);
+}
+.faq-icon {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 28px;
+  color: var(--text-muted);
+  text-align: center;
+  transition: transform .25s ease, color .2s ease;
+}
+.faq-item[open] .faq-icon { transform: rotate(45deg); color: var(--accent); }
+.faq-a {
+  padding: 0 0 28px 80px;
+  color: var(--text-dim);
+  font-size: 16px;
+  line-height: 1.7;
+  max-width: 760px;
+}
+@media (max-width: 700px) {
+  .faq-item summary { grid-template-columns: 40px 1fr 28px; gap: 14px; padding: 22px 0; }
+  .faq-a { padding-left: 54px; padding-bottom: 22px; }
+}
+
+/* ─────────────── Hero — Ken Burns + marquee z krajami ─────────────── */
+@keyframes kenburns {
+  0%   { transform: scale(1.05) translate(0, 0); }
+  50%  { transform: scale(1.12) translate(-1.5%, -1%); }
+  100% { transform: scale(1.05) translate(0, 0); }
+}
+.hero-bg.photo { animation: kenburns 28s ease-in-out infinite; }
+
+@keyframes marquee {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.hero-marquee {
+  position: relative;
+  overflow: hidden;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  background: var(--bg-elev);
+  padding: 18px 0;
+}
+.hero-marquee-track {
+  display: flex;
+  gap: 56px;
+  white-space: nowrap;
+  animation: marquee 40s linear infinite;
+  width: max-content;
+}
+.hero-marquee-item {
+  font-family: var(--font-display);
+  font-weight: 700; font-style: italic;
+  font-size: 16px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+}
+.hero-marquee-item::after {
+  content: "—";
+  color: var(--accent);
+  margin-left: 16px;
+  opacity: 0.5;
+}
+.hero-marquee:hover .hero-marquee-track { animation-play-state: paused; }
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-bg.photo { animation: none; }
+  .hero-marquee-track { animation: none; }
+}
+
+</style>
+</head>
+<body data-theme="dark" data-accent="mono" data-density="regular" data-lion="featured" data-hero-bg="photo">
+<div id="app"></div>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js"></script>
+
+<script>
+// tweaks-panel.jsx
+// Reusable Tweaks shell + form-control helpers.
+//
+// Owns the host protocol (listens for __activate_edit_mode / __deactivate_edit_mode,
+// posts __edit_mode_available / __edit_mode_set_keys / __edit_mode_dismissed) so
+// individual prototypes don't re-roll it. Ships a consistent set of controls so you
+// don't hand-draw <input type="range">, segmented radios, steppers, etc.
+//
+// Usage (in an HTML file that loads React + Babel):
+//
+//   const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+//     "primaryColor": "#D97757",
+//     "fontSize": 16,
+//     "density": "regular",
+//     "dark": false
+//   }/*EDITMODE-END*/;
+//
+//   function App() {
+//     const [t, setTweak] = useTweaks(TWEAK_DEFAULTS);
+//     return (
+//       <div style={{ fontSize: t.fontSize, color: t.primaryColor }}>
+//         Hello
+//         <TweaksPanel>
+//           <TweakSection label="Typography" />
+//           <TweakSlider label="Font size" value={t.fontSize} min={10} max={32} unit="px"
+//                        onChange={(v) => setTweak('fontSize', v)} />
+//           <TweakRadio  label="Density" value={t.density}
+//                        options={['compact', 'regular', 'comfy']}
+//                        onChange={(v) => setTweak('density', v)} />
+//           <TweakSection label="Theme" />
+//           <TweakColor  label="Primary" value={t.primaryColor}
+//                        onChange={(v) => setTweak('primaryColor', v)} />
+//           <TweakToggle label="Dark mode" value={t.dark}
+//                        onChange={(v) => setTweak('dark', v)} />
+//         </TweaksPanel>
+//       </div>
+//     );
+//   }
+//
+// ─────────────────────────────────────────────────────────────────────────────
+
+const __TWEAKS_STYLE = `
+  .twk-panel{position:fixed;right:16px;bottom:16px;z-index:2147483646;width:280px;
+    max-height:calc(100vh - 32px);display:flex;flex-direction:column;
+    background:rgba(250,249,247,.78);color:#29261b;
+    -webkit-backdrop-filter:blur(24px) saturate(160%);backdrop-filter:blur(24px) saturate(160%);
+    border:.5px solid rgba(255,255,255,.6);border-radius:14px;
+    box-shadow:0 1px 0 rgba(255,255,255,.5) inset,0 12px 40px rgba(0,0,0,.18);
+    font:11.5px/1.4 ui-sans-serif,system-ui,-apple-system,sans-serif;overflow:hidden}
+  .twk-hd{display:flex;align-items:center;justify-content:space-between;
+    padding:10px 8px 10px 14px;cursor:move;user-select:none}
+  .twk-hd b{font-size:12px;font-weight:600;letter-spacing:.01em}
+  .twk-x{appearance:none;border:0;background:transparent;color:rgba(41,38,27,.55);
+    width:22px;height:22px;border-radius:6px;cursor:default;font-size:13px;line-height:1}
+  .twk-x:hover{background:rgba(0,0,0,.06);color:#29261b}
+  .twk-body{padding:2px 14px 14px;display:flex;flex-direction:column;gap:10px;
+    overflow-y:auto;overflow-x:hidden;min-height:0;
+    scrollbar-width:thin;scrollbar-color:rgba(0,0,0,.15) transparent}
+  .twk-body::-webkit-scrollbar{width:8px}
+  .twk-body::-webkit-scrollbar-track{background:transparent;margin:2px}
+  .twk-body::-webkit-scrollbar-thumb{background:rgba(0,0,0,.15);border-radius:4px;
+    border:2px solid transparent;background-clip:content-box}
+  .twk-body::-webkit-scrollbar-thumb:hover{background:rgba(0,0,0,.25);
+    border:2px solid transparent;background-clip:content-box}
+  .twk-row{display:flex;flex-direction:column;gap:5px}
+  .twk-row-h{flex-direction:row;align-items:center;justify-content:space-between;gap:10px}
+  .twk-lbl{display:flex;justify-content:space-between;align-items:baseline;
+    color:rgba(41,38,27,.72)}
+  .twk-lbl>span:first-child{font-weight:500}
+  .twk-val{color:rgba(41,38,27,.5);font-variant-numeric:tabular-nums}
+
+  .twk-sect{font-size:10px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;
+    color:rgba(41,38,27,.45);padding:10px 0 0}
+  .twk-sect:first-child{padding-top:0}
+
+  .twk-field{appearance:none;width:100%;height:26px;padding:0 8px;
+    border:.5px solid rgba(0,0,0,.1);border-radius:7px;
+    background:rgba(255,255,255,.6);color:inherit;font:inherit;outline:none}
+  .twk-field:focus{border-color:rgba(0,0,0,.25);background:rgba(255,255,255,.85)}
+  select.twk-field{padding-right:22px;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'><path fill='rgba(0,0,0,.5)' d='M0 0h10L5 6z'/></svg>");
+    background-repeat:no-repeat;background-position:right 8px center}
+
+  .twk-slider{appearance:none;-webkit-appearance:none;width:100%;height:4px;margin:6px 0;
+    border-radius:999px;background:rgba(0,0,0,.12);outline:none}
+  .twk-slider::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;
+    width:14px;height:14px;border-radius:50%;background:#fff;
+    border:.5px solid rgba(0,0,0,.12);box-shadow:0 1px 3px rgba(0,0,0,.2);cursor:default}
+  .twk-slider::-moz-range-thumb{width:14px;height:14px;border-radius:50%;
+    background:#fff;border:.5px solid rgba(0,0,0,.12);box-shadow:0 1px 3px rgba(0,0,0,.2);cursor:default}
+
+  .twk-seg{position:relative;display:flex;padding:2px;border-radius:8px;
+    background:rgba(0,0,0,.06);user-select:none}
+  .twk-seg-thumb{position:absolute;top:2px;bottom:2px;border-radius:6px;
+    background:rgba(255,255,255,.9);box-shadow:0 1px 2px rgba(0,0,0,.12);
+    transition:left .15s cubic-bezier(.3,.7,.4,1),width .15s}
+  .twk-seg.dragging .twk-seg-thumb{transition:none}
+  .twk-seg button{appearance:none;position:relative;z-index:1;flex:1;border:0;
+    background:transparent;color:inherit;font:inherit;font-weight:500;min-height:22px;
+    border-radius:6px;cursor:default;padding:4px 6px;line-height:1.2;
+    overflow-wrap:anywhere}
+
+  .twk-toggle{position:relative;width:32px;height:18px;border:0;border-radius:999px;
+    background:rgba(0,0,0,.15);transition:background .15s;cursor:default;padding:0}
+  .twk-toggle[data-on="1"]{background:#34c759}
+  .twk-toggle i{position:absolute;top:2px;left:2px;width:14px;height:14px;border-radius:50%;
+    background:#fff;box-shadow:0 1px 2px rgba(0,0,0,.25);transition:transform .15s}
+  .twk-toggle[data-on="1"] i{transform:translateX(14px)}
+
+  .twk-num{display:flex;align-items:center;height:26px;padding:0 0 0 8px;
+    border:.5px solid rgba(0,0,0,.1);border-radius:7px;background:rgba(255,255,255,.6)}
+  .twk-num-lbl{font-weight:500;color:rgba(41,38,27,.6);cursor:ew-resize;
+    user-select:none;padding-right:8px}
+  .twk-num input{flex:1;min-width:0;height:100%;border:0;background:transparent;
+    font:inherit;font-variant-numeric:tabular-nums;text-align:right;padding:0 8px 0 0;
+    outline:none;color:inherit;-moz-appearance:textfield}
+  .twk-num input::-webkit-inner-spin-button,.twk-num input::-webkit-outer-spin-button{
+    -webkit-appearance:none;margin:0}
+  .twk-num-unit{padding-right:8px;color:rgba(41,38,27,.45)}
+
+  .twk-btn{appearance:none;height:26px;padding:0 12px;border:0;border-radius:7px;
+    background:rgba(0,0,0,.78);color:#fff;font:inherit;font-weight:500;cursor:default}
+  .twk-btn:hover{background:rgba(0,0,0,.88)}
+  .twk-btn.secondary{background:rgba(0,0,0,.06);color:inherit}
+  .twk-btn.secondary:hover{background:rgba(0,0,0,.1)}
+
+  .twk-swatch{appearance:none;-webkit-appearance:none;width:56px;height:22px;
+    border:.5px solid rgba(0,0,0,.1);border-radius:6px;padding:0;cursor:default;
+    background:transparent;flex-shrink:0}
+  .twk-swatch::-webkit-color-swatch-wrapper{padding:0}
+  .twk-swatch::-webkit-color-swatch{border:0;border-radius:5.5px}
+  .twk-swatch::-moz-color-swatch{border:0;border-radius:5.5px}
+`;
+
+// ── useTweaks ───────────────────────────────────────────────────────────────
+// Single source of truth for tweak values. setTweak persists via the host
+// (__edit_mode_set_keys → host rewrites the EDITMODE block on disk).
+function useTweaks(defaults) {
+  const [values, setValues] = React.useState(defaults);
+  // Accepts either setTweak('key', value) or setTweak({ key: value, ... }) so a
+  // useState-style call doesn't write a "[object Object]" key into the persisted
+  // JSON block.
+  const setTweak = React.useCallback((keyOrEdits, val) => {
+    const edits = typeof keyOrEdits === 'object' && keyOrEdits !== null ? keyOrEdits : {
+      [keyOrEdits]: val
+    };
+    setValues(prev => ({
+      ...prev,
+      ...edits
+    }));
+    window.parent.postMessage({
+      type: '__edit_mode_set_keys',
+      edits
+    }, '*');
+  }, []);
+  return [values, setTweak];
+}
+
+// ── TweaksPanel ─────────────────────────────────────────────────────────────
+// Floating shell. Registers the protocol listener BEFORE announcing
+// availability — if the announce ran first, the host's activate could land
+// before our handler exists and the toolbar toggle would silently no-op.
+// The close button posts __edit_mode_dismissed so the host's toolbar toggle
+// flips off in lockstep; the host echoes __deactivate_edit_mode back which
+// is what actually hides the panel.
+function TweaksPanel({
+  title = 'Tweaks',
+  children
+}) {
+  const [open, setOpen] = React.useState(false);
+  const dragRef = React.useRef(null);
+  const offsetRef = React.useRef({
+    x: 16,
+    y: 16
+  });
+  const PAD = 16;
+  const clampToViewport = React.useCallback(() => {
+    const panel = dragRef.current;
+    if (!panel) return;
+    const w = panel.offsetWidth,
+      h = panel.offsetHeight;
+    const maxRight = Math.max(PAD, window.innerWidth - w - PAD);
+    const maxBottom = Math.max(PAD, window.innerHeight - h - PAD);
+    offsetRef.current = {
+      x: Math.min(maxRight, Math.max(PAD, offsetRef.current.x)),
+      y: Math.min(maxBottom, Math.max(PAD, offsetRef.current.y))
+    };
+    panel.style.right = offsetRef.current.x + 'px';
+    panel.style.bottom = offsetRef.current.y + 'px';
+  }, []);
+  React.useEffect(() => {
+    if (!open) return;
+    clampToViewport();
+    if (typeof ResizeObserver === 'undefined') {
+      window.addEventListener('resize', clampToViewport);
+      return () => window.removeEventListener('resize', clampToViewport);
+    }
+    const ro = new ResizeObserver(clampToViewport);
+    ro.observe(document.documentElement);
+    return () => ro.disconnect();
+  }, [open, clampToViewport]);
+  React.useEffect(() => {
+    const onMsg = e => {
+      const t = e?.data?.type;
+      if (t === '__activate_edit_mode') setOpen(true);else if (t === '__deactivate_edit_mode') setOpen(false);
+    };
+    window.addEventListener('message', onMsg);
+    window.parent.postMessage({
+      type: '__edit_mode_available'
+    }, '*');
+    return () => window.removeEventListener('message', onMsg);
+  }, []);
+  const dismiss = () => {
+    setOpen(false);
+    window.parent.postMessage({
+      type: '__edit_mode_dismissed'
+    }, '*');
+  };
+  const onDragStart = e => {
+    const panel = dragRef.current;
+    if (!panel) return;
+    const r = panel.getBoundingClientRect();
+    const sx = e.clientX,
+      sy = e.clientY;
+    const startRight = window.innerWidth - r.right;
+    const startBottom = window.innerHeight - r.bottom;
+    const move = ev => {
+      offsetRef.current = {
+        x: startRight - (ev.clientX - sx),
+        y: startBottom - (ev.clientY - sy)
+      };
+      clampToViewport();
+    };
+    const up = () => {
+      window.removeEventListener('mousemove', move);
+      window.removeEventListener('mouseup', up);
+    };
+    window.addEventListener('mousemove', move);
+    window.addEventListener('mouseup', up);
+  };
+  if (!open) return null;
+  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("style", null, __TWEAKS_STYLE), /*#__PURE__*/React.createElement("div", {
+    ref: dragRef,
+    className: "twk-panel",
+    style: {
+      right: offsetRef.current.x,
+      bottom: offsetRef.current.y
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "twk-hd",
+    onMouseDown: onDragStart
+  }, /*#__PURE__*/React.createElement("b", null, title), /*#__PURE__*/React.createElement("button", {
+    className: "twk-x",
+    "aria-label": "Close tweaks",
+    onMouseDown: e => e.stopPropagation(),
+    onClick: dismiss
+  }, "\u2715")), /*#__PURE__*/React.createElement("div", {
+    className: "twk-body"
+  }, children)));
+}
+
+// ── Layout helpers ──────────────────────────────────────────────────────────
+
+function TweakSection({
+  label,
+  children
+}) {
+  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("div", {
+    className: "twk-sect"
+  }, label), children);
+}
+function TweakRow({
+  label,
+  value,
+  children,
+  inline = false
+}) {
+  return /*#__PURE__*/React.createElement("div", {
+    className: inline ? 'twk-row twk-row-h' : 'twk-row'
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "twk-lbl"
+  }, /*#__PURE__*/React.createElement("span", null, label), value != null && /*#__PURE__*/React.createElement("span", {
+    className: "twk-val"
+  }, value)), children);
+}
+
+// ── Controls ────────────────────────────────────────────────────────────────
+
+function TweakSlider({
+  label,
+  value,
+  min = 0,
+  max = 100,
+  step = 1,
+  unit = '',
+  onChange
+}) {
+  return /*#__PURE__*/React.createElement(TweakRow, {
+    label: label,
+    value: `${value}${unit}`
+  }, /*#__PURE__*/React.createElement("input", {
+    type: "range",
+    className: "twk-slider",
+    min: min,
+    max: max,
+    step: step,
+    value: value,
+    onChange: e => onChange(Number(e.target.value))
+  }));
+}
+function TweakToggle({
+  label,
+  value,
+  onChange
+}) {
+  return /*#__PURE__*/React.createElement("div", {
+    className: "twk-row twk-row-h"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "twk-lbl"
+  }, /*#__PURE__*/React.createElement("span", null, label)), /*#__PURE__*/React.createElement("button", {
+    type: "button",
+    className: "twk-toggle",
+    "data-on": value ? '1' : '0',
+    role: "switch",
+    "aria-checked": !!value,
+    onClick: () => onChange(!value)
+  }, /*#__PURE__*/React.createElement("i", null)));
+}
+function TweakRadio({
+  label,
+  value,
+  options,
+  onChange
+}) {
+  const trackRef = React.useRef(null);
+  const [dragging, setDragging] = React.useState(false);
+  const opts = options.map(o => typeof o === 'object' ? o : {
+    value: o,
+    label: o
+  });
+  const idx = Math.max(0, opts.findIndex(o => o.value === value));
+  const n = opts.length;
+
+  // The active value is read by pointer-move handlers attached for the lifetime
+  // of a drag — ref it so a stale closure doesn't fire onChange for every move.
+  const valueRef = React.useRef(value);
+  valueRef.current = value;
+  const segAt = clientX => {
+    const r = trackRef.current.getBoundingClientRect();
+    const inner = r.width - 4;
+    const i = Math.floor((clientX - r.left - 2) / inner * n);
+    return opts[Math.max(0, Math.min(n - 1, i))].value;
+  };
+  const onPointerDown = e => {
+    setDragging(true);
+    const v0 = segAt(e.clientX);
+    if (v0 !== valueRef.current) onChange(v0);
+    const move = ev => {
+      if (!trackRef.current) return;
+      const v = segAt(ev.clientX);
+      if (v !== valueRef.current) onChange(v);
+    };
+    const up = () => {
+      setDragging(false);
+      window.removeEventListener('pointermove', move);
+      window.removeEventListener('pointerup', up);
+    };
+    window.addEventListener('pointermove', move);
+    window.addEventListener('pointerup', up);
+  };
+  return /*#__PURE__*/React.createElement(TweakRow, {
+    label: label
+  }, /*#__PURE__*/React.createElement("div", {
+    ref: trackRef,
+    role: "radiogroup",
+    onPointerDown: onPointerDown,
+    className: dragging ? 'twk-seg dragging' : 'twk-seg'
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "twk-seg-thumb",
+    style: {
+      left: `calc(2px + ${idx} * (100% - 4px) / ${n})`,
+      width: `calc((100% - 4px) / ${n})`
+    }
+  }), opts.map(o => /*#__PURE__*/React.createElement("button", {
+    key: o.value,
+    type: "button",
+    role: "radio",
+    "aria-checked": o.value === value
+  }, o.label))));
+}
+function TweakSelect({
+  label,
+  value,
+  options,
+  onChange
+}) {
+  return /*#__PURE__*/React.createElement(TweakRow, {
+    label: label
+  }, /*#__PURE__*/React.createElement("select", {
+    className: "twk-field",
+    value: value,
+    onChange: e => onChange(e.target.value)
+  }, options.map(o => {
+    const v = typeof o === 'object' ? o.value : o;
+    const l = typeof o === 'object' ? o.label : o;
+    return /*#__PURE__*/React.createElement("option", {
+      key: v,
+      value: v
+    }, l);
+  })));
+}
+function TweakText({
+  label,
+  value,
+  placeholder,
+  onChange
+}) {
+  return /*#__PURE__*/React.createElement(TweakRow, {
+    label: label
+  }, /*#__PURE__*/React.createElement("input", {
+    className: "twk-field",
+    type: "text",
+    value: value,
+    placeholder: placeholder,
+    onChange: e => onChange(e.target.value)
+  }));
+}
+function TweakNumber({
+  label,
+  value,
+  min,
+  max,
+  step = 1,
+  unit = '',
+  onChange
+}) {
+  const clamp = n => {
+    if (min != null && n < min) return min;
+    if (max != null && n > max) return max;
+    return n;
+  };
+  const startRef = React.useRef({
+    x: 0,
+    val: 0
+  });
+  const onScrubStart = e => {
+    e.preventDefault();
+    startRef.current = {
+      x: e.clientX,
+      val: value
+    };
+    const decimals = (String(step).split('.')[1] || '').length;
+    const move = ev => {
+      const dx = ev.clientX - startRef.current.x;
+      const raw = startRef.current.val + dx * step;
+      const snapped = Math.round(raw / step) * step;
+      onChange(clamp(Number(snapped.toFixed(decimals))));
+    };
+    const up = () => {
+      window.removeEventListener('pointermove', move);
+      window.removeEventListener('pointerup', up);
+    };
+    window.addEventListener('pointermove', move);
+    window.addEventListener('pointerup', up);
+  };
+  return /*#__PURE__*/React.createElement("div", {
+    className: "twk-num"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "twk-num-lbl",
+    onPointerDown: onScrubStart
+  }, label), /*#__PURE__*/React.createElement("input", {
+    type: "number",
+    value: value,
+    min: min,
+    max: max,
+    step: step,
+    onChange: e => onChange(clamp(Number(e.target.value)))
+  }), unit && /*#__PURE__*/React.createElement("span", {
+    className: "twk-num-unit"
+  }, unit));
+}
+function TweakColor({
+  label,
+  value,
+  onChange
+}) {
+  return /*#__PURE__*/React.createElement("div", {
+    className: "twk-row twk-row-h"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "twk-lbl"
+  }, /*#__PURE__*/React.createElement("span", null, label)), /*#__PURE__*/React.createElement("input", {
+    type: "color",
+    className: "twk-swatch",
+    value: value,
+    onChange: e => onChange(e.target.value)
+  }));
+}
+function TweakButton({
+  label,
+  onClick,
+  secondary = false
+}) {
+  return /*#__PURE__*/React.createElement("button", {
+    type: "button",
+    className: secondary ? 'twk-btn secondary' : 'twk-btn',
+    onClick: onClick
+  }, label);
+}
+Object.assign(window, {
+  useTweaks,
+  TweaksPanel,
+  TweakSection,
+  TweakRow,
+  TweakSlider,
+  TweakToggle,
+  TweakRadio,
+  TweakSelect,
+  TweakText,
+  TweakNumber,
+  TweakColor,
+  TweakButton
+});
+
+</script>
+
+<script>
+// Components.jsx — shared building blocks for ES Logistics site
+// All components attach to window at end so other Babel scripts can use them.
+
+const {
+  useState,
+  useEffect,
+  useRef,
+  useCallback
+} = React;
+
+// ─────────────────────────────────────────────────────────────────────────────
+// Lion SVG (inline so it inherits currentColor / fill from CSS)
+// ─────────────────────────────────────────────────────────────────────────────
+function LionMark({
+  size = 22,
+  style
+}) {
+  return /*#__PURE__*/React.createElement("img", {
+    src: "assets/lew.png",
+    alt: "",
+    "aria-hidden": "true",
+    style: {
+      width: size,
+      height: size,
+      objectFit: 'contain',
+      filter: 'var(--lion-filter, none)',
+      ...style
+    }
+  });
+}
+function LionGraphic() {
+  return /*#__PURE__*/React.createElement("img", {
+    src: "assets/lew.png",
+    alt: "",
+    "aria-hidden": "true",
+    style: {
+      width: '100%',
+      height: '100%',
+      objectFit: 'contain',
+      filter: 'var(--lion-filter, none)'
+    }
+  });
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// Header / Nav
+// ─────────────────────────────────────────────────────────────────────────────
+function BrandLockup() {
+  return /*#__PURE__*/React.createElement("a", {
+    href: "#/",
+    className: "brand-lockup",
+    "aria-label": "ES Logistics \u2014 strona g\u0142\xF3wna"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "lion-mark"
+  }, /*#__PURE__*/React.createElement(LionMark, {
+    size: 20
+  })), /*#__PURE__*/React.createElement("span", {
+    className: "brand-wordmark"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "top"
+  }, "ES LOGISTICS"), /*#__PURE__*/React.createElement("span", {
+    className: "sub"
+  }, "Sp. z o.o. \xB7 Pozna\u0144")));
+}
+function Header({
+  route,
+  onRoute
+}) {
+  const [open, setOpen] = useState(false);
+  const [lang, setLang] = useState('PL');
+  useEffect(() => {
+    setOpen(false);
+  }, [route]);
+  const links = [{
+    href: '#/',
+    label: 'Start',
+    match: '/'
+  }, {
+    href: '#/o-nas',
+    label: 'O nas',
+    match: '/o-nas'
+  }, {
+    href: '#/uslugi',
+    label: 'Usługi',
+    match: '/uslugi'
+  }, {
+    href: '#/dla-klienta',
+    label: 'Dla klienta',
+    match: '/dla-klienta'
+  }, {
+    href: '#/dla-przewoznika',
+    label: 'Dla przewoźnika',
+    match: '/dla-przewoznika'
+  }, {
+    href: '#/kontakt',
+    label: 'Kontakt',
+    match: '/kontakt'
+  }];
+  return /*#__PURE__*/React.createElement("header", {
+    className: `site-header ${open ? 'mobile-menu-open' : ''}`
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "container nav"
+  }, /*#__PURE__*/React.createElement(BrandLockup, null), /*#__PURE__*/React.createElement("ul", {
+    className: "nav-links"
+  }, links.map(l => /*#__PURE__*/React.createElement("li", {
+    key: l.href
+  }, /*#__PURE__*/React.createElement("a", {
+    href: l.href,
+    className: route === l.match ? 'active' : ''
+  }, l.label)))), /*#__PURE__*/React.createElement("div", {
+    className: "nav-actions"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "lang-switch",
+    role: "group",
+    "aria-label": "J\u0119zyk"
+  }, ['PL', 'EN', 'DE'].map(L => /*#__PURE__*/React.createElement("button", {
+    key: L,
+    className: lang === L ? 'active' : '',
+    onClick: () => setLang(L)
+  }, L))), /*#__PURE__*/React.createElement("a", {
+    href: "#/dla-klienta",
+    className: "btn btn-primary",
+    style: {
+      padding: '10px 16px',
+      fontSize: 12
+    }
+  }, "Zam\xF3w transport"), /*#__PURE__*/React.createElement("button", {
+    className: "menu-btn",
+    onClick: () => setOpen(o => !o),
+    "aria-label": "Menu"
+  }, open ? 'Zamknij' : 'Menu'))));
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// Footer
+// ─────────────────────────────────────────────────────────────────────────────
+function Footer() {
+  return /*#__PURE__*/React.createElement("footer", {
+    className: "site-footer"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "container"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "footer-top"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "footer-col"
+  }, /*#__PURE__*/React.createElement(BrandLockup, null), /*#__PURE__*/React.createElement("p", {
+    style: {
+      color: 'var(--text-dim)',
+      marginTop: 20,
+      fontSize: 14,
+      maxWidth: 360,
+      lineHeight: 1.6
+    }
+  }, "Spedycja mi\u0119dzynarodowa w transporcie drogowym. 11 lat do\u015Bwiadczenia, sprawdzeni przewo\u017Anicy, transparentne procesy."), /*#__PURE__*/React.createElement("div", {
+    style: {
+      marginTop: 24,
+      display: 'flex',
+      flexDirection: 'column',
+      gap: 6,
+      fontSize: 13,
+      color: 'var(--text-dim)'
+    }
+  }, /*#__PURE__*/React.createElement("div", null, "ul. Kopanina 28/32, Pozna\u0144"), /*#__PURE__*/React.createElement("div", null, "biuro@eslogistics.pl"), /*#__PURE__*/React.createElement("div", null, "Telefon \u2014 w przygotowaniu"))), /*#__PURE__*/React.createElement("div", {
+    className: "footer-col"
+  }, /*#__PURE__*/React.createElement("h5", null, "Firma"), /*#__PURE__*/React.createElement("ul", null, /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("a", {
+    href: "#/o-nas"
+  }, "O nas")), /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("a", {
+    href: "#/uslugi"
+  }, "Us\u0142ugi")), /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("a", {
+    href: "#/kontakt"
+  }, "Kontakt")), /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("a", {
+    href: "#/o-nas"
+  }, "Kariera")))), /*#__PURE__*/React.createElement("div", {
+    className: "footer-col"
+  }, /*#__PURE__*/React.createElement("h5", null, "Wsp\xF3\u0142praca"), /*#__PURE__*/React.createElement("ul", null, /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("a", {
+    href: "#/dla-klienta"
+  }, "Zam\xF3w transport")), /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("a", {
+    href: "#/dla-przewoznika"
+  }, "Dla przewo\u017Anika")), /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("a", {
+    href: "#/dla-przewoznika"
+  }, "Rejestracja przewo\u017Anika")))), /*#__PURE__*/React.createElement("div", {
+    className: "footer-col"
+  }, /*#__PURE__*/React.createElement("h5", null, "Informacje prawne"), /*#__PURE__*/React.createElement("ul", null, /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("a", {
+    href: "#/legal"
+  }, "Polityka prywatno\u015Bci")), /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("a", {
+    href: "#/legal"
+  }, "RODO")), /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("a", {
+    href: "#/legal"
+  }, "Regulamin")), /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("a", {
+    href: "#/legal"
+  }, "Cookies"))))), /*#__PURE__*/React.createElement("div", {
+    className: "footer-bottom"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "reg"
+  }, "\xA9 2026 ES LOGISTICS Sp. z o.o.  \xB7  ul. Kopanina 28/32, Pozna\u0144"), /*#__PURE__*/React.createElement("span", null, "Made in Pozna\u0144"))));
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// Hooks
+// ─────────────────────────────────────────────────────────────────────────────
+function useHashRoute() {
+  const [route, setRoute] = useState(() => window.location.hash.replace('#', '') || '/');
+  useEffect(() => {
+    const handler = () => {
+      setRoute(window.location.hash.replace('#', '') || '/');
+      window.scrollTo({
+        top: 0,
+        behavior: 'instant'
+      });
+    };
+    window.addEventListener('hashchange', handler);
+    return () => window.removeEventListener('hashchange', handler);
+  }, []);
+  return [route, r => {
+    window.location.hash = r;
+  }];
+}
+function useReveal() {
+  useEffect(() => {
+    const els = document.querySelectorAll('.scroll-reveal:not(.in)');
+    if (!('IntersectionObserver' in window)) {
+      els.forEach(el => el.classList.add('in'));
+      return;
+    }
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('in');
+          io.unobserve(e.target);
+        }
+      });
+    }, {
+      threshold: 0.12
+    });
+    els.forEach(el => io.observe(el));
+    return () => io.disconnect();
+  });
+}
+function useCountUp(target, duration = 1400) {
+  const [val, setVal] = useState(0);
+  const ref = useRef(null);
+  useEffect(() => {
+    if (!ref.current) return;
+    const io = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        const start = performance.now();
+        const tick = now => {
+          const t = Math.min(1, (now - start) / duration);
+          const eased = 1 - Math.pow(1 - t, 3);
+          setVal(Math.round(target * eased));
+          if (t < 1) requestAnimationFrame(tick);
+        };
+        requestAnimationFrame(tick);
+        io.disconnect();
+      }
+    }, {
+      threshold: 0.4
+    });
+    io.observe(ref.current);
+    return () => io.disconnect();
+  }, [target, duration]);
+  return [val, ref];
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// Stat (animated count)
+// ─────────────────────────────────────────────────────────────────────────────
+function Stat({
+  value,
+  unit,
+  label,
+  prefix = ''
+}) {
+  const [v, ref] = useCountUp(value);
+  return /*#__PURE__*/React.createElement("div", {
+    className: "stat",
+    ref: ref
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "v"
+  }, prefix, v, /*#__PURE__*/React.createElement("span", {
+    className: "unit"
+  }, unit)), /*#__PURE__*/React.createElement("div", {
+    className: "l"
+  }, label));
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// Photo placeholder — labelled, monochrome
+// ─────────────────────────────────────────────────────────────────────────────
+function PhotoPlaceholder({
+  label,
+  ratio = '16/9',
+  tone = 'dark',
+  children,
+  style,
+  src
+}) {
+  const palette = tone === 'dark' ? 'linear-gradient(135deg, #1f1f1f 0%, #0d0d0d 70%)' : 'linear-gradient(135deg, #2a2a2a 0%, #161616 70%)';
+  const bg = src ? `linear-gradient(180deg, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.55) 100%), url('${src}') center/cover no-repeat` : palette;
+  return /*#__PURE__*/React.createElement("div", {
+    className: "photo-ph",
+    style: {
+      aspectRatio: ratio,
+      background: bg,
+      filter: src ? 'grayscale(0.35) contrast(1.05)' : undefined,
+      border: '1px solid var(--border)',
+      position: 'relative',
+      overflow: 'hidden',
+      display: 'flex',
+      alignItems: 'flex-end',
+      ...style
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      position: 'absolute',
+      inset: 0,
+      backgroundImage: 'repeating-linear-gradient(115deg, rgba(255,255,255,0.025) 0 2px, transparent 2px 6px)'
+    }
+  }), /*#__PURE__*/React.createElement("div", {
+    style: {
+      position: 'absolute',
+      inset: 0,
+      background: 'radial-gradient(ellipse 70% 50% at 30% 30%, rgba(255,255,255,0.08), transparent 60%)'
+    }
+  }), children, /*#__PURE__*/React.createElement("div", {
+    style: {
+      position: 'relative',
+      margin: 16,
+      fontFamily: 'var(--font-display)',
+      fontWeight: 700,
+      fontStyle: 'italic',
+      fontSize: 11,
+      letterSpacing: '0.18em',
+      textTransform: 'uppercase',
+      color: 'rgba(255,255,255,0.55)',
+      padding: '6px 10px',
+      border: '1px solid rgba(255,255,255,0.18)',
+      background: 'rgba(0,0,0,0.4)',
+      backdropFilter: 'blur(6px)'
+    }
+  }, label));
+}
+Object.assign(window, {
+  LionMark,
+  LionGraphic,
+  BrandLockup,
+  Header,
+  Footer,
+  useHashRoute,
+  useReveal,
+  useCountUp,
+  Stat,
+  PhotoPlaceholder
+});
+
+</script>
+
+<script>
+// pages.jsx — page components for ES Logistics
+// Depends on globals from components.jsx
+
+const {
+  useState: useStateP,
+  useEffect: useEffectP
+} = React;
+
+// Tiny inline icons (currentColor)
+const I = {
+  truck: (s = 24) => /*#__PURE__*/React.createElement("svg", {
+    width: s,
+    height: s,
+    viewBox: "0 0 24 24",
+    fill: "none",
+    stroke: "currentColor",
+    strokeWidth: "1.5",
+    strokeLinecap: "round",
+    strokeLinejoin: "round"
+  }, /*#__PURE__*/React.createElement("path", {
+    d: "M2 17h12V6H2zM14 9h4l3 4v4h-7zM6 21a2 2 0 100-4 2 2 0 000 4zM18 21a2 2 0 100-4 2 2 0 000 4z"
+  })),
+  globe: (s = 24) => /*#__PURE__*/React.createElement("svg", {
+    width: s,
+    height: s,
+    viewBox: "0 0 24 24",
+    fill: "none",
+    stroke: "currentColor",
+    strokeWidth: "1.5",
+    strokeLinecap: "round"
+  }, /*#__PURE__*/React.createElement("circle", {
+    cx: "12",
+    cy: "12",
+    r: "9"
+  }), /*#__PURE__*/React.createElement("path", {
+    d: "M3 12h18M12 3a14 14 0 010 18M12 3a14 14 0 000 18"
+  })),
+  doc: (s = 24) => /*#__PURE__*/React.createElement("svg", {
+    width: s,
+    height: s,
+    viewBox: "0 0 24 24",
+    fill: "none",
+    stroke: "currentColor",
+    strokeWidth: "1.5",
+    strokeLinecap: "round",
+    strokeLinejoin: "round"
+  }, /*#__PURE__*/React.createElement("path", {
+    d: "M14 3H6v18h12V7zM14 3v4h4M8 12h8M8 16h6"
+  })),
+  warehouse: (s = 24) => /*#__PURE__*/React.createElement("svg", {
+    width: s,
+    height: s,
+    viewBox: "0 0 24 24",
+    fill: "none",
+    stroke: "currentColor",
+    strokeWidth: "1.5",
+    strokeLinejoin: "round"
+  }, /*#__PURE__*/React.createElement("path", {
+    d: "M3 9l9-5 9 5v12H3zM7 21V13h10v8M10 13v3h4v-3"
+  })),
+  shield: (s = 24) => /*#__PURE__*/React.createElement("svg", {
+    width: s,
+    height: s,
+    viewBox: "0 0 24 24",
+    fill: "none",
+    stroke: "currentColor",
+    strokeWidth: "1.5",
+    strokeLinejoin: "round"
+  }, /*#__PURE__*/React.createElement("path", {
+    d: "M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"
+  }), /*#__PURE__*/React.createElement("path", {
+    d: "M9 12l2 2 4-4"
+  })),
+  pin: (s = 24) => /*#__PURE__*/React.createElement("svg", {
+    width: s,
+    height: s,
+    viewBox: "0 0 24 24",
+    fill: "none",
+    stroke: "currentColor",
+    strokeWidth: "1.5"
+  }, /*#__PURE__*/React.createElement("path", {
+    d: "M12 21s7-7.5 7-12a7 7 0 10-14 0c0 4.5 7 12 7 12z"
+  }), /*#__PURE__*/React.createElement("circle", {
+    cx: "12",
+    cy: "9",
+    r: "2.5"
+  })),
+  clock: (s = 24) => /*#__PURE__*/React.createElement("svg", {
+    width: s,
+    height: s,
+    viewBox: "0 0 24 24",
+    fill: "none",
+    stroke: "currentColor",
+    strokeWidth: "1.5"
+  }, /*#__PURE__*/React.createElement("circle", {
+    cx: "12",
+    cy: "12",
+    r: "9"
+  }), /*#__PURE__*/React.createElement("path", {
+    d: "M12 7v5l3 2"
+  })),
+  euro: (s = 24) => /*#__PURE__*/React.createElement("svg", {
+    width: s,
+    height: s,
+    viewBox: "0 0 24 24",
+    fill: "none",
+    stroke: "currentColor",
+    strokeWidth: "1.5",
+    strokeLinecap: "round"
+  }, /*#__PURE__*/React.createElement("path", {
+    d: "M18 6a8 8 0 100 12M3 10h11M3 14h11"
+  })),
+  hand: (s = 24) => /*#__PURE__*/React.createElement("svg", {
+    width: s,
+    height: s,
+    viewBox: "0 0 24 24",
+    fill: "none",
+    stroke: "currentColor",
+    strokeWidth: "1.5",
+    strokeLinejoin: "round"
+  }, /*#__PURE__*/React.createElement("path", {
+    d: "M9 11V5a2 2 0 114 0v6M13 11V4a2 2 0 114 0v9M9 11V7a2 2 0 10-4 0v8c0 4 3 6 7 6s7-2 7-6v-4a2 2 0 10-4 0"
+  }))
+};
+
+// ═════════════════════════════════════════════════════════════════════════════
+// HOMEPAGE
+// ═════════════════════════════════════════════════════════════════════════════
+function HomePage({
+  heroVariant
+}) {
+  useReveal();
+  const headlines = {
+    A: {
+      eyebrow: '01 — ES Logistics · Poznań',
+      h: /*#__PURE__*/React.createElement(React.Fragment, null, "Spedycja ", /*#__PURE__*/React.createElement("em", {
+        className: "accent"
+      }, "mi\u0119dzynarodowa,"), /*#__PURE__*/React.createElement("br", null), "na kt\xF3rej mo\u017Cna polega\u0107."),
+      sub: 'Organizujemy transport drogowy w Polsce i całej Europie. 11 lat doświadczenia, sprawdzeni przewoźnicy, transparentne procesy.'
+    },
+    B: {
+      eyebrow: '01 — ES Logistics · Poznań',
+      h: /*#__PURE__*/React.createElement(React.Fragment, null, "Tw\xF3j \u0142adunek.", /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("em", {
+        className: "accent"
+      }, "Nasza odpowiedzialno\u015B\u0107.")),
+      sub: 'ES Logistics — spedycja drogowa, która łączy biznes w całej Europie. Doświadczenie, sieć partnerów, indywidualne podejście.'
+    },
+    C: {
+      eyebrow: '01 — ES Logistics · Poznań',
+      h: /*#__PURE__*/React.createElement(React.Fragment, null, "Logistyka ", /*#__PURE__*/React.createElement("em", {
+        className: "accent"
+      }, "bez kompromis\xF3w.")),
+      sub: 'Spedycja międzynarodowa z Poznania. Dla firm, które wymagają więcej.'
+    }
+  };
+  const hero = headlines[heroVariant] || headlines.A;
+  return /*#__PURE__*/React.createElement("main", null, /*#__PURE__*/React.createElement("section", {
+    className: "hero"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "hero-bg photo"
+  }), /*#__PURE__*/React.createElement("div", {
+    className: "hero-overlay"
+  }), /*#__PURE__*/React.createElement("div", {
+    className: "hero-lion"
+  }, /*#__PURE__*/React.createElement(LionGraphic, null)), /*#__PURE__*/React.createElement("div", {
+    className: "container hero-content"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "hero-eyebrow"
+  }, /*#__PURE__*/React.createElement("span", null, hero.eyebrow)), /*#__PURE__*/React.createElement("h1", null, hero.h), /*#__PURE__*/React.createElement("p", {
+    className: "hero-sub"
+  }, hero.sub), /*#__PURE__*/React.createElement("div", {
+    className: "hero-cta"
+  }, /*#__PURE__*/React.createElement("a", {
+    href: "#/dla-klienta",
+    className: "btn btn-primary"
+  }, /*#__PURE__*/React.createElement("span", null, "Zam\xF3w transport"), /*#__PURE__*/React.createElement("span", {
+    className: "btn-arrow"
+  })), /*#__PURE__*/React.createElement("a", {
+    href: "#/dla-przewoznika",
+    className: "btn btn-ghost"
+  }, "Wsp\xF3\u0142praca dla przewo\u017Anik\xF3w"))), /*#__PURE__*/React.createElement("div", {
+    className: "hero-meta"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "container"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "hero-meta-inner"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "hero-meta-cell"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "k"
+  }, "Do\u015Bwiadczenie"), /*#__PURE__*/React.createElement("span", {
+    className: "v"
+  }, "11 lat w TSL")), /*#__PURE__*/React.createElement("div", {
+    className: "hero-meta-cell"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "k"
+  }, "Specjalizacja"), /*#__PURE__*/React.createElement("span", {
+    className: "v"
+  }, "Spedycja mi\u0119dzynarodowa")), /*#__PURE__*/React.createElement("div", {
+    className: "hero-meta-cell"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "k"
+  }, "Biuro"), /*#__PURE__*/React.createElement("span", {
+    className: "v"
+  }, "Pozna\u0144, Polska")), /*#__PURE__*/React.createElement("div", {
+    className: "hero-meta-cell"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "k"
+  }, "Obs\u0142uga"), /*#__PURE__*/React.createElement("span", {
+    className: "v"
+  }, "PL \xB7 EN \xB7 DE")))))), /*#__PURE__*/React.createElement("div", {
+    className: "hero-marquee",
+    "aria-hidden": "true"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "hero-marquee-track"
+  }, [...Array(2)].map((_, dup) => /*#__PURE__*/React.createElement(React.Fragment, {
+    key: dup
+  }, ['Polska', 'Niemcy', 'Holandia', 'Belgia', 'Francja', 'Włochy', 'Hiszpania', 'Czechy', 'Słowacja', 'Austria', 'Dania', 'Szwecja', 'Norwegia', 'Litwa', 'Łotwa', 'Estonia'].map((c, i) => /*#__PURE__*/React.createElement("span", {
+    className: "hero-marquee-item",
+    key: `${dup}-${i}`
+  }, c)))))), /*#__PURE__*/React.createElement("section", {
+    className: "section",
+    id: "uslugi"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "container"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "section-head scroll-reveal"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "num"
+  }, "02 \u2014 Nasze us\u0142ugi"), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("h2", null, "Pe\u0142en pakiet logistyczny \u2014", /*#__PURE__*/React.createElement("br", null), "od zlecenia do dostawy."), /*#__PURE__*/React.createElement("p", {
+    className: "lead"
+  }, "Cztery filary wsp\xF3\u0142pracy z ES Logistics. Ka\u017Cdy proces prowadzony przez do\u015Bwiadczonego spedytora \u2014 od pierwszej wyceny po roz\u0142adunek u odbiorcy."))), /*#__PURE__*/React.createElement("div", {
+    className: "services-grid scroll-reveal"
+  }, [{
+    n: '01',
+    icon: I.globe,
+    t: 'Spedycja międzynarodowa',
+    d: 'Organizacja transportu drogowego w Polsce, UE i krajach EOG. Pełna koordynacja z przewoźnikami i odbiorcami.'
+  }, {
+    n: '02',
+    icon: I.truck,
+    t: 'Transport drogowy',
+    d: 'Współpraca ze sprawdzoną siecią przewoźników. Realizacja zleceń całopojazdowych (FTL) i drobnicowych (LTL).'
+  }, {
+    n: '03',
+    icon: I.doc,
+    t: 'Obsługa dokumentacji',
+    d: 'Listy przewozowe CMR, dokumenty celne, raporty załadunkowe. Wszystko w jednym miejscu, w pełnej zgodności z prawem.'
+  }, {
+    n: '04',
+    icon: I.warehouse,
+    t: 'Logistyka kontraktowa',
+    d: 'Magazynowanie, przeładunki i obsługa stałych łańcuchów dostaw — w fazie rozwoju.',
+    badge: 'W rozwoju'
+  }].map(s => /*#__PURE__*/React.createElement("a", {
+    key: s.n,
+    href: "#/uslugi",
+    className: "service-card"
+  }, s.badge && /*#__PURE__*/React.createElement("span", {
+    className: "badge"
+  }, s.badge), /*#__PURE__*/React.createElement("span", {
+    className: "num"
+  }, s.n), /*#__PURE__*/React.createElement("div", {
+    style: {
+      color: 'var(--accent)'
+    }
+  }, s.icon(28)), /*#__PURE__*/React.createElement("h3", null, s.t), /*#__PURE__*/React.createElement("p", null, s.d), /*#__PURE__*/React.createElement("span", {
+    className: "arrow"
+  }, "\u2192")))))), /*#__PURE__*/React.createElement("section", {
+    style: {
+      padding: '0'
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "container"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "trust-bar"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "trust-cell"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "ico"
+  }, I.shield(24)), /*#__PURE__*/React.createElement("span", {
+    className: "lbl"
+  }, /*#__PURE__*/React.createElement("strong", null, "Wiarygodno\u015B\u0107"), "11 lat w bran\u017Cy TSL")), /*#__PURE__*/React.createElement("div", {
+    className: "trust-cell"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "ico"
+  }, I.globe(24)), /*#__PURE__*/React.createElement("span", {
+    className: "lbl"
+  }, /*#__PURE__*/React.createElement("strong", null, "Zasi\u0119g europejski"), "PL \xB7 DE \xB7 UE \xB7 EOG")), /*#__PURE__*/React.createElement("div", {
+    className: "trust-cell"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "ico"
+  }, I.pin(24)), /*#__PURE__*/React.createElement("span", {
+    className: "lbl"
+  }, /*#__PURE__*/React.createElement("strong", null, "Biuro w Poznaniu"), "ul. Kopanina 28/32")), /*#__PURE__*/React.createElement("div", {
+    className: "trust-cell"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "ico"
+  }, I.hand(24)), /*#__PURE__*/React.createElement("span", {
+    className: "lbl"
+  }, /*#__PURE__*/React.createElement("strong", null, "Obs\u0142uga"), "w j\u0119zykach PL/EN/DE"))))), /*#__PURE__*/React.createElement("section", {
+    className: "section"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "container"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "section-head scroll-reveal"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "num"
+  }, "03 \u2014 Dlaczego ES Logistics"), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("h2", null, "Sze\u015B\u0107 powod\xF3w, dla kt\xF3rych", /*#__PURE__*/React.createElement("br", null), "klienci do nas ", /*#__PURE__*/React.createElement("em", null, "wracaj\u0105.")))), /*#__PURE__*/React.createElement("div", {
+    className: "why-grid scroll-reveal"
+  }, [{
+    n: '01',
+    t: '11 lat doświadczenia',
+    d: 'Założyciel firmy zbudował karierę w branży TSL od pozycji operacyjnej po nadzór. To nie startup — to skondensowana praktyka.'
+  }, {
+    n: '02',
+    t: 'Indywidualne podejście',
+    d: 'Każde zlecenie obsługiwane przez konkretną osobę. Bez infolinii, bez przekierowań. Bezpośredni kontakt ze spedytorem.'
+  }, {
+    n: '03',
+    t: 'Sprawdzona sieć przewoźników',
+    d: 'Lata pracy z partnerami w Polsce i Europie. Każdy przewoźnik zweryfikowany dokumentacyjnie i operacyjnie.'
+  }, {
+    n: '04',
+    t: 'Transparentne procesy',
+    d: 'Status zlecenia, dokumenty, kontakt do kierowcy — wszystko na bieżąco. Bez niedomówień, bez ukrytych kosztów.'
+  }, {
+    n: '05',
+    t: 'Obsługa dwujęzyczna',
+    d: 'PL, EN i DE. Pracujemy z firmami zagranicznymi tak samo płynnie jak z polskimi.'
+  }, {
+    n: '06',
+    t: 'Własna flota — wkrótce',
+    d: 'Od 2026 rozwijamy własny park pojazdów ciężarowych i busów. Pełna kontrola nad realizacją.'
+  }].map(it => /*#__PURE__*/React.createElement("div", {
+    key: it.n,
+    className: "why-item"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "n"
+  }, it.n), /*#__PURE__*/React.createElement("h4", null, it.t), /*#__PURE__*/React.createElement("p", null, it.d)))))), /*#__PURE__*/React.createElement("section", {
+    className: "section",
+    style: {
+      paddingTop: 0
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "container"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "split-cta scroll-reveal"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "split-panel"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "corner-lion"
+  }, /*#__PURE__*/React.createElement(LionGraphic, null)), /*#__PURE__*/React.createElement("span", {
+    className: "tag"
+  }, "Dla klient\xF3w"), /*#__PURE__*/React.createElement("h3", null, "Potrzebujesz transportu?"), /*#__PURE__*/React.createElement("p", null, "Wype\u0142nij kr\xF3tki formularz \u2014 przygotujemy wycen\u0119 i dobierzemy przewo\u017Anika do Twojego \u0142adunku, zazwyczaj jeszcze tego samego dnia roboczego."), /*#__PURE__*/React.createElement("div", {
+    className: "actions"
+  }, /*#__PURE__*/React.createElement("a", {
+    href: "#/dla-klienta",
+    className: "btn btn-primary"
+  }, /*#__PURE__*/React.createElement("span", null, "Zam\xF3w transport"), /*#__PURE__*/React.createElement("span", {
+    className: "btn-arrow"
+  })), /*#__PURE__*/React.createElement("a", {
+    href: "#/uslugi",
+    className: "btn btn-ghost"
+  }, "Zobacz us\u0142ugi"))), /*#__PURE__*/React.createElement("div", {
+    className: "split-panel dark"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "corner-lion"
+  }, /*#__PURE__*/React.createElement(LionGraphic, null)), /*#__PURE__*/React.createElement("span", {
+    className: "tag"
+  }, "Dla przewo\u017Anik\xF3w"), /*#__PURE__*/React.createElement("h3", null, "Szukasz sta\u0142ych zlece\u0144?"), /*#__PURE__*/React.createElement("p", null, "Wsp\xF3\u0142pracujemy z firmami transportowymi w ca\u0142ej Europie. Sta\u0142e kierunki, terminowe p\u0142atno\u015Bci, fair stawki. Do\u0142\u0105cz do naszej sieci."), /*#__PURE__*/React.createElement("div", {
+    className: "actions"
+  }, /*#__PURE__*/React.createElement("a", {
+    href: "#/dla-przewoznika",
+    className: "btn btn-primary"
+  }, /*#__PURE__*/React.createElement("span", null, "Zarejestruj firm\u0119"), /*#__PURE__*/React.createElement("span", {
+    className: "btn-arrow"
+  }))))))), /*#__PURE__*/React.createElement("section", {
+    className: "section",
+    style: {
+      paddingTop: 0
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "container"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "section-head scroll-reveal"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "num"
+  }, "04 \u2014 W liczbach"), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("h2", null, "Skala, do\u015Bwiadczenie,", /*#__PURE__*/React.createElement("br", null), "zaufanie partner\xF3w."))), /*#__PURE__*/React.createElement("div", {
+    className: "stats-grid scroll-reveal"
+  }, /*#__PURE__*/React.createElement(Stat, {
+    value: 11,
+    unit: "",
+    label: "Lat do\u015Bwiadczenia w bran\u017Cy TSL"
+  }), /*#__PURE__*/React.createElement(Stat, {
+    value: 12,
+    unit: "",
+    label: "Kraj\xF3w na sta\u0142ych trasach"
+  }), /*#__PURE__*/React.createElement(Stat, {
+    value: 3,
+    unit: "",
+    label: "J\u0119zyki obs\u0142ugi (PL \xB7 EN \xB7 DE)"
+  }), /*#__PURE__*/React.createElement(Stat, {
+    value: 24,
+    unit: "h",
+    label: "Czas reakcji na zapytanie"
+  })))), /*#__PURE__*/React.createElement("section", {
+    className: "section",
+    style: {
+      paddingTop: 0
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "container"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "section-head scroll-reveal"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "num"
+  }, "05 \u2014 Kierunki obs\u0142ugi"), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("h2", null, "Z Polski w ca\u0142\u0105 ", /*#__PURE__*/React.createElement("em", null, "Europ\u0119.")), /*#__PURE__*/React.createElement("p", {
+    className: "lead"
+  }, "Najcz\u0119stsze trasy realizowane przez ES Logistics. Ka\u017Cdy kierunek mamy obs\u0142u\u017Cony sieci\u0105 sprawdzonych przewo\u017Anik\xF3w, z lokalnym wsparciem j\u0119zykowym."))), /*#__PURE__*/React.createElement("div", {
+    className: "countries-grid scroll-reveal"
+  }, [{
+    code: 'PL',
+    name: 'Polska',
+    tag: 'Hub'
+  }, {
+    code: 'DE',
+    name: 'Niemcy',
+    tag: 'Główny'
+  }, {
+    code: 'NL',
+    name: 'Holandia',
+    tag: 'Regularny'
+  }, {
+    code: 'BE',
+    name: 'Belgia',
+    tag: 'Regularny'
+  }, {
+    code: 'FR',
+    name: 'Francja',
+    tag: 'Regularny'
+  }, {
+    code: 'IT',
+    name: 'Włochy',
+    tag: 'Regularny'
+  }, {
+    code: 'ES',
+    name: 'Hiszpania',
+    tag: 'Na zapytanie'
+  }, {
+    code: 'CZ',
+    name: 'Czechy',
+    tag: 'Regularny'
+  }, {
+    code: 'SK',
+    name: 'Słowacja',
+    tag: 'Regularny'
+  }, {
+    code: 'AT',
+    name: 'Austria',
+    tag: 'Regularny'
+  }, {
+    code: 'DK',
+    name: 'Dania',
+    tag: 'Regularny'
+  }, {
+    code: 'SE',
+    name: 'Szwecja',
+    tag: 'Na zapytanie'
+  }].map(c => /*#__PURE__*/React.createElement("div", {
+    key: c.code,
+    className: "country-tile"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "country-code"
+  }, c.code), /*#__PURE__*/React.createElement("span", {
+    className: "country-name"
+  }, c.name), /*#__PURE__*/React.createElement("span", {
+    className: "country-tag"
+  }, c.tag)))), /*#__PURE__*/React.createElement("p", {
+    style: {
+      textAlign: 'center',
+      color: 'var(--text-muted)',
+      fontSize: 13,
+      marginTop: 32,
+      fontFamily: 'var(--font-display)',
+      letterSpacing: '0.1em',
+      textTransform: 'uppercase'
+    }
+  }, "Inny kierunek? Skontaktuj si\u0119 \u2014 sprawdzimy mo\u017Cliwo\u015Bci realizacji."))), /*#__PURE__*/React.createElement("section", {
+    className: "section",
+    style: {
+      paddingTop: 0
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "container"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "section-head scroll-reveal"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "num"
+  }, "06 \u2014 Zaufali nam"), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("h2", null, "Pracujemy dla firm,", /*#__PURE__*/React.createElement("br", null), "kt\xF3re ", /*#__PURE__*/React.createElement("em", null, "wymagaj\u0105 wi\u0119cej.")), /*#__PURE__*/React.createElement("p", {
+    className: "lead"
+  }, "Producenci, dystrybutorzy, importerzy z Polski i Europy. Pe\u0142na lista referencji dost\u0119pna na \u017Cyczenie \u2014 wiele transport\xF3w realizujemy na podstawie um\xF3w o poufno\u015Bci."))), /*#__PURE__*/React.createElement("div", {
+    className: "logos-strip scroll-reveal"
+  }, ['Producent komponentów stalowych · Wielkopolska', 'Dystrybutor materiałów budowlanych · Mazowsze', 'Importer części motoryzacyjnych · Śląsk', 'Producent opakowań · Wielkopolska', 'Firma e-commerce · Pomorze', 'Sieć handlowa · Małopolska'].map((t, i) => /*#__PURE__*/React.createElement("div", {
+    key: i,
+    className: "logo-cell"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "logo-mono"
+  }, "\u25CF"), /*#__PURE__*/React.createElement("span", {
+    className: "logo-label"
+  }, t)))))), /*#__PURE__*/React.createElement("section", {
+    className: "section",
+    style: {
+      paddingTop: 0
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "container"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "section-head scroll-reveal"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "num"
+  }, "07 \u2014 Najcz\u0119stsze pytania"), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("h2", null, "Co najcz\u0119\u015Bciej pytaj\u0105", /*#__PURE__*/React.createElement("br", null), "nasi ", /*#__PURE__*/React.createElement("em", null, "klienci.")))), /*#__PURE__*/React.createElement("div", {
+    className: "faq-list scroll-reveal"
+  }, [{
+    q: 'Jak szybko otrzymam wycenę transportu?',
+    a: 'Standardowo w ciągu kilku godzin roboczych od przesłania zapytania. W przypadku zleceń rutynowych (znane kierunki) — często jeszcze tego samego dnia.'
+  }, {
+    q: 'Czy pomagacie w dokumentacji celnej?',
+    a: 'Tak. Przygotowujemy CMR, koordynujemy dokumenty celne (T1, EX, IM), prowadzimy archiwum każdego zlecenia. Klient otrzymuje komplet dokumentów po realizacji.'
+  }, {
+    q: 'W jakich językach prowadzicie obsługę?',
+    a: 'Polski, angielski, niemiecki — w zakresie komunikacji z klientem, kierowcą i odbiorcą zagranicznym.'
+  }, {
+    q: 'Czy obsługujecie ładunki ADR / niebezpieczne?',
+    a: 'Na zapytanie — w oparciu o przewoźników z aktualnymi uprawnieniami ADR. Każdy taki transport jest weryfikowany pod kątem dokumentacji i klasy ładunku przed potwierdzeniem.'
+  }, {
+    q: 'Jakie są terminy płatności?',
+    a: 'Standardowo 14 dni, dla stałych klientów do uzgodnienia indywidualnie. Przewoźnikom płacimy w terminie — to fundament naszej współpracy.'
+  }, {
+    q: 'Czy macie własną flotę?',
+    a: 'Obecnie pracujemy w modelu spedycji — dobierając przewoźników z naszej zweryfikowanej sieci. W 2026 planujemy zakup pierwszych pojazdów ciężarowych i busów, by uzupełnić ofertę o własny transport.'
+  }].map((it, i) => /*#__PURE__*/React.createElement("details", {
+    key: i,
+    className: "faq-item"
+  }, /*#__PURE__*/React.createElement("summary", null, /*#__PURE__*/React.createElement("span", {
+    className: "faq-num"
+  }, String(i + 1).padStart(2, '0')), /*#__PURE__*/React.createElement("span", {
+    className: "faq-q"
+  }, it.q), /*#__PURE__*/React.createElement("span", {
+    className: "faq-icon"
+  }, "+")), /*#__PURE__*/React.createElement("p", {
+    className: "faq-a"
+  }, it.a)))))), /*#__PURE__*/React.createElement("div", {
+    className: "container"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "divider-with-lion scroll-reveal"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "l"
+  }), /*#__PURE__*/React.createElement("span", {
+    style: {
+      color: 'var(--text-muted)'
+    }
+  }, /*#__PURE__*/React.createElement(LionMark, {
+    size: 56
+  })), /*#__PURE__*/React.createElement("span", {
+    className: "l"
+  }))), /*#__PURE__*/React.createElement("section", {
+    className: "section",
+    style: {
+      paddingTop: 0
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "container"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "section-head scroll-reveal"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "num"
+  }, "08 \u2014 Kontakt"), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("h2", null, "Porozmawiajmy o", /*#__PURE__*/React.createElement("br", null), "Twoim ", /*#__PURE__*/React.createElement("em", null, "\u0142adunku.")))), /*#__PURE__*/React.createElement("div", {
+    className: "contact-grid scroll-reveal"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "contact-info"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "contact-row"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "k"
+  }, "Biuro"), /*#__PURE__*/React.createElement("span", {
+    className: "v"
+  }, "ul. Kopanina 28/32, Pozna\u0144", /*#__PURE__*/React.createElement("small", null, "Wielkopolska, Polska"))), /*#__PURE__*/React.createElement("div", {
+    className: "contact-row"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "k"
+  }, "Telefon"), /*#__PURE__*/React.createElement("span", {
+    className: "v"
+  }, "Numer w przygotowaniu", /*#__PURE__*/React.createElement("small", null, "Najszybciej \u2014 przez e-mail"))), /*#__PURE__*/React.createElement("div", {
+    className: "contact-row"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "k"
+  }, "E-mail"), /*#__PURE__*/React.createElement("span", {
+    className: "v"
+  }, "biuro@eslogistics.pl", /*#__PURE__*/React.createElement("small", null, "Odpowiadamy w ci\u0105gu 24h"))), /*#__PURE__*/React.createElement("div", {
+    className: "contact-row"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "k"
+  }, "Prezes"), /*#__PURE__*/React.createElement("span", {
+    className: "v"
+  }, "Eryk Szymkowiak", /*#__PURE__*/React.createElement("small", null, "11 lat do\u015Bwiadczenia w TSL"))), /*#__PURE__*/React.createElement("div", {
+    style: {
+      marginTop: 12,
+      display: 'flex',
+      gap: 12,
+      flexWrap: 'wrap'
+    }
+  }, /*#__PURE__*/React.createElement("a", {
+    href: "#/kontakt",
+    className: "btn btn-primary"
+  }, /*#__PURE__*/React.createElement("span", null, "Wszystkie kana\u0142y kontaktu"), /*#__PURE__*/React.createElement("span", {
+    className: "btn-arrow"
+  })))), /*#__PURE__*/React.createElement("div", {
+    className: "map-frame"
+  }, /*#__PURE__*/React.createElement("iframe", {
+    title: "Biuro ES Logistics \u2014 Kopanina 28/32, Pozna\u0144",
+    loading: "lazy",
+    src: "https://www.openstreetmap.org/export/embed.html?bbox=16.857%2C52.397%2C16.890%2C52.413&layer=mapnik&marker=52.405%2C16.873"
+  }))))));
+}
+
+// ═════════════════════════════════════════════════════════════════════════════
+// O NAS
+// ═════════════════════════════════════════════════════════════════════════════
+function AboutPage() {
+  useReveal();
+  return /*#__PURE__*/React.createElement("main", null, /*#__PURE__*/React.createElement("header", {
+    className: "page-header"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "corner-lion"
+  }, /*#__PURE__*/React.createElement(LionGraphic, null)), /*#__PURE__*/React.createElement("div", {
+    className: "container"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "crumb"
+  }, "Start  \xB7  O nas"), /*#__PURE__*/React.createElement("h1", null, "11 lat praktyki", /*#__PURE__*/React.createElement("br", null), "w bran\u017Cy ", /*#__PURE__*/React.createElement("em", null, "TSL.")), /*#__PURE__*/React.createElement("p", {
+    className: "lead"
+  }, "ES Logistics powsta\u0142a z konkretnego do\u015Bwiadczenia \u2014 nie z idei. Eryk Szymkowiak przez ponad dekad\u0119 pracowa\u0142 z klientami zagranicznymi, organizowa\u0142 transporty i nadzorowa\u0142 operacje, zanim za\u0142o\u017Cy\u0142 w\u0142asn\u0105 firm\u0119 spedycyjn\u0105 w Poznaniu."))), /*#__PURE__*/React.createElement("section", {
+    className: "section"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "container",
+    style: {
+      display: 'grid',
+      gridTemplateColumns: 'minmax(260px, 360px) 1fr',
+      gap: 80,
+      alignItems: 'start'
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "scroll-reveal"
+  }, /*#__PURE__*/React.createElement(PhotoPlaceholder, {
+    label: "Eryk Szymkowiak \u2014 Prezes Zarz\u0105du",
+    ratio: "3/4",
+    src: "assets/photo-2.jpeg"
+  }), /*#__PURE__*/React.createElement("div", {
+    style: {
+      marginTop: 20
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontFamily: 'var(--font-display)',
+      fontWeight: 700,
+      fontStyle: 'italic',
+      fontSize: 22
+    }
+  }, "Eryk Szymkowiak"), /*#__PURE__*/React.createElement("div", {
+    style: {
+      color: 'var(--text-dim)',
+      fontSize: 14,
+      marginTop: 4
+    }
+  }, "Prezes Zarz\u0105du, za\u0142o\u017Cyciel"))), /*#__PURE__*/React.createElement("div", {
+    className: "scroll-reveal",
+    style: {
+      display: 'flex',
+      flexDirection: 'column',
+      gap: 32
+    }
+  }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("span", {
+    className: "eyebrow"
+  }, "Misja"), /*#__PURE__*/React.createElement("h3", {
+    style: {
+      marginTop: 16,
+      fontStyle: 'italic'
+    }
+  }, "\u0141\u0105czymy biznes w Europie \u2014 w spos\xF3b transparentny, terminowy i godny zaufania.")), /*#__PURE__*/React.createElement("p", {
+    style: {
+      color: 'var(--text-dim)',
+      fontSize: 17,
+      lineHeight: 1.7
+    }
+  }, "Bran\u017Ca spedycyjna potrafi by\u0107 chaotyczna \u2014 zmiana kierowcy w ostatniej chwili, dokumenty, kt\xF3rych nikt nie pilnuje, ceny ustalane przez nieznanego po\u015Brednika. ES Logistics buduje przeciwwag\u0119: jednoosobowy kontakt, jasna kalkulacja, dokumentacja na czas."), /*#__PURE__*/React.createElement("p", {
+    style: {
+      color: 'var(--text-dim)',
+      fontSize: 17,
+      lineHeight: 1.7
+    }
+  }, "Pracujemy z firmami produkcyjnymi i handlowymi z Polski, Niemiec i innych kraj\xF3w UE. Nasz najcz\u0119stszy kierunek to transport drogowy w obr\u0119bie Europy \u2014 od pojedynczego zlecenia po sta\u0142e linie kontraktowe."), /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: 'grid',
+      gridTemplateColumns: 'repeat(3, 1fr)',
+      borderTop: '1px solid var(--border)',
+      borderBottom: '1px solid var(--border)',
+      marginTop: 16
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      padding: '24px 24px 24px 0',
+      borderRight: '1px solid var(--border)'
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontFamily: 'var(--font-display)',
+      fontStyle: 'italic',
+      fontWeight: 700,
+      fontSize: 36,
+      color: 'var(--accent)'
+    }
+  }, "2024"), /*#__PURE__*/React.createElement("div", {
+    style: {
+      color: 'var(--text-dim)',
+      fontSize: 14,
+      marginTop: 4
+    }
+  }, "Rejestracja ES Logistics Sp. z o.o.")), /*#__PURE__*/React.createElement("div", {
+    style: {
+      padding: '24px',
+      borderRight: '1px solid var(--border)'
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontFamily: 'var(--font-display)',
+      fontStyle: 'italic',
+      fontWeight: 700,
+      fontSize: 36,
+      color: 'var(--accent)'
+    }
+  }, "02/26"), /*#__PURE__*/React.createElement("div", {
+    style: {
+      color: 'var(--text-dim)',
+      fontSize: 14,
+      marginTop: 4
+    }
+  }, "Start rekrutacji zespo\u0142u")), /*#__PURE__*/React.createElement("div", {
+    style: {
+      padding: '24px 0 24px 24px'
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontFamily: 'var(--font-display)',
+      fontStyle: 'italic',
+      fontWeight: 700,
+      fontSize: 36,
+      color: 'var(--accent)'
+    }
+  }, "2026"), /*#__PURE__*/React.createElement("div", {
+    style: {
+      color: 'var(--text-dim)',
+      fontSize: 14,
+      marginTop: 4
+    }
+  }, "Zakup pierwszych pojazd\xF3w")))))), /*#__PURE__*/React.createElement("section", {
+    className: "section",
+    style: {
+      paddingTop: 0
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "container"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "section-head scroll-reveal"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "num"
+  }, "02 \u2014 Warto\u015Bci"), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("h2", null, "Trzy zasady, kt\xF3re", /*#__PURE__*/React.createElement("br", null), "nie podlegaj\u0105 ", /*#__PURE__*/React.createElement("em", null, "negocjacji.")))), /*#__PURE__*/React.createElement("div", {
+    className: "why-grid scroll-reveal",
+    style: {
+      gridTemplateColumns: 'repeat(3, 1fr)'
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "why-item"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "n"
+  }, "01"), /*#__PURE__*/React.createElement("h4", null, "S\u0142owo trzymane"), /*#__PURE__*/React.createElement("p", null, "Termin to termin. Wycena to wycena. Nie zmieniamy zasad gry w trakcie zlecenia.")), /*#__PURE__*/React.createElement("div", {
+    className: "why-item"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "n"
+  }, "02"), /*#__PURE__*/React.createElement("h4", null, "Bezpo\u015Bredni kontakt"), /*#__PURE__*/React.createElement("p", null, "Klient zawsze rozmawia z konkretnym spedytorem \u2014 nie z systemem zg\u0142oszeniowym.")), /*#__PURE__*/React.createElement("div", {
+    className: "why-item"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "n"
+  }, "03"), /*#__PURE__*/React.createElement("h4", null, "Pe\u0142na dokumentacja"), /*#__PURE__*/React.createElement("p", null, "CMR, faktury, protoko\u0142y \u2014 komplet dokument\xF3w dostarczamy w terminie, w czytelnej formie."))))));
+}
+
+// ═════════════════════════════════════════════════════════════════════════════
+// USŁUGI
+// ═════════════════════════════════════════════════════════════════════════════
+function ServicesPage() {
+  useReveal();
+  const services = [{
+    n: '01',
+    t: 'Spedycja międzynarodowa',
+    d: 'Pełna organizacja transportu drogowego pomiędzy Polską a krajami UE i EOG. Wycena, dobór przewoźnika, koordynacja załadunku, monitoring, dokumentacja.',
+    items: ['Wyceny indywidualne i ramowe', 'Trasy stałe i ad-hoc', 'Komunikacja z odbiorcą zagranicznym', 'Monitoring statusu zlecenia']
+  }, {
+    n: '02',
+    t: 'Transport drogowy',
+    d: 'Realizacja zleceń całopojazdowych (FTL) i drobnicowych (LTL) w oparciu o sprawdzoną sieć przewoźników. Naczepy plandekowe, chłodnie, busy.',
+    items: ['FTL — całopojazdowe', 'LTL — drobnica', 'Dostawy ekspresowe (busy)', 'Transporty ponadgabarytowe — na zapytanie']
+  }, {
+    n: '03',
+    t: 'Obsługa dokumentacji',
+    d: 'Listy CMR, dokumenty celne (T1, EX, IM), faktury, protokoły. Każdy dokument zachowany w archiwum klienta — dostępny na żądanie.',
+    items: ['CMR — wszystkie języki', 'Dokumentacja celna', 'Archiwizacja zleceń', 'Raporty miesięczne']
+  }, {
+    n: '04',
+    t: 'Logistyka kontraktowa',
+    d: 'Stała współpraca dla firm z powtarzalnymi potrzebami transportowymi. Jeden spedytor, jeden harmonogram, jedna umowa.',
+    items: ['Linie regularne PL ⇄ DE/UE', 'Indywidualne SLA', 'Dedykowany spedytor', 'Magazynowanie — w fazie rozwoju'],
+    badge: 'W rozwoju'
+  }];
+  return /*#__PURE__*/React.createElement("main", null, /*#__PURE__*/React.createElement("header", {
+    className: "page-header"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "corner-lion"
+  }, /*#__PURE__*/React.createElement(LionGraphic, null)), /*#__PURE__*/React.createElement("div", {
+    className: "container"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "crumb"
+  }, "Start  \xB7  Us\u0142ugi"), /*#__PURE__*/React.createElement("h1", null, "Pe\u0142en pakiet", /*#__PURE__*/React.createElement("br", null), "logistyczny \u2014 ", /*#__PURE__*/React.createElement("em", null, "cztery filary.")), /*#__PURE__*/React.createElement("p", {
+    className: "lead"
+  }, "Od pojedynczego zlecenia do sta\u0142ej wsp\xF3\u0142pracy kontraktowej. Wybierz to, czego potrzebujesz \u2014 albo skorzystaj z ca\u0142o\u015Bci pakietu."))), /*#__PURE__*/React.createElement("section", {
+    className: "section"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "container",
+    style: {
+      display: 'flex',
+      flexDirection: 'column',
+      gap: 0
+    }
+  }, services.map((s, i) => /*#__PURE__*/React.createElement("div", {
+    key: s.n,
+    className: "scroll-reveal",
+    style: {
+      display: 'grid',
+      gridTemplateColumns: '160px 1fr 1.2fr',
+      gap: 48,
+      padding: '56px 0',
+      borderTop: i === 0 ? 'none' : '1px solid var(--border)',
+      alignItems: 'start'
+    }
+  }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontFamily: 'var(--font-display)',
+      fontWeight: 700,
+      fontStyle: 'italic',
+      fontSize: 56,
+      lineHeight: 1,
+      color: 'var(--text-muted)'
+    }
+  }, s.n), s.badge && /*#__PURE__*/React.createElement("div", {
+    style: {
+      marginTop: 16,
+      fontFamily: 'var(--font-display)',
+      fontWeight: 700,
+      fontSize: 10,
+      letterSpacing: '0.18em',
+      textTransform: 'uppercase',
+      color: 'var(--accent)',
+      border: '1px solid var(--accent)',
+      padding: '4px 8px',
+      display: 'inline-block',
+      borderRadius: 2
+    }
+  }, s.badge)), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("h3", {
+    style: {
+      fontStyle: 'italic'
+    }
+  }, s.t), /*#__PURE__*/React.createElement("p", {
+    style: {
+      marginTop: 16,
+      color: 'var(--text-dim)',
+      fontSize: 17
+    }
+  }, s.d)), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("ul", {
+    style: {
+      listStyle: 'none',
+      margin: 0,
+      padding: 0,
+      display: 'flex',
+      flexDirection: 'column',
+      gap: 0,
+      borderTop: '1px solid var(--border)'
+    }
+  }, s.items.map((it, j) => /*#__PURE__*/React.createElement("li", {
+    key: j,
+    style: {
+      padding: '14px 0',
+      borderBottom: '1px solid var(--border)',
+      display: 'flex',
+      justifyContent: 'space-between',
+      alignItems: 'center'
+    }
+  }, /*#__PURE__*/React.createElement("span", {
+    style: {
+      fontSize: 15
+    }
+  }, it), /*#__PURE__*/React.createElement("span", {
+    style: {
+      color: 'var(--accent)',
+      fontFamily: 'var(--font-display)'
+    }
+  }, "\u2014\u2192"))))))))), /*#__PURE__*/React.createElement("section", {
+    className: "section",
+    style: {
+      paddingTop: 0
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "container"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "split-cta scroll-reveal"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "split-panel dark"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "corner-lion"
+  }, /*#__PURE__*/React.createElement(LionGraphic, null)), /*#__PURE__*/React.createElement("span", {
+    className: "tag"
+  }, "Nast\u0119pny krok"), /*#__PURE__*/React.createElement("h3", null, "Gotowy na wycen\u0119?"), /*#__PURE__*/React.createElement("p", null, "Wype\u0142nij formularz \u201EZam\xF3w transport\" \u2014 odpowiemy zazwyczaj jeszcze tego samego dnia roboczego."), /*#__PURE__*/React.createElement("div", {
+    className: "actions"
+  }, /*#__PURE__*/React.createElement("a", {
+    href: "#/dla-klienta",
+    className: "btn btn-primary"
+  }, /*#__PURE__*/React.createElement("span", null, "Zam\xF3w transport"), /*#__PURE__*/React.createElement("span", {
+    className: "btn-arrow"
+  })), /*#__PURE__*/React.createElement("a", {
+    href: "#/kontakt",
+    className: "btn btn-ghost"
+  }, "Skontaktuj si\u0119"))), /*#__PURE__*/React.createElement("div", {
+    className: "split-panel"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "corner-lion"
+  }, /*#__PURE__*/React.createElement(LionGraphic, null)), /*#__PURE__*/React.createElement("span", {
+    className: "tag"
+  }, "Dla przewo\u017Anik\xF3w"), /*#__PURE__*/React.createElement("h3", null, "Chcesz do\u0142\u0105czy\u0107 do sieci?"), /*#__PURE__*/React.createElement("p", null, "Zarejestruj firm\u0119 transportow\u0105 \u2014 dobieramy zlecenia do floty, kierunk\xF3w i specjalizacji."), /*#__PURE__*/React.createElement("div", {
+    className: "actions"
+  }, /*#__PURE__*/React.createElement("a", {
+    href: "#/dla-przewoznika",
+    className: "btn btn-ghost"
+  }, "Wsp\xF3\u0142praca")))))));
+}
+Object.assign(window, {
+  HomePage,
+  AboutPage,
+  ServicesPage
+});
+
+</script>
+
+<script>
+// forms.jsx — interactive forms + remaining pages
+
+const {
+  useState: useStateF
+} = React;
+
+// ─────────────── Field component ───────────────
+function Field({
+  label,
+  name,
+  type = 'text',
+  value,
+  onChange,
+  error,
+  required,
+  placeholder,
+  full,
+  options,
+  rows
+}) {
+  const id = `f-${name}`;
+  return /*#__PURE__*/React.createElement("div", {
+    className: `field ${full ? 'full' : ''} ${error ? 'has-err' : ''}`
+  }, /*#__PURE__*/React.createElement("label", {
+    htmlFor: id
+  }, label, required && /*#__PURE__*/React.createElement("span", {
+    className: "req"
+  }, " *")), type === 'textarea' ? /*#__PURE__*/React.createElement("textarea", {
+    id: id,
+    name: name,
+    value: value,
+    onChange: e => onChange(name, e.target.value),
+    placeholder: placeholder,
+    rows: rows || 4
+  }) : type === 'select' ? /*#__PURE__*/React.createElement("select", {
+    id: id,
+    name: name,
+    value: value,
+    onChange: e => onChange(name, e.target.value)
+  }, /*#__PURE__*/React.createElement("option", {
+    value: ""
+  }, "\u2014 wybierz \u2014"), options.map(o => /*#__PURE__*/React.createElement("option", {
+    key: o,
+    value: o
+  }, o))) : /*#__PURE__*/React.createElement("input", {
+    id: id,
+    name: name,
+    type: type,
+    value: value,
+    onChange: e => onChange(name, e.target.value),
+    placeholder: placeholder
+  }), /*#__PURE__*/React.createElement("span", {
+    className: "err"
+  }, error || ''));
+}
+
+// ═════════════════════════════════════════════════════════════════════════════
+// DLA KLIENTA
+// ═════════════════════════════════════════════════════════════════════════════
+function ClientPage() {
+  useReveal();
+  const [data, setData] = useStateF({
+    firma: '',
+    nip: '',
+    email: '',
+    telefon: '',
+    zaladunek: '',
+    rozladunek: '',
+    typ: '',
+    waga: '',
+    data: '',
+    uwagi: '',
+    rodo: false
+  });
+  const [errors, setErrors] = useStateF({});
+  const [submitted, setSubmitted] = useStateF(false);
+  const set = (k, v) => {
+    setData(d => ({
+      ...d,
+      [k]: v
+    }));
+    setErrors(e => ({
+      ...e,
+      [k]: ''
+    }));
+  };
+  const setBool = (k, v) => {
+    setData(d => ({
+      ...d,
+      [k]: v
+    }));
+    setErrors(e => ({
+      ...e,
+      [k]: ''
+    }));
+  };
+  const validate = () => {
+    const e = {};
+    if (!data.firma) e.firma = 'Podaj nazwę firmy';
+    if (!data.email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) e.email = 'Nieprawidłowy adres e-mail';
+    if (!data.telefon) e.telefon = 'Podaj telefon';
+    if (!data.zaladunek) e.zaladunek = 'Podaj miejsce załadunku';
+    if (!data.rozladunek) e.rozladunek = 'Podaj miejsce rozładunku';
+    if (!data.rodo) e.rodo = 'Wymagana zgoda RODO';
+    setErrors(e);
+    return Object.keys(e).length === 0;
+  };
+  const onSubmit = ev => {
+    ev.preventDefault();
+    if (validate()) setSubmitted(true);
+  };
+  return /*#__PURE__*/React.createElement("main", null, /*#__PURE__*/React.createElement("header", {
+    className: "page-header"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "corner-lion"
+  }, /*#__PURE__*/React.createElement(LionGraphic, null)), /*#__PURE__*/React.createElement("div", {
+    className: "container"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "crumb"
+  }, "Start  \xB7  Dla klienta"), /*#__PURE__*/React.createElement("h1", null, "Zam\xF3w ", /*#__PURE__*/React.createElement("em", null, "transport.")), /*#__PURE__*/React.createElement("p", {
+    className: "lead"
+  }, "Cztery kroki do realizacji. Bez infolinii, bez kolejek \u2014 bezpo\u015Bredni kontakt ze spedytorem."))), /*#__PURE__*/React.createElement("section", {
+    className: "section"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "container"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "section-head scroll-reveal"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "num"
+  }, "01 \u2014 Proces"), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("h2", null, "Cztery kroki do", /*#__PURE__*/React.createElement("br", null), "zrealizowanego ", /*#__PURE__*/React.createElement("em", null, "transportu.")))), /*#__PURE__*/React.createElement("div", {
+    className: "process scroll-reveal"
+  }, [{
+    n: '01',
+    t: 'Zapytanie',
+    d: 'Wypełniasz formularz lub piszesz e-mail. Otrzymujesz pierwszą informację zwrotną zazwyczaj w ciągu kilku godzin.'
+  }, {
+    n: '02',
+    t: 'Wycena',
+    d: 'Przygotowujemy wycenę na podstawie trasy, typu ładunku i terminu. Bez ukrytych kosztów.'
+  }, {
+    n: '03',
+    t: 'Realizacja',
+    d: 'Dobieramy przewoźnika, koordynujemy załadunek, monitorujemy trasę. Jesteś na bieżąco.'
+  }, {
+    n: '04',
+    t: 'Dokumentacja',
+    d: 'Komplet dokumentów (CMR, faktura) trafia do Ciebie po rozładunku — w terminie i w czytelnej formie.'
+  }].map((s, i) => /*#__PURE__*/React.createElement("div", {
+    key: s.n,
+    className: `process-step ${i === 0 ? 'active' : ''}`
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "dot"
+  }, s.n), /*#__PURE__*/React.createElement("h4", null, s.t), /*#__PURE__*/React.createElement("p", null, s.d)))))), /*#__PURE__*/React.createElement("section", {
+    className: "section",
+    style: {
+      paddingTop: 0
+    },
+    id: "formularz"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "container"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "section-head scroll-reveal"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "num"
+  }, "02 \u2014 Formularz"), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("h2", null, "Zapytanie o ", /*#__PURE__*/React.createElement("em", null, "transport.")), /*#__PURE__*/React.createElement("p", {
+    className: "lead"
+  }, "Wype\u0142nienie zajmuje ok. 2 minuty. Pola oznaczone gwiazdk\u0105 s\u0105 wymagane."))), submitted ? /*#__PURE__*/React.createElement("div", {
+    className: "form-success scroll-reveal"
+  }, /*#__PURE__*/React.createElement("h4", null, "Dzi\u0119kujemy \u2014 zapytanie zosta\u0142o wys\u0142ane."), /*#__PURE__*/React.createElement("p", {
+    style: {
+      color: 'var(--text-dim)'
+    }
+  }, "Skontaktujemy si\u0119 z Tob\u0105 zazwyczaj w ci\u0105gu 24 godzin roboczych. Nr referencyjny: ", /*#__PURE__*/React.createElement("strong", {
+    style: {
+      color: 'var(--text)'
+    }
+  }, "ESL-", Math.floor(Math.random() * 900000 + 100000))), /*#__PURE__*/React.createElement("div", {
+    style: {
+      marginTop: 16
+    }
+  }, /*#__PURE__*/React.createElement("button", {
+    className: "btn btn-ghost",
+    onClick: () => {
+      setSubmitted(false);
+      setData({
+        firma: '',
+        nip: '',
+        email: '',
+        telefon: '',
+        zaladunek: '',
+        rozladunek: '',
+        typ: '',
+        waga: '',
+        data: '',
+        uwagi: '',
+        rodo: false
+      });
+    }
+  }, "Wy\u015Blij kolejne zapytanie"))) : /*#__PURE__*/React.createElement("form", {
+    className: "form scroll-reveal",
+    onSubmit: onSubmit,
+    noValidate: true
+  }, /*#__PURE__*/React.createElement(Field, {
+    label: "Firma",
+    name: "firma",
+    value: data.firma,
+    onChange: set,
+    error: errors.firma,
+    required: true,
+    placeholder: "Nazwa firmy"
+  }), /*#__PURE__*/React.createElement(Field, {
+    label: "NIP",
+    name: "nip",
+    value: data.nip,
+    onChange: set,
+    error: errors.nip,
+    placeholder: "0000000000"
+  }), /*#__PURE__*/React.createElement(Field, {
+    label: "E-mail",
+    name: "email",
+    type: "email",
+    value: data.email,
+    onChange: set,
+    error: errors.email,
+    required: true,
+    placeholder: "kontakt@firma.pl"
+  }), /*#__PURE__*/React.createElement(Field, {
+    label: "Telefon",
+    name: "telefon",
+    type: "tel",
+    value: data.telefon,
+    onChange: set,
+    error: errors.telefon,
+    required: true,
+    placeholder: "+48 ..."
+  }), /*#__PURE__*/React.createElement(Field, {
+    label: "Miejsce za\u0142adunku",
+    name: "zaladunek",
+    value: data.zaladunek,
+    onChange: set,
+    error: errors.zaladunek,
+    required: true,
+    placeholder: "Miasto, kod pocztowy, kraj"
+  }), /*#__PURE__*/React.createElement(Field, {
+    label: "Miejsce roz\u0142adunku",
+    name: "rozladunek",
+    value: data.rozladunek,
+    onChange: set,
+    error: errors.rozladunek,
+    required: true,
+    placeholder: "Miasto, kod pocztowy, kraj"
+  }), /*#__PURE__*/React.createElement(Field, {
+    label: "Typ \u0142adunku",
+    name: "typ",
+    type: "select",
+    value: data.typ,
+    onChange: set,
+    options: ['Ładunek paletowy', 'Drobnica (LTL)', 'Całopojazdowy (FTL)', 'Chłodnia / temperatura kontrolowana', 'Ponadgabaryt', 'Bus / dostawa ekspresowa', 'Inny']
+  }), /*#__PURE__*/React.createElement(Field, {
+    label: "Waga (kg)",
+    name: "waga",
+    type: "number",
+    value: data.waga,
+    onChange: set,
+    placeholder: "np. 12000"
+  }), /*#__PURE__*/React.createElement(Field, {
+    label: "Planowana data za\u0142adunku",
+    name: "data",
+    type: "date",
+    value: data.data,
+    onChange: set
+  }), /*#__PURE__*/React.createElement("div", {
+    className: "field"
+  }), /*#__PURE__*/React.createElement(Field, {
+    label: "Uwagi dodatkowe",
+    name: "uwagi",
+    type: "textarea",
+    value: data.uwagi,
+    onChange: set,
+    full: true,
+    placeholder: "Wymiary \u0142adunku, godziny pracy magazynu, dane osoby kontaktowej u za\u0142adowcy..."
+  }), /*#__PURE__*/React.createElement("label", {
+    className: `consent ${errors.rodo ? 'has-err' : ''}`
+  }, /*#__PURE__*/React.createElement("input", {
+    type: "checkbox",
+    checked: data.rodo,
+    onChange: e => setBool('rodo', e.target.checked)
+  }), /*#__PURE__*/React.createElement("span", null, "Wyra\u017Cam zgod\u0119 na przetwarzanie moich danych osobowych przez ES Logistics Sp. z o.o. w celu udzielenia odpowiedzi na zapytanie. Pe\u0142na tre\u015B\u0107: ", /*#__PURE__*/React.createElement("a", {
+    href: "#/legal",
+    style: {
+      color: 'var(--accent)'
+    }
+  }, "Polityka prywatno\u015Bci"), ". ", errors.rodo && /*#__PURE__*/React.createElement("span", {
+    style: {
+      color: '#ff6b6b',
+      display: 'block',
+      marginTop: 4
+    }
+  }, errors.rodo))), /*#__PURE__*/React.createElement("div", {
+    className: "full",
+    style: {
+      display: 'flex',
+      gap: 14,
+      alignItems: 'center',
+      flexWrap: 'wrap',
+      marginTop: 12
+    }
+  }, /*#__PURE__*/React.createElement("button", {
+    type: "submit",
+    className: "btn btn-primary"
+  }, /*#__PURE__*/React.createElement("span", null, "Wy\u015Blij zapytanie"), /*#__PURE__*/React.createElement("span", {
+    className: "btn-arrow"
+  })), /*#__PURE__*/React.createElement("span", {
+    style: {
+      fontSize: 12,
+      color: 'var(--text-muted)',
+      fontFamily: 'var(--font-display)',
+      letterSpacing: '0.1em'
+    }
+  }, "CHRONIONE PRZEZ reCAPTCHA"))))));
+}
+
+// ═════════════════════════════════════════════════════════════════════════════
+// DLA PRZEWOŹNIKA
+// ═════════════════════════════════════════════════════════════════════════════
+function CarrierPage() {
+  useReveal();
+  const [data, setData] = useStateF({
+    firma: '',
+    nip: '',
+    email: '',
+    telefon: '',
+    flota: '',
+    kierunki: '',
+    licencja: false,
+    ocp: false,
+    rodo: false
+  });
+  const [errors, setErrors] = useStateF({});
+  const [submitted, setSubmitted] = useStateF(false);
+  const set = (k, v) => {
+    setData(d => ({
+      ...d,
+      [k]: v
+    }));
+    setErrors(e => ({
+      ...e,
+      [k]: ''
+    }));
+  };
+  const setBool = (k, v) => {
+    setData(d => ({
+      ...d,
+      [k]: v
+    }));
+    setErrors(e => ({
+      ...e,
+      [k]: ''
+    }));
+  };
+  const validate = () => {
+    const e = {};
+    if (!data.firma) e.firma = 'Podaj nazwę firmy';
+    if (!data.nip) e.nip = 'Podaj NIP';
+    if (!data.email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) e.email = 'Nieprawidłowy adres e-mail';
+    if (!data.telefon) e.telefon = 'Podaj telefon';
+    if (!data.flota) e.flota = 'Opisz flotę';
+    if (!data.licencja) e.licencja = 'Wymagana licencja transportowa';
+    if (!data.ocp) e.ocp = 'Wymagana polisa OCP';
+    if (!data.rodo) e.rodo = 'Wymagana zgoda RODO';
+    setErrors(e);
+    return Object.keys(e).length === 0;
+  };
+  const onSubmit = ev => {
+    ev.preventDefault();
+    if (validate()) setSubmitted(true);
+  };
+  return /*#__PURE__*/React.createElement("main", null, /*#__PURE__*/React.createElement("header", {
+    className: "page-header"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "corner-lion"
+  }, /*#__PURE__*/React.createElement(LionGraphic, null)), /*#__PURE__*/React.createElement("div", {
+    className: "container"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "crumb"
+  }, "Start  \xB7  Dla przewo\u017Anika"), /*#__PURE__*/React.createElement("h1", null, "Sta\u0142e zlecenia.", /*#__PURE__*/React.createElement("br", null), "Terminowe ", /*#__PURE__*/React.createElement("em", null, "p\u0142atno\u015Bci.")), /*#__PURE__*/React.createElement("p", {
+    className: "lead"
+  }, "Wsp\xF3\u0142pracujemy z firmami transportowymi w ca\u0142ej Europie. Je\u015Bli prowadzisz firm\u0119 przewozow\u0105 \u2014 do\u0142\u0105cz do naszej sieci."), /*#__PURE__*/React.createElement("div", {
+    style: {
+      marginTop: 32,
+      display: 'flex',
+      gap: 14,
+      flexWrap: 'wrap'
+    }
+  }, /*#__PURE__*/React.createElement("a", {
+    href: "#formularz",
+    className: "btn btn-primary"
+  }, /*#__PURE__*/React.createElement("span", null, "Zarejestruj firm\u0119"), /*#__PURE__*/React.createElement("span", {
+    className: "btn-arrow"
+  })), /*#__PURE__*/React.createElement("a", {
+    href: "#/kontakt",
+    className: "btn btn-ghost"
+  }, "Zadaj pytanie")))), /*#__PURE__*/React.createElement("section", {
+    className: "section"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "container"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "section-head scroll-reveal"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "num"
+  }, "01 \u2014 Co oferujemy"), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("h2", null, "Sze\u015B\u0107 powod\xF3w,", /*#__PURE__*/React.createElement("br", null), "by z nami ", /*#__PURE__*/React.createElement("em", null, "wsp\xF3\u0142pracowa\u0107.")))), /*#__PURE__*/React.createElement("div", {
+    className: "benefits-grid scroll-reveal"
+  }, [{
+    i: /*#__PURE__*/React.createElement("svg", {
+      width: "36",
+      height: "36",
+      viewBox: "0 0 24 24",
+      fill: "none",
+      stroke: "currentColor",
+      strokeWidth: "1.4",
+      strokeLinejoin: "round"
+    }, /*#__PURE__*/React.createElement("path", {
+      d: "M2 17h12V6H2zM14 9h4l3 4v4h-7zM6 21a2 2 0 100-4 2 2 0 000 4zM18 21a2 2 0 100-4 2 2 0 000 4z"
+    })),
+    t: 'Stałe zlecenia',
+    d: 'Powtarzalne kierunki — możesz zaplanować flotę z wyprzedzeniem zamiast łapać pojedyncze zlecenia z giełdy.'
+  }, {
+    i: /*#__PURE__*/React.createElement("svg", {
+      width: "36",
+      height: "36",
+      viewBox: "0 0 24 24",
+      fill: "none",
+      stroke: "currentColor",
+      strokeWidth: "1.4",
+      strokeLinecap: "round"
+    }, /*#__PURE__*/React.createElement("path", {
+      d: "M18 6a8 8 0 100 12M3 10h11M3 14h11"
+    })),
+    t: 'Terminowe płatności',
+    d: 'Faktury opłacane zgodnie z umową. Bez przeciągania, bez „przypomnijcie się za tydzień".'
+  }, {
+    i: /*#__PURE__*/React.createElement("svg", {
+      width: "36",
+      height: "36",
+      viewBox: "0 0 24 24",
+      fill: "none",
+      stroke: "currentColor",
+      strokeWidth: "1.4"
+    }, /*#__PURE__*/React.createElement("path", {
+      d: "M12 2v20M5 8l7-4 7 4M5 8v8l7 4 7-4V8"
+    })),
+    t: 'Fair stawki',
+    d: 'Wyceny rynkowe z marżą, którą obie strony akceptują. Bez wyciskania kierowcy do ostatniego eurocenta.'
+  }, {
+    i: /*#__PURE__*/React.createElement("svg", {
+      width: "36",
+      height: "36",
+      viewBox: "0 0 24 24",
+      fill: "none",
+      stroke: "currentColor",
+      strokeWidth: "1.4"
+    }, /*#__PURE__*/React.createElement("path", {
+      d: "M21 12c0 5-4 9-9 9s-9-4-9-9 4-9 9-9 9 4 9 9zM12 7v5l3 2"
+    })),
+    t: 'Krótka decyzja',
+    d: 'Zlecenie potwierdzamy w godzinach, nie dniach. Mniej czekania, więcej kilometrów.'
+  }, {
+    i: /*#__PURE__*/React.createElement("svg", {
+      width: "36",
+      height: "36",
+      viewBox: "0 0 24 24",
+      fill: "none",
+      stroke: "currentColor",
+      strokeWidth: "1.4",
+      strokeLinejoin: "round"
+    }, /*#__PURE__*/React.createElement("path", {
+      d: "M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"
+    }), /*#__PURE__*/React.createElement("path", {
+      d: "M9 12l2 2 4-4"
+    })),
+    t: 'Pełna dokumentacja',
+    d: 'Zlecenie transportowe, CMR, faktura — wszystko czytelne, podpisane, w jednym miejscu.'
+  }, {
+    i: /*#__PURE__*/React.createElement("svg", {
+      width: "36",
+      height: "36",
+      viewBox: "0 0 24 24",
+      fill: "none",
+      stroke: "currentColor",
+      strokeWidth: "1.4"
+    }, /*#__PURE__*/React.createElement("path", {
+      d: "M3 12a9 9 0 1018 0 9 9 0 00-18 0zM12 7v5l3 2"
+    })),
+    t: 'Realny człowiek',
+    d: 'Jeden spedytor — bezpośredni kontakt. Bez infolinii i tracenia czasu na powtarzanie sprawy.'
+  }].map((b, i) => /*#__PURE__*/React.createElement("div", {
+    key: i,
+    className: "benefit"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "ico"
+  }, b.i), /*#__PURE__*/React.createElement("h4", null, b.t), /*#__PURE__*/React.createElement("p", null, b.d)))))), /*#__PURE__*/React.createElement("section", {
+    className: "section",
+    style: {
+      paddingTop: 0
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "container"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "section-head scroll-reveal"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "num"
+  }, "02 \u2014 Wymagania"), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("h2", null, "Czego oczekujemy", /*#__PURE__*/React.createElement("br", null), "od ", /*#__PURE__*/React.createElement("em", null, "partnera.")), /*#__PURE__*/React.createElement("p", {
+    className: "lead"
+  }, "Standard rynkowy. Sprawdzamy dokumenty raz, na pocz\u0105tku \u2014 p\xF3\u017Aniej budujemy zaufanie operacyjne."))), /*#__PURE__*/React.createElement("div", {
+    className: "requirements scroll-reveal"
+  }, [{
+    n: '01',
+    t: 'Aktualna licencja transportowa',
+    d: 'Krajowa lub wspólnotowa licencja na transport drogowy rzeczy.'
+  }, {
+    n: '02',
+    t: 'Polisa OCP',
+    d: 'Aktualne ubezpieczenie odpowiedzialności cywilnej przewoźnika z odpowiednią sumą gwarancyjną.'
+  }, {
+    n: '03',
+    t: 'Sprawny tabor',
+    d: 'Pojazdy w dobrym stanie technicznym, regularne przeglądy, ważne badania techniczne.'
+  }, {
+    n: '04',
+    t: 'Komunikacja',
+    d: 'Kontakt do dyspozytora i kierowcy w godzinach pracy. Telefon, e-mail, SMS, WhatsApp.'
+  }, {
+    n: '05',
+    t: 'Doświadczenie',
+    d: 'Minimum 1 rok prowadzenia firmy transportowej i pozytywne referencje.'
+  }, {
+    n: '06',
+    t: 'Zgodność dokumentowa',
+    d: 'NIP, REGON, KRS / wpis do CEIDG, świadectwa kierowców (kod 95).'
+  }].map(r => /*#__PURE__*/React.createElement("div", {
+    key: r.n,
+    className: "req-item"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "num"
+  }, r.n), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("h4", null, r.t), /*#__PURE__*/React.createElement("p", null, r.d))))))), /*#__PURE__*/React.createElement("section", {
+    className: "section",
+    style: {
+      paddingTop: 0
+    },
+    id: "formularz"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "container"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "section-head scroll-reveal"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "num"
+  }, "03 \u2014 Rejestracja"), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("h2", null, "Zarejestruj ", /*#__PURE__*/React.createElement("em", null, "firm\u0119.")), /*#__PURE__*/React.createElement("p", {
+    className: "lead"
+  }, "Po wype\u0142nieniu formularza otrzymasz e-mail z pro\u015Bb\u0105 o przes\u0142anie skan\xF3w licencji i OCP. Weryfikacja zazwyczaj zajmuje 1\u20132 dni robocze."))), submitted ? /*#__PURE__*/React.createElement("div", {
+    className: "form-success scroll-reveal"
+  }, /*#__PURE__*/React.createElement("h4", null, "Zg\u0142oszenie wys\u0142ane \u2014 dzi\u0119kujemy!"), /*#__PURE__*/React.createElement("p", {
+    style: {
+      color: 'var(--text-dim)'
+    }
+  }, "Wkr\xF3tce skontaktuje si\u0119 z Tob\u0105 nasz spedytor. Na podany adres e-mail wy\u015Blemy list\u0119 dokument\xF3w do weryfikacji. Nr referencyjny: ", /*#__PURE__*/React.createElement("strong", {
+    style: {
+      color: 'var(--text)'
+    }
+  }, "ESL-P-", Math.floor(Math.random() * 900000 + 100000))), /*#__PURE__*/React.createElement("div", {
+    style: {
+      marginTop: 16
+    }
+  }, /*#__PURE__*/React.createElement("button", {
+    className: "btn btn-ghost",
+    onClick: () => {
+      setSubmitted(false);
+      setData({
+        firma: '',
+        nip: '',
+        email: '',
+        telefon: '',
+        flota: '',
+        kierunki: '',
+        licencja: false,
+        ocp: false,
+        rodo: false
+      });
+    }
+  }, "Zarejestruj kolejn\u0105 firm\u0119"))) : /*#__PURE__*/React.createElement("form", {
+    className: "form scroll-reveal",
+    onSubmit: onSubmit,
+    noValidate: true
+  }, /*#__PURE__*/React.createElement(Field, {
+    label: "Nazwa firmy",
+    name: "firma",
+    value: data.firma,
+    onChange: set,
+    error: errors.firma,
+    required: true,
+    placeholder: "Pe\u0142na nazwa zgodna z KRS / CEIDG"
+  }), /*#__PURE__*/React.createElement(Field, {
+    label: "NIP",
+    name: "nip",
+    value: data.nip,
+    onChange: set,
+    error: errors.nip,
+    required: true,
+    placeholder: "0000000000"
+  }), /*#__PURE__*/React.createElement(Field, {
+    label: "E-mail kontaktowy",
+    name: "email",
+    type: "email",
+    value: data.email,
+    onChange: set,
+    error: errors.email,
+    required: true,
+    placeholder: "dyspozytor@firma.pl"
+  }), /*#__PURE__*/React.createElement(Field, {
+    label: "Telefon",
+    name: "telefon",
+    type: "tel",
+    value: data.telefon,
+    onChange: set,
+    error: errors.telefon,
+    required: true,
+    placeholder: "+48 ..."
+  }), /*#__PURE__*/React.createElement(Field, {
+    label: "Flota \u2014 liczba i typ pojazd\xF3w",
+    name: "flota",
+    type: "textarea",
+    value: data.flota,
+    onChange: set,
+    error: errors.flota,
+    required: true,
+    full: true,
+    placeholder: "np. 8 zestaw\xF3w plandekowych 24t, 2 ch\u0142odnie, 3 busy 3.5t"
+  }), /*#__PURE__*/React.createElement(Field, {
+    label: "G\u0142\xF3wne kierunki",
+    name: "kierunki",
+    type: "textarea",
+    value: data.kierunki,
+    onChange: set,
+    full: true,
+    placeholder: "np. PL \u21C4 DE, PL \u21C4 FR, PL \u21C4 BeNeLux"
+  }), /*#__PURE__*/React.createElement("div", {
+    className: "full",
+    style: {
+      display: 'grid',
+      gridTemplateColumns: 'repeat(2, 1fr)',
+      gap: 16,
+      marginTop: 8
+    }
+  }, /*#__PURE__*/React.createElement("label", {
+    className: `consent ${errors.licencja ? 'has-err' : ''}`,
+    style: {
+      gridColumn: 'span 1'
+    }
+  }, /*#__PURE__*/React.createElement("input", {
+    type: "checkbox",
+    checked: data.licencja,
+    onChange: e => setBool('licencja', e.target.checked)
+  }), /*#__PURE__*/React.createElement("span", null, /*#__PURE__*/React.createElement("strong", {
+    style: {
+      color: 'var(--text)'
+    }
+  }, "Posiadam aktualn\u0105 licencj\u0119 transportow\u0105"), /*#__PURE__*/React.createElement("br", null), "(skan prze\u015Bl\u0119 w odpowiedzi na nasz e-mail) ", errors.licencja && /*#__PURE__*/React.createElement("span", {
+    style: {
+      color: '#ff6b6b',
+      display: 'block',
+      marginTop: 4,
+      fontSize: 12
+    }
+  }, errors.licencja))), /*#__PURE__*/React.createElement("label", {
+    className: `consent ${errors.ocp ? 'has-err' : ''}`,
+    style: {
+      gridColumn: 'span 1'
+    }
+  }, /*#__PURE__*/React.createElement("input", {
+    type: "checkbox",
+    checked: data.ocp,
+    onChange: e => setBool('ocp', e.target.checked)
+  }), /*#__PURE__*/React.createElement("span", null, /*#__PURE__*/React.createElement("strong", {
+    style: {
+      color: 'var(--text)'
+    }
+  }, "Posiadam aktualn\u0105 polis\u0119 OCP"), /*#__PURE__*/React.createElement("br", null), "(skan prze\u015Bl\u0119 w odpowiedzi na nasz e-mail) ", errors.ocp && /*#__PURE__*/React.createElement("span", {
+    style: {
+      color: '#ff6b6b',
+      display: 'block',
+      marginTop: 4,
+      fontSize: 12
+    }
+  }, errors.ocp)))), /*#__PURE__*/React.createElement("label", {
+    className: `consent ${errors.rodo ? 'has-err' : ''}`
+  }, /*#__PURE__*/React.createElement("input", {
+    type: "checkbox",
+    checked: data.rodo,
+    onChange: e => setBool('rodo', e.target.checked)
+  }), /*#__PURE__*/React.createElement("span", null, "Wyra\u017Cam zgod\u0119 na przetwarzanie danych firmy przez ES Logistics Sp. z o.o. w celu nawi\u0105zania wsp\xF3\u0142pracy. Pe\u0142na tre\u015B\u0107: ", /*#__PURE__*/React.createElement("a", {
+    href: "#/legal",
+    style: {
+      color: 'var(--accent)'
+    }
+  }, "Polityka prywatno\u015Bci"), ". ", errors.rodo && /*#__PURE__*/React.createElement("span", {
+    style: {
+      color: '#ff6b6b',
+      display: 'block',
+      marginTop: 4
+    }
+  }, errors.rodo))), /*#__PURE__*/React.createElement("div", {
+    className: "full",
+    style: {
+      display: 'flex',
+      gap: 14,
+      alignItems: 'center',
+      flexWrap: 'wrap',
+      marginTop: 12
+    }
+  }, /*#__PURE__*/React.createElement("button", {
+    type: "submit",
+    className: "btn btn-primary"
+  }, /*#__PURE__*/React.createElement("span", null, "Wy\u015Blij zg\u0142oszenie"), /*#__PURE__*/React.createElement("span", {
+    className: "btn-arrow"
+  })), /*#__PURE__*/React.createElement("span", {
+    style: {
+      fontSize: 12,
+      color: 'var(--text-muted)',
+      fontFamily: 'var(--font-display)',
+      letterSpacing: '0.1em'
+    }
+  }, "CHRONIONE PRZEZ reCAPTCHA"))))));
+}
+
+// ═════════════════════════════════════════════════════════════════════════════
+// KONTAKT
+// ═════════════════════════════════════════════════════════════════════════════
+function ContactPage() {
+  useReveal();
+  const [data, setData] = useStateF({
+    imie: '',
+    email: '',
+    temat: '',
+    wiadomosc: '',
+    rodo: false
+  });
+  const [errors, setErrors] = useStateF({});
+  const [submitted, setSubmitted] = useStateF(false);
+  const set = (k, v) => {
+    setData(d => ({
+      ...d,
+      [k]: v
+    }));
+    setErrors(e => ({
+      ...e,
+      [k]: ''
+    }));
+  };
+  const setBool = (k, v) => {
+    setData(d => ({
+      ...d,
+      [k]: v
+    }));
+    setErrors(e => ({
+      ...e,
+      [k]: ''
+    }));
+  };
+  const validate = () => {
+    const e = {};
+    if (!data.imie) e.imie = 'Podaj imię i nazwisko';
+    if (!data.email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) e.email = 'Nieprawidłowy adres e-mail';
+    if (!data.wiadomosc) e.wiadomosc = 'Wpisz treść wiadomości';
+    if (!data.rodo) e.rodo = 'Wymagana zgoda RODO';
+    setErrors(e);
+    return Object.keys(e).length === 0;
+  };
+  const onSubmit = ev => {
+    ev.preventDefault();
+    if (validate()) setSubmitted(true);
+  };
+  return /*#__PURE__*/React.createElement("main", null, /*#__PURE__*/React.createElement("header", {
+    className: "page-header"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "corner-lion"
+  }, /*#__PURE__*/React.createElement(LionGraphic, null)), /*#__PURE__*/React.createElement("div", {
+    className: "container"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "crumb"
+  }, "Start  \xB7  Kontakt"), /*#__PURE__*/React.createElement("h1", null, "Porozmawiajmy.", /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("em", null, "Bez infolinii.")), /*#__PURE__*/React.createElement("p", {
+    className: "lead"
+  }, "Bezpo\u015Bredni kontakt ze spedytorem \u2014 telefon, e-mail albo formularz. Odpowiadamy zazwyczaj w ci\u0105gu 24 godzin roboczych."))), /*#__PURE__*/React.createElement("section", {
+    className: "section"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "container"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "contact-grid scroll-reveal"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "contact-info"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "contact-row"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "k"
+  }, "Adres"), /*#__PURE__*/React.createElement("span", {
+    className: "v"
+  }, "ul. Kopanina 28/32", /*#__PURE__*/React.createElement("br", null), "60-105 Pozna\u0144", /*#__PURE__*/React.createElement("small", null, "Wielkopolska, Polska"))), /*#__PURE__*/React.createElement("div", {
+    className: "contact-row"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "k"
+  }, "Telefon"), /*#__PURE__*/React.createElement("span", {
+    className: "v"
+  }, "Numer w przygotowaniu", /*#__PURE__*/React.createElement("small", null, "Pon\u2013Pt 8:00\u201318:00"))), /*#__PURE__*/React.createElement("div", {
+    className: "contact-row"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "k"
+  }, "E-mail"), /*#__PURE__*/React.createElement("span", {
+    className: "v"
+  }, "biuro@eslogistics.pl", /*#__PURE__*/React.createElement("small", null, "Odpowiadamy w ci\u0105gu 24h"))), /*#__PURE__*/React.createElement("div", {
+    className: "contact-row"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "k"
+  }, "Spedycja"), /*#__PURE__*/React.createElement("span", {
+    className: "v"
+  }, "spedycja@eslogistics.pl", /*#__PURE__*/React.createElement("small", null, "Zapytania transportowe"))), /*#__PURE__*/React.createElement("div", {
+    className: "contact-row"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "k"
+  }, "Wsp\xF3\u0142praca"), /*#__PURE__*/React.createElement("span", {
+    className: "v"
+  }, "przewoznicy@eslogistics.pl", /*#__PURE__*/React.createElement("small", null, "Rejestracja przewo\u017Anik\xF3w"))), /*#__PURE__*/React.createElement("div", {
+    className: "contact-row"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "k"
+  }, "Dane sp\xF3\u0142ki"), /*#__PURE__*/React.createElement("span", {
+    className: "v"
+  }, "ES Logistics Sp. z o.o.", /*#__PURE__*/React.createElement("small", null, "NIP \u2014 \xB7 REGON \u2014 \xB7 KRS \u2014")))), /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: 'flex',
+      flexDirection: 'column',
+      gap: 24
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "map-frame",
+    style: {
+      aspectRatio: '4/3'
+    }
+  }, /*#__PURE__*/React.createElement("iframe", {
+    title: "Biuro ES Logistics \u2014 Kopanina 28/32, Pozna\u0144",
+    loading: "lazy",
+    src: "https://www.openstreetmap.org/export/embed.html?bbox=16.857%2C52.397%2C16.890%2C52.413&layer=mapnik&marker=52.405%2C16.873"
+  })), /*#__PURE__*/React.createElement("a", {
+    href: "https://www.openstreetmap.org/?mlat=52.405&mlon=16.873#map=15/52.405/16.873",
+    target: "_blank",
+    rel: "noreferrer",
+    className: "btn btn-ghost",
+    style: {
+      alignSelf: 'flex-start'
+    }
+  }, "Otw\xF3rz w mapach"))))), /*#__PURE__*/React.createElement("section", {
+    className: "section",
+    style: {
+      paddingTop: 0
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "container"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "section-head scroll-reveal"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "num"
+  }, "02 \u2014 Formularz"), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("h2", null, "Napisz ", /*#__PURE__*/React.createElement("em", null, "wiadomo\u015B\u0107.")))), submitted ? /*#__PURE__*/React.createElement("div", {
+    className: "form-success scroll-reveal"
+  }, /*#__PURE__*/React.createElement("h4", null, "Wiadomo\u015B\u0107 wys\u0142ana \u2014 dzi\u0119kujemy!"), /*#__PURE__*/React.createElement("p", {
+    style: {
+      color: 'var(--text-dim)'
+    }
+  }, "Odpowiemy na wskazany adres w ci\u0105gu 24 godzin roboczych.")) : /*#__PURE__*/React.createElement("form", {
+    className: "form scroll-reveal",
+    onSubmit: onSubmit,
+    noValidate: true
+  }, /*#__PURE__*/React.createElement(Field, {
+    label: "Imi\u0119 i nazwisko",
+    name: "imie",
+    value: data.imie,
+    onChange: set,
+    error: errors.imie,
+    required: true
+  }), /*#__PURE__*/React.createElement(Field, {
+    label: "E-mail",
+    name: "email",
+    type: "email",
+    value: data.email,
+    onChange: set,
+    error: errors.email,
+    required: true
+  }), /*#__PURE__*/React.createElement(Field, {
+    label: "Temat",
+    name: "temat",
+    type: "select",
+    value: data.temat,
+    onChange: set,
+    options: ['Zapytanie o transport', 'Współpraca jako przewoźnik', 'Logistyka kontraktowa', 'Inne'],
+    full: true
+  }), /*#__PURE__*/React.createElement(Field, {
+    label: "Wiadomo\u015B\u0107",
+    name: "wiadomosc",
+    type: "textarea",
+    value: data.wiadomosc,
+    onChange: set,
+    error: errors.wiadomosc,
+    required: true,
+    full: true,
+    rows: 6
+  }), /*#__PURE__*/React.createElement("label", {
+    className: `consent ${errors.rodo ? 'has-err' : ''}`
+  }, /*#__PURE__*/React.createElement("input", {
+    type: "checkbox",
+    checked: data.rodo,
+    onChange: e => setBool('rodo', e.target.checked)
+  }), /*#__PURE__*/React.createElement("span", null, "Wyra\u017Cam zgod\u0119 na przetwarzanie moich danych osobowych. ", errors.rodo && /*#__PURE__*/React.createElement("span", {
+    style: {
+      color: '#ff6b6b',
+      display: 'block',
+      marginTop: 4
+    }
+  }, errors.rodo))), /*#__PURE__*/React.createElement("div", {
+    className: "full",
+    style: {
+      marginTop: 12
+    }
+  }, /*#__PURE__*/React.createElement("button", {
+    type: "submit",
+    className: "btn btn-primary"
+  }, /*#__PURE__*/React.createElement("span", null, "Wy\u015Blij wiadomo\u015B\u0107"), /*#__PURE__*/React.createElement("span", {
+    className: "btn-arrow"
+  })))))));
+}
+
+// ═════════════════════════════════════════════════════════════════════════════
+// LEGAL (placeholder)
+// ═════════════════════════════════════════════════════════════════════════════
+function LegalPage() {
+  useReveal();
+  return /*#__PURE__*/React.createElement("main", null, /*#__PURE__*/React.createElement("header", {
+    className: "page-header"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "container"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "crumb"
+  }, "Start  \xB7  Informacje prawne"), /*#__PURE__*/React.createElement("h1", null, "Informacje ", /*#__PURE__*/React.createElement("em", null, "prawne.")), /*#__PURE__*/React.createElement("p", {
+    className: "lead"
+  }, "Polityka prywatno\u015Bci, RODO, regulamin \u015Bwiadczenia us\u0142ug, polityka cookies. Tre\u015Bci do uzupe\u0142nienia we wsp\xF3\u0142pracy z radc\u0105 prawnym."))), /*#__PURE__*/React.createElement("section", {
+    className: "section"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "container",
+    style: {
+      maxWidth: 760,
+      color: 'var(--text-dim)',
+      fontSize: 16,
+      lineHeight: 1.7,
+      display: 'flex',
+      flexDirection: 'column',
+      gap: 24
+    }
+  }, /*#__PURE__*/React.createElement("p", null, /*#__PURE__*/React.createElement("strong", {
+    style: {
+      color: 'var(--text)'
+    }
+  }, "Administrator danych:"), /*#__PURE__*/React.createElement("br", null), "ES Logistics Sp. z o.o., ul. Kopanina 28/32, Pozna\u0144. NIP \u2014 \u2014 \u2014, REGON \u2014 \u2014 \u2014, KRS \u2014 \u2014 \u2014."), /*#__PURE__*/React.createElement("p", null, "Pe\u0142na tre\u015B\u0107 polityki prywatno\u015Bci, klauzuli RODO i regulaminu zostanie uzupe\u0142niona przy wdro\u017Ceniu produkcyjnym strony."), /*#__PURE__*/React.createElement("p", null, "W razie pyta\u0144 prosimy o kontakt: ", /*#__PURE__*/React.createElement("a", {
+    href: "mailto:biuro@eslogistics.pl",
+    style: {
+      color: 'var(--accent)'
+    }
+  }, "biuro@eslogistics.pl")))));
+}
+Object.assign(window, {
+  ClientPage,
+  CarrierPage,
+  ContactPage,
+  LegalPage
+});
+
+</script>
+
+<script>
+const TWEAK_DEFAULTS = {theme:"dark",accent:"mono",lion:"featured",density:"regular",heroBg:"photo",heroVariant:"A"};
+
+function App() {
+  const [route] = useHashRoute();
+  const [t, setTweak] = useTweaks(TWEAK_DEFAULTS);
+  React.useEffect(() => {
+    document.body.dataset.theme = t.theme;
+    document.body.dataset.accent = t.accent;
+    document.body.dataset.lion = t.lion;
+    document.body.dataset.density = t.density;
+    document.body.dataset.heroBg = t.heroBg;
+  }, [t]);
+  let page;
+  switch (route) {
+    case '/o-nas': page = React.createElement(AboutPage); break;
+    case '/uslugi': page = React.createElement(ServicesPage); break;
+    case '/dla-klienta': page = React.createElement(ClientPage); break;
+    case '/dla-przewoznika': page = React.createElement(CarrierPage); break;
+    case '/kontakt': page = React.createElement(ContactPage); break;
+    case '/legal': page = React.createElement(LegalPage); break;
+    default: page = React.createElement(HomePage, {heroVariant: t.heroVariant});
+  }
+  return React.createElement(React.Fragment, null,
+    React.createElement(Header, {route: route}),
+    page,
+    React.createElement(Footer),
+    React.createElement(TweaksPanel, null,
+      React.createElement(TweakSection, {label: "Motyw"}),
+      React.createElement(TweakRadio, {label:"Tryb", value:t.theme,
+        options:[{value:'dark',label:'Dark'},{value:'light',label:'Light'}],
+        onChange:(v)=>setTweak('theme',v)}),
+      React.createElement(TweakRadio, {label:"Akcent", value:t.accent,
+        options:[{value:'mono',label:'Mono'},{value:'blue',label:'Blue'},{value:'emerald',label:'Emerald'},{value:'amber',label:'Amber'}],
+        onChange:(v)=>setTweak('accent',v)}),
+      React.createElement(TweakSection, {label: "Lew"}),
+      React.createElement(TweakRadio, {label:"Eksponowanie", value:t.lion,
+        options:[{value:'subtle',label:'Subtle'},{value:'featured',label:'Featured'},{value:'editorial',label:'Editorial'}],
+        onChange:(v)=>setTweak('lion',v)}),
+      React.createElement(TweakSection, {label: "Hero"}),
+      React.createElement(TweakRadio, {label:"Wariant", value:t.heroVariant,
+        options:[{value:'A',label:'A'},{value:'B',label:'B'},{value:'C',label:'C'}],
+        onChange:(v)=>setTweak('heroVariant',v)}),
+      React.createElement(TweakRadio, {label:"Tło hero", value:t.heroBg,
+        options:[{value:'photo',label:'Foto'},{value:'split',label:'Split'},{value:'type',label:'Typo'}],
+        onChange:(v)=>setTweak('heroBg',v)}),
+      React.createElement(TweakSection, {label: "Layout"}),
+      React.createElement(TweakRadio, {label:"Gęstość", value:t.density,
+        options:[{value:'airy',label:'Airy'},{value:'regular',label:'Regular'},{value:'dense',label:'Dense'}],
+        onChange:(v)=>setTweak('density',v)})
+    )
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('app')).render(React.createElement(App));
+</script>
+</body>
+</html>

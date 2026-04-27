@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zamów transport — ES Logistics | Wycena online</title>
+  <meta name="description" content="Wyślij zapytanie o transport. Wycena w godzinach roboczych, organizacja transportu w Polsce i Europie.">
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,700;1,700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <nav class="nav" aria-label="Główna nawigacja">
+      <a href="index.html" class="nav-brand"><img src="assets/logo.png" alt="ES Logistics — logo"></a>
+      <ul class="nav-list">
+        <li><a href="index.html">Start</a></li>
+        <li><a href="o-nas.html">O nas</a></li>
+        <li><a href="uslugi.html">Usługi</a></li>
+        <li><a href="dla-klienta.html">Dla klienta</a></li>
+        <li><a href="dla-przewoznika.html">Dla przewoźnika</a></li>
+        <li><a href="kontakt.html">Kontakt</a></li>
+      </ul>
+      <div class="nav-cta"><a href="dla-klienta.html" class="btn btn--primary">Zamów transport</a></div>
+      <button class="nav-toggle" aria-label="Otwórz menu" aria-expanded="false">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+    </nav>
+  </div>
+</header>
+
+<section class="page-header">
+  <div class="container">
+    <span class="eyebrow">Dla klienta</span>
+    <h1>Zamów transport — wyceń online.</h1>
+    <p>Opisz krótko, co i skąd-dokąd chcesz przewieźć. Wrócimy z wyceną i propozycją realizacji w ciągu kilku godzin roboczych.</p>
+  </div>
+</section>
+
+<!-- Proces -->
+<section class="section">
+  <div class="container">
+    <div class="section-title text-center" style="margin: 0 auto 60px; text-align: center;">
+      <span class="eyebrow">Jak współpracujemy</span>
+      <h2>Cztery kroki do realizacji transportu</h2>
+    </div>
+    <div class="process">
+      <div class="process__step">
+        <h3>Zapytanie</h3>
+        <p>Wypełniasz formularz lub kontaktujesz się telefonicznie. Im więcej szczegółów, tym precyzyjniejsza wycena.</p>
+      </div>
+      <div class="process__step">
+        <h3>Wycena</h3>
+        <p>Wracamy z konkretną propozycją cenową i terminem realizacji. Bez ukrytych kosztów.</p>
+      </div>
+      <div class="process__step">
+        <h3>Realizacja</h3>
+        <p>Po akceptacji organizujemy transport, dobieramy przewoźnika, przygotowujemy dokumentację.</p>
+      </div>
+      <div class="process__step">
+        <h3>Dostawa</h3>
+        <p>Monitorujemy ładunek do końca, raportujemy status, rozliczamy fakturę.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Formularz -->
+<section class="section section--alt">
+  <div class="container">
+    <div class="grid grid--2" style="gap: 64px; align-items: start;">
+      <div>
+        <span class="eyebrow">Co zyskujesz</span>
+        <h2>Wycena bez zobowiązań.</h2>
+        <ul class="bullet-list mt-4">
+          <li>Odpowiedź w ciągu kilku godzin roboczych</li>
+          <li>Konkretna oferta cenowa, bez ukrytych kosztów</li>
+          <li>Sprawdzony przewoźnik z naszej zweryfikowanej sieci</li>
+          <li>Pełna dokumentacja transportowa</li>
+          <li>Indywidualny opiekun zlecenia</li>
+          <li>Komunikacja w PL / EN / DE</li>
+        </ul>
+        <div class="card mt-6" style="background: var(--c-accent-soft); border-color: var(--c-accent);">
+          <h3 style="color: var(--c-white);">Wolisz porozmawiać?</h3>
+          <p style="color: var(--c-gray-100);">Zadzwoń bezpośrednio do biura — często to najszybsza droga do wyceny.</p>
+          <p style="font-family: var(--font-heading); font-style: italic; font-weight: 700; font-size: 1.4rem; color: var(--c-white); margin: 16px 0 0;">
+            <a href="tel:+48000000000">+48 000 000 000</a>
+          </p>
+        </div>
+      </div>
+
+      <div>
+        <form class="form" data-form="klient" data-recipient="biuro@eslogistics.pl" novalidate>
+          <h3 style="margin-bottom: 24px;">Formularz zapytania</h3>
+
+          <div class="form__row form__row--2">
+            <div>
+              <label for="k_firma">Firma <span class="req">*</span></label>
+              <input type="text" id="k_firma" name="firma" required>
+            </div>
+            <div>
+              <label for="k_nip">NIP</label>
+              <input type="text" id="k_nip" name="nip">
+            </div>
+          </div>
+
+          <div class="form__row form__row--2">
+            <div>
+              <label for="k_email">E-mail <span class="req">*</span></label>
+              <input type="email" id="k_email" name="email" required>
+            </div>
+            <div>
+              <label for="k_tel">Telefon <span class="req">*</span></label>
+              <input type="tel" id="k_tel" name="telefon" required>
+            </div>
+          </div>
+
+          <div class="form__row form__row--2">
+            <div>
+              <label for="k_zaladunek">Miejsce załadunku <span class="req">*</span></label>
+              <input type="text" id="k_zaladunek" name="miejsce_zaladunku" required placeholder="Miasto, kod pocztowy, kraj">
+            </div>
+            <div>
+              <label for="k_rozladunek">Miejsce rozładunku <span class="req">*</span></label>
+              <input type="text" id="k_rozladunek" name="miejsce_rozladunku" required placeholder="Miasto, kod pocztowy, kraj">
+            </div>
+          </div>
+
+          <div class="form__row form__row--2">
+            <div>
+              <label for="k_typ">Typ ładunku</label>
+              <select id="k_typ" name="typ_ladunku">
+                <option value="">— wybierz —</option>
+                <option>Paleta / drobnica</option>
+                <option>Całopojazdowy (FTL)</option>
+                <option>Plandeka standard</option>
+                <option>Chłodnia</option>
+                <option>Ponadgabaryt</option>
+                <option>ADR / niebezpieczne</option>
+                <option>Inne</option>
+              </select>
+            </div>
+            <div>
+              <label for="k_waga">Waga (kg)</label>
+              <input type="number" id="k_waga" name="waga" min="0" step="1">
+            </div>
+          </div>
+
+          <div class="form__row form__row--2">
+            <div>
+              <label for="k_data">Data załadunku</label>
+              <input type="date" id="k_data" name="data_zaladunku">
+            </div>
+            <div>
+              <label for="k_palety">Liczba palet / sztuk</label>
+              <input type="number" id="k_palety" name="liczba_palet" min="0" step="1">
+            </div>
+          </div>
+
+          <div class="form__row">
+            <div>
+              <label for="k_uwagi">Uwagi i dodatkowe informacje</label>
+              <textarea id="k_uwagi" name="uwagi" placeholder="Wymiary, specyfika ładunku, oczekiwany termin dostawy..."></textarea>
+            </div>
+          </div>
+
+          <label class="form__check">
+            <input type="checkbox" required>
+            <span>Wyrażam zgodę na przetwarzanie moich danych osobowych w celu przygotowania oferty zgodnie z <a href="polityka-prywatnosci.html">polityką prywatności</a>.</span>
+          </label>
+
+          <div class="form__error"></div>
+          <div class="form__success"></div>
+
+          <button type="submit" class="btn btn--primary btn--block btn--lg">Wyślij zapytanie
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <img src="assets/logo.png" alt="ES Logistics">
+        <p>Spedycja międzynarodowa w transporcie drogowym. Z Poznania dla całej Europy.</p>
+      </div>
+      <div class="footer__col"><h4>Nawigacja</h4><ul><li><a href="index.html">Start</a></li><li><a href="o-nas.html">O nas</a></li><li><a href="uslugi.html">Usługi</a></li><li><a href="kontakt.html">Kontakt</a></li></ul></div>
+      <div class="footer__col"><h4>Współpraca</h4><ul><li><a href="dla-klienta.html">Zamów transport</a></li><li><a href="dla-przewoznika.html">Dla przewoźnika</a></li></ul></div>
+      <div class="footer__col"><h4>Kontakt</h4><ul><li>ul. Kopanina 28/32<br>Poznań</li><li><a href="mailto:biuro@eslogistics.pl">biuro@eslogistics.pl</a></li><li><a href="tel:+48000000000">+48 000 000 000</a></li></ul></div>
+    </div>
+    <div class="footer__bottom">
+      <span>© <span data-year>2026</span> ES Logistics Sp. z o.o. — wszelkie prawa zastrzeżone.</span>
+      <span><a href="polityka-prywatnosci.html">Polityka prywatności</a> · <a href="regulamin.html">Regulamin</a></span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>

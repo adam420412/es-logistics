@@ -1,0 +1,26 @@
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editors
+.vscode/
+.idea/
+*.swp
+
+# Node (na wszelki wypadek jeśli ktoś doinstaluje narzędzia)
+node_modules/
+npm-debug.log
+.npm/
+
+# Builds (jeśli kiedyś dorobimy build step)
+dist/
+build/
+.cache/
+
+# Vercel
+.vercel/
+
+# Lokalne notatki / wersje robocze
+*.local.*
+*.draft.*
