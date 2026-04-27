@@ -1,6 +1,0 @@
-User-agent: *
-Allow: /
-Disallow: /polityka-prywatnosci.html
-Disallow: /regulamin.html
-
-Sitemap: https://eslogistics.pl/sitemap.xml
