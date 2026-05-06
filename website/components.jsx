@@ -256,17 +256,3 @@ Object.assign(window, {
   LionMark, LionGraphic, BrandLockup, Header, Footer,
   useHashRoute, useReveal, useCountUp, Stat, PhotoPlaceholder,
 });
-,
-        background: 'rgba(0,0,0,0.4)',
-        backdropFilter: 'blur(6px)',
-      }}>
-        {label}
-      </div>
-    </div>
-  );
-}
-
-Object.assign(window, {
-  LionMark, LionGraphic, BrandLockup, Header, Footer,
-  useHashRoute, useReveal, useCountUp, Stat, PhotoPlaceholder,
-});
