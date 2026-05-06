@@ -21,19 +21,7 @@ const I = {
 // ═════════════════════════════════════════════════════════════════════════════
 function HomePage({ heroVariant }) {
   useReveal();
-
-  const headlines = {
-    A: { eyebrow: '01 — ES Logistics · Poznań',
-         h: <>Spedycja <em className="accent">międzynarodowa,</em><br/>na której można polegać.</>,
-         sub: 'Organizujemy transport drogowy w Polsce i całej Europie. 11 lat doświadczenia, sprawdzeni przewoźnicy, transparentne procesy.' },
-    B: { eyebrow: '01 — ES Logistics · Poznań',
-         h: <>Twój ładunek.<br/><em className="accent">Nasza odpowiedzialność.</em></>,
-         sub: 'ES Logistics — spedycja drogowa, która łączy biznes w całej Europie. Doświadczenie, sieć partnerów, indywidualne podejście.' },
-    C: { eyebrow: '01 — ES Logistics · Poznań',
-         h: <>Logistyka <em className="accent">bez kompromisów.</em></>,
-         sub: 'Spedycja międzynarodowa z Poznania. Dla firm, które wymagają więcej.' },
-  };
-  const hero = headlines[heroVariant] || headlines.A;
+  const [lang] = useLang();
 
   return (
     <main>
@@ -43,21 +31,20 @@ function HomePage({ heroVariant }) {
         <div className="hero-overlay"/>
         <div className="hero-lion"><LionGraphic/></div>
         <div className="container hero-content">
-          <div className="hero-eyebrow"><span>{hero.eyebrow}</span></div>
-          <h1>{hero.h}</h1>
-          <p className="hero-sub">{hero.sub}</p>
+          <div className="hero-eyebrow"><span>{t('hero.eyebrow', lang)}</span></div>
+          <h1>{t('hero.h1.a', lang)} <em className="accent">{t('hero.h1.b', lang)}</em><br/>{t('hero.h1.c', lang)}</h1>
+          <p className="hero-sub">{t('hero.sub', lang)}</p>
           <div className="hero-cta">
-            <a href="#/dla-klienta" className="btn btn-primary"><span>Zamów transport</span><span className="btn-arrow"></span></a>
-            <a href="#/dla-przewoznika" className="btn btn-ghost">Współpraca dla przewoźników</a>
+            <a href="#/dla-klienta" className="btn btn-primary"><span>{t('cta.order', lang)}</span><span className="btn-arrow"></span></a>
+            <a href="#/kontakt" className="btn btn-ghost">{t('cta.contact', lang)}</a>
           </div>
         </div>
         <div className="hero-meta">
           <div className="container">
             <div className="hero-meta-inner">
-              <div className="hero-meta-cell"><span className="k">Doświadczenie</span><span className="v">11 lat w TSL</span></div>
-              <div className="hero-meta-cell"><span className="k">Specjalizacja</span><span className="v">Spedycja międzynarodowa</span></div>
-              <div className="hero-meta-cell"><span className="k">Biuro</span><span className="v">Poznań, Polska</span></div>
-              <div className="hero-meta-cell"><span className="k">Obsługa</span><span className="v">PL · EN · DE</span></div>
+              <div className="hero-meta-cell"><span className="k">{t('hero.meta.experience.k', lang)}</span><span className="v">{t('hero.meta.experience.v', lang)}</span></div>
+              <div className="hero-meta-cell"><span className="k">{t('hero.meta.specialization.k', lang)}</span><span className="v">{t('hero.meta.specialization.v', lang)}</span></div>
+              <div className="hero-meta-cell"><span className="k">{t('hero.meta.reach.k', lang)}</span><span className="v">{t('hero.meta.reach.v', lang)}</span></div>
             </div>
           </div>
         </div>
@@ -68,7 +55,10 @@ function HomePage({ heroVariant }) {
         <div className="hero-marquee-track">
           {[...Array(2)].map((_, dup) => (
             <React.Fragment key={dup}>
-              {['Polska','Niemcy','Holandia','Belgia','Francja','Włochy','Hiszpania','Czechy','Słowacja','Austria','Dania','Szwecja','Norwegia','Litwa','Łotwa','Estonia'].map((c, i) => (
+              {(lang === 'en'
+                ? ['Poland','Germany','Netherlands','Belgium','France','Italy','Spain','Czechia','Slovakia','Austria','Switzerland','Denmark','Sweden','Norway','Lithuania','Latvia','Estonia']
+                : ['Polska','Niemcy','Holandia','Belgia','Francja','Włochy','Hiszpania','Czechy','Słowacja','Austria','Szwajcaria','Dania','Szwecja','Norwegia','Litwa','Łotwa','Estonia']
+              ).map((c, i) => (
                 <span className="hero-marquee-item" key={`${dup}-${i}`}>{c}</span>
               ))}
             </React.Fragment>
@@ -76,72 +66,22 @@ function HomePage({ heroVariant }) {
         </div>
       </div>
 
-      {/* USŁUGI */}
-      <section className="section" id="uslugi">
-        <div className="container">
-          <div className="section-head scroll-reveal">
-            <div className="num">02 — Nasze usługi</div>
-            <div>
-              <h2>Pełen pakiet logistyczny —<br/>od zlecenia do dostawy.</h2>
-              <p className="lead">Cztery filary współpracy z ES Logistics. Każdy proces prowadzony przez doświadczonego spedytora — od pierwszej wyceny po rozładunek u odbiorcy.</p>
-            </div>
-          </div>
-
-          <div className="services-grid scroll-reveal">
-            {[
-              { n: '01', icon: I.globe, t: 'Spedycja międzynarodowa', d: 'Organizacja transportu drogowego w Polsce, UE i krajach EOG. Pełna koordynacja z przewoźnikami i odbiorcami.' },
-              { n: '02', icon: I.truck, t: 'Transport drogowy', d: 'Współpraca ze sprawdzoną siecią przewoźników. Realizacja zleceń całopojazdowych (FTL) i drobnicowych (LTL).' },
-              { n: '03', icon: I.doc, t: 'Obsługa dokumentacji', d: 'Listy przewozowe CMR, dokumenty celne, raporty załadunkowe. Wszystko w jednym miejscu, w pełnej zgodności z prawem.' },
-              { n: '04', icon: I.warehouse, t: 'Logistyka kontraktowa', d: 'Magazynowanie, przeładunki i obsługa stałych łańcuchów dostaw — w fazie rozwoju.', badge: 'W rozwoju' },
-            ].map((s) => (
-              <a key={s.n} href="#/uslugi" className="service-card">
-                {s.badge && <span className="badge">{s.badge}</span>}
-                <span className="num">{s.n}</span>
-                <div style={{color: 'var(--accent)'}}>{s.icon(28)}</div>
-                <h3>{s.t}</h3>
-                <p>{s.d}</p>
-                <span className="arrow">→</span>
-              </a>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* TRUST BAR */}
-      <section style={{padding: '0'}}>
-        <div className="container">
-          <div className="trust-bar">
-            <div className="trust-cell"><span className="ico">{I.shield(24)}</span><span className="lbl"><strong>Wiarygodność</strong>11 lat w branży TSL</span></div>
-            <div className="trust-cell"><span className="ico">{I.globe(24)}</span><span className="lbl"><strong>Zasięg europejski</strong>PL · DE · UE · EOG</span></div>
-            <div className="trust-cell"><span className="ico">{I.pin(24)}</span><span className="lbl"><strong>Biuro w Poznaniu</strong>ul. Kopanina 28/32</span></div>
-            <div className="trust-cell"><span className="ico">{I.hand(24)}</span><span className="lbl"><strong>Obsługa</strong>w językach PL/EN/DE</span></div>
-          </div>
-        </div>
-      </section>
-
       {/* DLACZEGO ES */}
       <section className="section">
         <div className="container">
           <div className="section-head scroll-reveal">
-            <div className="num">03 — Dlaczego ES Logistics</div>
+            <div className="num">{t('why.section', lang)}</div>
             <div>
-              <h2>Sześć powodów, dla których<br/>klienci do nas <em>wracają.</em></h2>
+              <h2>{t('why.h2.a', lang)}<br/>{t('why.h2.b', lang)} <em>{t('why.h2.c', lang)}</em></h2>
             </div>
           </div>
 
           <div className="why-grid scroll-reveal">
-            {[
-              { n: '01', t: '11 lat doświadczenia', d: 'Założyciel firmy zbudował karierę w branży TSL od pozycji operacyjnej po nadzór. To nie startup — to skondensowana praktyka.' },
-              { n: '02', t: 'Indywidualne podejście', d: 'Każde zlecenie obsługiwane przez konkretną osobę. Bez infolinii, bez przekierowań. Bezpośredni kontakt ze spedytorem.' },
-              { n: '03', t: 'Sprawdzona sieć przewoźników', d: 'Lata pracy z partnerami w Polsce i Europie. Każdy przewoźnik zweryfikowany dokumentacyjnie i operacyjnie.' },
-              { n: '04', t: 'Transparentne procesy', d: 'Status zlecenia, dokumenty, kontakt do kierowcy — wszystko na bieżąco. Bez niedomówień, bez ukrytych kosztów.' },
-              { n: '05', t: 'Obsługa dwujęzyczna', d: 'PL, EN i DE. Pracujemy z firmami zagranicznymi tak samo płynnie jak z polskimi.' },
-              { n: '06', t: 'Własna flota — wkrótce', d: 'Od 2026 rozwijamy własny park pojazdów ciężarowych i busów. Pełna kontrola nad realizacją.' },
-            ].map((it) => (
-              <div key={it.n} className="why-item">
-                <span className="n">{it.n}</span>
-                <h4>{it.t}</h4>
-                <p>{it.d}</p>
+            {[1,2,3,4,5,6].map((n) => (
+              <div key={n} className="why-item">
+                <span className="n">{String(n).padStart(2,'0')}</span>
+                <h4>{t(`why.${n}.t`, lang)}</h4>
+                <p>{t(`why.${n}.d`, lang)}</p>
               </div>
             ))}
           </div>
@@ -151,136 +91,39 @@ function HomePage({ heroVariant }) {
       {/* SPLIT CTA */}
       <section className="section" style={{paddingTop: 0}}>
         <div className="container">
-          <div className="split-cta scroll-reveal">
+          <div className="split-cta scroll-reveal" style={{gridTemplateColumns: '1fr'}}>
             <div className="split-panel">
               <div className="corner-lion"><LionGraphic/></div>
-              <span className="tag">Dla klientów</span>
-              <h3>Potrzebujesz transportu?</h3>
-              <p>Wypełnij krótki formularz — przygotujemy wycenę i dobierzemy przewoźnika do Twojego ładunku, zazwyczaj jeszcze tego samego dnia roboczego.</p>
+              <span className="tag">{t('splitCta.tag', lang)}</span>
+              <h3>{t('splitCta.h3', lang)}</h3>
+              <p>{t('splitCta.p', lang)}</p>
               <div className="actions">
-                <a href="#/dla-klienta" className="btn btn-primary"><span>Zamów transport</span><span className="btn-arrow"></span></a>
-                <a href="#/uslugi" className="btn btn-ghost">Zobacz usługi</a>
+                <a href="#/dla-klienta" className="btn btn-primary"><span>{t('cta.order', lang)}</span><span className="btn-arrow"></span></a>
+                <a href="#/kontakt" className="btn btn-ghost">{t('cta.contact', lang)}</a>
               </div>
             </div>
-            <div className="split-panel dark">
-              <div className="corner-lion"><LionGraphic/></div>
-              <span className="tag">Dla przewoźników</span>
-              <h3>Szukasz stałych zleceń?</h3>
-              <p>Współpracujemy z firmami transportowymi w całej Europie. Stałe kierunki, terminowe płatności, fair stawki. Dołącz do naszej sieci.</p>
-              <div className="actions">
-                <a href="#/dla-przewoznika" className="btn btn-primary"><span>Zarejestruj firmę</span><span className="btn-arrow"></span></a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* STATS */}
-      <section className="section" style={{paddingTop: 0}}>
-        <div className="container">
-          <div className="section-head scroll-reveal">
-            <div className="num">04 — W liczbach</div>
-            <div>
-              <h2>Skala, doświadczenie,<br/>zaufanie partnerów.</h2>
-
-            </div>
-          </div>
-          <div className="stats-grid scroll-reveal">
-            <Stat value={11} unit="" label="Lat doświadczenia w branży TSL"/>
-            <Stat value={12} unit="" label="Krajów na stałych trasach"/>
-            <Stat value={3} unit="" label="Języki obsługi (PL · EN · DE)"/>
-            <Stat value={24} unit="h" label="Czas reakcji na zapytanie"/>
-          </div>
-        </div>
-      </section>
-
-      {/* KIERUNKI OBSŁUGI */}
-      <section className="section" style={{paddingTop: 0}}>
-        <div className="container">
-          <div className="section-head scroll-reveal">
-            <div className="num">05 — Kierunki obsługi</div>
-            <div>
-              <h2>Z Polski w całą <em>Europę.</em></h2>
-              <p className="lead">Najczęstsze trasy realizowane przez ES Logistics. Każdy kierunek mamy obsłużony siecią sprawdzonych przewoźników, z lokalnym wsparciem językowym.</p>
-            </div>
-          </div>
-          <div className="countries-grid scroll-reveal">
-            {[
-              {code: 'PL', name: 'Polska', tag: 'Hub'},
-              {code: 'DE', name: 'Niemcy', tag: 'Główny'},
-              {code: 'NL', name: 'Holandia', tag: 'Regularny'},
-              {code: 'BE', name: 'Belgia', tag: 'Regularny'},
-              {code: 'FR', name: 'Francja', tag: 'Regularny'},
-              {code: 'IT', name: 'Włochy', tag: 'Regularny'},
-              {code: 'ES', name: 'Hiszpania', tag: 'Na zapytanie'},
-              {code: 'CZ', name: 'Czechy', tag: 'Regularny'},
-              {code: 'SK', name: 'Słowacja', tag: 'Regularny'},
-              {code: 'AT', name: 'Austria', tag: 'Regularny'},
-              {code: 'DK', name: 'Dania', tag: 'Regularny'},
-              {code: 'SE', name: 'Szwecja', tag: 'Na zapytanie'},
-            ].map((c) => (
-              <div key={c.code} className="country-tile">
-                <span className="country-code">{c.code}</span>
-                <span className="country-name">{c.name}</span>
-                <span className="country-tag">{c.tag}</span>
-              </div>
-            ))}
-          </div>
-          <p style={{textAlign: 'center', color: 'var(--text-muted)', fontSize: 13, marginTop: 32, fontFamily: 'var(--font-display)', letterSpacing: '0.1em', textTransform: 'uppercase'}}>Inny kierunek? Skontaktuj się — sprawdzimy możliwości realizacji.</p>
-        </div>
-      </section>
-
-      {/* ZAUFALI NAM — placeholder logotypy */}
-      <section className="section" style={{paddingTop: 0}}>
-        <div className="container">
-          <div className="section-head scroll-reveal">
-            <div className="num">06 — Zaufali nam</div>
-            <div>
-              <h2>Pracujemy dla firm,<br/>które <em>wymagają więcej.</em></h2>
-              <p className="lead">Producenci, dystrybutorzy, importerzy z Polski i Europy. Pełna lista referencji dostępna na życzenie — wiele transportów realizujemy na podstawie umów o poufności.</p>
-            </div>
-          </div>
-          <div className="logos-strip scroll-reveal">
-            {['Producent komponentów stalowych · Wielkopolska',
-              'Dystrybutor materiałów budowlanych · Mazowsze',
-              'Importer części motoryzacyjnych · Śląsk',
-              'Producent opakowań · Wielkopolska',
-              'Firma e-commerce · Pomorze',
-              'Sieć handlowa · Małopolska'].map((t, i) => (
-              <div key={i} className="logo-cell">
-                <span className="logo-mono">●</span>
-                <span className="logo-label">{t}</span>
-              </div>
-            ))}
           </div>
         </div>
       </section>
 
       {/* FAQ */}
-      <section className="section" style={{paddingTop: 0}}>
+      <section className="section" id="faq" style={{paddingTop: 0}}>
         <div className="container">
           <div className="section-head scroll-reveal">
-            <div className="num">07 — Najczęstsze pytania</div>
+            <div className="num">{t('faq.section', lang)}</div>
             <div>
-              <h2>Co najczęściej pytają<br/>nasi <em>klienci.</em></h2>
+              <h2>{t('faq.h2.a', lang)}<br/>{t('faq.h2.b', lang)} <em>{t('faq.h2.c', lang)}</em></h2>
             </div>
           </div>
           <div className="faq-list scroll-reveal">
-            {[
-              {q: 'Jak szybko otrzymam wycenę transportu?', a: 'Standardowo w ciągu kilku godzin roboczych od przesłania zapytania. W przypadku zleceń rutynowych (znane kierunki) — często jeszcze tego samego dnia.'},
-              {q: 'Czy pomagacie w dokumentacji celnej?', a: 'Tak. Przygotowujemy CMR, koordynujemy dokumenty celne (T1, EX, IM), prowadzimy archiwum każdego zlecenia. Klient otrzymuje komplet dokumentów po realizacji.'},
-              {q: 'W jakich językach prowadzicie obsługę?', a: 'Polski, angielski, niemiecki — w zakresie komunikacji z klientem, kierowcą i odbiorcą zagranicznym.'},
-              {q: 'Czy obsługujecie ładunki ADR / niebezpieczne?', a: 'Na zapytanie — w oparciu o przewoźników z aktualnymi uprawnieniami ADR. Każdy taki transport jest weryfikowany pod kątem dokumentacji i klasy ładunku przed potwierdzeniem.'},
-              {q: 'Jakie są terminy płatności?', a: 'Standardowo 14 dni, dla stałych klientów do uzgodnienia indywidualnie. Przewoźnikom płacimy w terminie — to fundament naszej współpracy.'},
-              {q: 'Czy macie własną flotę?', a: 'Obecnie pracujemy w modelu spedycji — dobierając przewoźników z naszej zweryfikowanej sieci. W 2026 planujemy zakup pierwszych pojazdów ciężarowych i busów, by uzupełnić ofertę o własny transport.'},
-            ].map((it, i) => (
-              <details key={i} className="faq-item">
+            {[1,2,3,4,5].map((n, i) => (
+              <details key={n} className="faq-item">
                 <summary>
                   <span className="faq-num">{String(i+1).padStart(2,'0')}</span>
-                  <span className="faq-q">{it.q}</span>
+                  <span className="faq-q">{t(`faq.q${n}`, lang)}</span>
                   <span className="faq-icon">+</span>
                 </summary>
-                <p className="faq-a">{it.a}</p>
+                <p className="faq-a">{t(`faq.a${n}`, lang)}</p>
               </details>
             ))}
           </div>
@@ -300,22 +143,21 @@ function HomePage({ heroVariant }) {
       <section className="section" style={{paddingTop: 0}}>
         <div className="container">
           <div className="section-head scroll-reveal">
-            <div className="num">08 — Kontakt</div>
-            <div><h2>Porozmawiajmy o<br/>Twoim <em>ładunku.</em></h2></div>
+            <div className="num">{t('contact.section', lang)}</div>
+            <div><h2>{t('contact.h2.a', lang)}<br/>{t('contact.h2.b', lang)} <em>{t('contact.h2.c', lang)}</em></h2></div>
           </div>
           <div className="contact-grid scroll-reveal">
             <div className="contact-info">
-              <div className="contact-row"><span className="k">Biuro</span><span className="v">ul. Kopanina 28/32, Poznań<small>Wielkopolska, Polska</small></span></div>
-              <div className="contact-row"><span className="k">Telefon</span><span className="v">Numer w przygotowaniu<small>Najszybciej — przez e-mail</small></span></div>
-              <div className="contact-row"><span className="k">E-mail</span><span className="v">biuro@eslogistics.pl<small>Odpowiadamy w ciągu 24h</small></span></div>
-              <div className="contact-row"><span className="k">Prezes</span><span className="v">Eryk Szymkowiak<small>11 lat doświadczenia w TSL</small></span></div>
+              <div className="contact-row"><span className="k">{t('contact.row.office', lang)}</span><span className="v">{t('contact.officeAddr', lang)}</span></div>
+              <div className="contact-row"><span className="k">{t('contact.row.phone', lang)}</span><span className="v">+48 539 849 869</span></div>
+              <div className="contact-row"><span className="k">{t('contact.row.email', lang)}</span><span className="v">office@eslogistics.pl</span></div>
               <div style={{marginTop: 12, display: 'flex', gap: 12, flexWrap: 'wrap'}}>
-                <a href="#/kontakt" className="btn btn-primary"><span>Wszystkie kanały kontaktu</span><span className="btn-arrow"></span></a>
+                <a href="#/kontakt" className="btn btn-primary"><span>{t('cta.allChannels', lang)}</span><span className="btn-arrow"></span></a>
               </div>
             </div>
             <div className="map-frame">
-              <iframe title="Biuro ES Logistics — Kopanina 28/32, Poznań" loading="lazy"
-                src="https://www.openstreetmap.org/export/embed.html?bbox=16.857%2C52.397%2C16.890%2C52.413&layer=mapnik&marker=52.405%2C16.873"
+              <iframe title="Office ES Logistics — Święty Marcin 29/8, Poznań" loading="lazy"
+                src="https://www.openstreetmap.org/export/embed.html?bbox=16.918%2C52.404%2C16.938%2C52.412&layer=mapnik&marker=52.4076%2C16.9276"
               />
             </div>
           </div>
@@ -330,53 +172,22 @@ function HomePage({ heroVariant }) {
 // ═════════════════════════════════════════════════════════════════════════════
 function AboutPage() {
   useReveal();
+  const [lang] = useLang();
   return (
     <main>
       <header className="page-header">
         <div className="corner-lion"><LionGraphic/></div>
         <div className="container">
-          <div className="crumb">Start  ·  O nas</div>
-          <h1>11 lat praktyki<br/>w branży <em>TSL.</em></h1>
-          <p className="lead">ES Logistics powstała z konkretnego doświadczenia — nie z idei. Eryk Szymkowiak przez ponad dekadę pracował z klientami zagranicznymi, organizował transporty i nadzorował operacje, zanim założył własną firmę spedycyjną w Poznaniu.</p>
+          <div className="crumb">{t('about.crumb', lang)}</div>
+          <h1>{t('about.h1.a', lang)}<br/>{t('about.h1.b', lang)} <em>{t('about.h1.c', lang)}</em></h1>
+          <p className="lead">{t('about.lead', lang)}</p>
         </div>
       </header>
 
       <section className="section">
-        <div className="container" style={{display: 'grid', gridTemplateColumns: 'minmax(260px, 360px) 1fr', gap: 80, alignItems: 'start'}}>
-          <div className="scroll-reveal">
-            <PhotoPlaceholder label="Eryk Szymkowiak — Prezes Zarządu" ratio="3/4" src="assets/photo-2.jpeg"/>
-            <div style={{marginTop: 20}}>
-              <div style={{fontFamily: 'var(--font-display)', fontWeight: 700, fontStyle: 'italic', fontSize: 22}}>Eryk Szymkowiak</div>
-              <div style={{color: 'var(--text-dim)', fontSize: 14, marginTop: 4}}>Prezes Zarządu, założyciel</div>
-            </div>
-          </div>
-          <div className="scroll-reveal" style={{display: 'flex', flexDirection: 'column', gap: 32}}>
-            <div>
-              <span className="eyebrow">Misja</span>
-              <h3 style={{marginTop: 16, fontStyle: 'italic'}}>Łączymy biznes w Europie — w sposób transparentny, terminowy i godny zaufania.</h3>
-            </div>
-            <p style={{color: 'var(--text-dim)', fontSize: 17, lineHeight: 1.7}}>
-              Branża spedycyjna potrafi być chaotyczna — zmiana kierowcy w ostatniej chwili, dokumenty, których nikt nie pilnuje, ceny ustalane przez nieznanego pośrednika. ES Logistics buduje przeciwwagę: jednoosobowy kontakt, jasna kalkulacja, dokumentacja na czas.
-            </p>
-            <p style={{color: 'var(--text-dim)', fontSize: 17, lineHeight: 1.7}}>
-              Pracujemy z firmami produkcyjnymi i handlowymi z Polski, Niemiec i innych krajów UE. Nasz najczęstszy kierunek to transport drogowy w obrębie Europy — od pojedynczego zlecenia po stałe linie kontraktowe.
-            </p>
-
-            <div style={{display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', borderTop: '1px solid var(--border)', borderBottom: '1px solid var(--border)', marginTop: 16}}>
-              <div style={{padding: '24px 24px 24px 0', borderRight: '1px solid var(--border)'}}>
-                <div style={{fontFamily: 'var(--font-display)', fontStyle: 'italic', fontWeight: 700, fontSize: 36, color: 'var(--accent)'}}>2024</div>
-                <div style={{color: 'var(--text-dim)', fontSize: 14, marginTop: 4}}>Rejestracja ES Logistics Sp. z o.o.</div>
-              </div>
-              <div style={{padding: '24px', borderRight: '1px solid var(--border)'}}>
-                <div style={{fontFamily: 'var(--font-display)', fontStyle: 'italic', fontWeight: 700, fontSize: 36, color: 'var(--accent)'}}>02/26</div>
-                <div style={{color: 'var(--text-dim)', fontSize: 14, marginTop: 4}}>Start rekrutacji zespołu</div>
-              </div>
-              <div style={{padding: '24px 0 24px 24px'}}>
-                <div style={{fontFamily: 'var(--font-display)', fontStyle: 'italic', fontWeight: 700, fontSize: 36, color: 'var(--accent)'}}>2026</div>
-                <div style={{color: 'var(--text-dim)', fontSize: 14, marginTop: 4}}>Zakup pierwszych pojazdów</div>
-              </div>
-            </div>
-          </div>
+        <div className="container scroll-reveal" style={{maxWidth: 880}}>
+          <span className="eyebrow">{t('about.mission', lang)}</span>
+          <h3 style={{marginTop: 16, fontStyle: 'italic'}}>{t('about.missionLine', lang)}</h3>
         </div>
       </section>
 
@@ -384,13 +195,13 @@ function AboutPage() {
       <section className="section" style={{paddingTop: 0}}>
         <div className="container">
           <div className="section-head scroll-reveal">
-            <div className="num">02 — Wartości</div>
-            <div><h2>Trzy zasady, które<br/>nie podlegają <em>negocjacji.</em></h2></div>
+            <div className="num">{t('about.values.section', lang)}</div>
+            <div><h2>{t('about.values.h2.a', lang)}<br/>{t('about.values.h2.b', lang)} <em>{t('about.values.h2.c', lang)}</em></h2></div>
           </div>
           <div className="why-grid scroll-reveal" style={{gridTemplateColumns: 'repeat(3, 1fr)'}}>
-            <div className="why-item"><span className="n">01</span><h4>Słowo trzymane</h4><p>Termin to termin. Wycena to wycena. Nie zmieniamy zasad gry w trakcie zlecenia.</p></div>
-            <div className="why-item"><span className="n">02</span><h4>Bezpośredni kontakt</h4><p>Klient zawsze rozmawia z konkretnym spedytorem — nie z systemem zgłoszeniowym.</p></div>
-            <div className="why-item"><span className="n">03</span><h4>Pełna dokumentacja</h4><p>CMR, faktury, protokoły — komplet dokumentów dostarczamy w terminie, w czytelnej formie.</p></div>
+            <div className="why-item"><span className="n">01</span><h4>{t('about.value1.t', lang)}</h4><p>{t('about.value1.d', lang)}</p></div>
+            <div className="why-item"><span className="n">02</span><h4>{t('about.value2.t', lang)}</h4><p>{t('about.value2.d', lang)}</p></div>
+            <div className="why-item"><span className="n">03</span><h4>{t('about.value3.t', lang)}</h4><p>{t('about.value3.d', lang)}</p></div>
           </div>
         </div>
       </section>
@@ -449,7 +260,7 @@ function ServicesPage() {
 
       <section className="section" style={{paddingTop: 0}}>
         <div className="container">
-          <div className="split-cta scroll-reveal">
+          <div className="split-cta scroll-reveal" style={{gridTemplateColumns: '1fr'}}>
             <div className="split-panel dark">
               <div className="corner-lion"><LionGraphic/></div>
               <span className="tag">Następny krok</span>
@@ -458,15 +269,6 @@ function ServicesPage() {
               <div className="actions">
                 <a href="#/dla-klienta" className="btn btn-primary"><span>Zamów transport</span><span className="btn-arrow"></span></a>
                 <a href="#/kontakt" className="btn btn-ghost">Skontaktuj się</a>
-              </div>
-            </div>
-            <div className="split-panel">
-              <div className="corner-lion"><LionGraphic/></div>
-              <span className="tag">Dla przewoźników</span>
-              <h3>Chcesz dołączyć do sieci?</h3>
-              <p>Zarejestruj firmę transportową — dobieramy zlecenia do floty, kierunków i specjalizacji.</p>
-              <div className="actions">
-                <a href="#/dla-przewoznika" className="btn btn-ghost">Współpraca</a>
               </div>
             </div>
           </div>
@@ -481,20 +283,21 @@ function ServicesPage() {
 // ═════════════════════════════════════════════════════════════════════════════
 function NotFoundPage() {
   useReveal();
+  const [lang] = useLang();
   return (
     <main>
       <header className="page-header" style={{minHeight: '60vh', display: 'flex', alignItems: 'center'}}>
         <div className="corner-lion"><LionGraphic/></div>
         <div className="container scroll-reveal">
-          <div className="crumb">Błąd 404</div>
+          <div className="crumb">{t('nf.crumb', lang)}</div>
           <h1 style={{fontSize: 'clamp(80px, 12vw, 180px)', lineHeight: 1, fontStyle: 'italic'}}>
             <em style={{color: 'var(--accent)'}}>404.</em>
           </h1>
-          <h2 style={{marginTop: 16, fontStyle: 'italic'}}>Tej strony tu nie ma —<br/>ale Twój ładunek dowieziemy.</h2>
-          <p className="lead" style={{marginTop: 24}}>Sprawdź adres URL albo wróć do strony głównej. W razie problemów napisz do nas — odpowiadamy w 24h.</p>
+          <h2 style={{marginTop: 16, fontStyle: 'italic'}}>{t('nf.h2.a', lang)}<br/>{t('nf.h2.b', lang)}</h2>
+          <p className="lead" style={{marginTop: 24}}>{t('nf.lead', lang)}</p>
           <div style={{marginTop: 36, display: 'flex', gap: 14, flexWrap: 'wrap'}}>
-            <a href="#/" className="btn btn-primary"><span>Strona główna</span><span className="btn-arrow"></span></a>
-            <a href="#/kontakt" className="btn btn-ghost">Kontakt</a>
+            <a href="#/" className="btn btn-primary"><span>{t('nf.home', lang)}</span><span className="btn-arrow"></span></a>
+            <a href="#/kontakt" className="btn btn-ghost">{t('nav.contact', lang)}</a>
           </div>
         </div>
       </header>

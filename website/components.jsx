@@ -24,12 +24,12 @@ function LionGraphic() {
 // Header / Nav
 // ─────────────────────────────────────────────────────────────────────────────
 function BrandLockup() {
+  const [lang] = useLang();
   return (
-    <a href="#/" className="brand-lockup" aria-label="ES Logistics — strona główna">
+    <a href="#/" className="brand-lockup" aria-label={t('a11y.brand', lang)}>
       <span className="lion-mark"><LionMark size={20} /></span>
       <span className="brand-wordmark">
         <span className="top">ES LOGISTICS</span>
-        <span className="sub">Sp. z o.o. · Poznań</span>
       </span>
     </a>
   );
@@ -37,17 +37,14 @@ function BrandLockup() {
 
 function Header({ route, onRoute }) {
   const [open, setOpen] = useState(false);
-  const [lang, setLang] = useState('PL');
+  const [lang, setLang] = useLang();
 
   useEffect(() => { setOpen(false); }, [route]);
 
   const links = [
-    { href: '#/', label: 'Start', match: '/' },
-    { href: '#/o-nas', label: 'O nas', match: '/o-nas' },
-    { href: '#/uslugi', label: 'Usługi', match: '/uslugi' },
-    { href: '#/dla-klienta', label: 'Dla klienta', match: '/dla-klienta' },
-    { href: '#/dla-przewoznika', label: 'Dla przewoźnika', match: '/dla-przewoznika' },
-    { href: '#/kontakt', label: 'Kontakt', match: '/kontakt' },
+    { href: '#/', label: t('nav.start', lang), match: '/' },
+    { href: '#/o-nas', label: t('nav.about', lang), match: '/o-nas' },
+    { href: '#/kontakt', label: t('nav.contact', lang), match: '/kontakt' },
   ];
 
   return (
@@ -62,15 +59,15 @@ function Header({ route, onRoute }) {
           ))}
         </ul>
         <div className="nav-actions">
-          <div className="lang-switch" role="group" aria-label="Język">
-            {['PL','EN','DE'].map(L => (
-              <button key={L} className={lang === L ? 'active' : ''} onClick={() => setLang(L)}>{L}</button>
+          <div className="lang-switch" role="group" aria-label={t('lang.label', lang)}>
+            {['pl','en'].map(L => (
+              <button key={L} className={lang === L ? 'active' : ''} onClick={() => setLang(L)}>{L.toUpperCase()}</button>
             ))}
           </div>
           <a href="#/dla-klienta" className="btn btn-primary" style={{padding: '10px 16px', fontSize: 12}}>
-            Zamów transport
+            {t('cta.order', lang)}
           </a>
-          <button className={`menu-btn ${open ? 'is-open' : ''}`} onClick={() => setOpen(o => !o)} aria-label={open ? 'Zamknij menu' : 'Otwórz menu'}>
+          <button className={`menu-btn ${open ? 'is-open' : ''}`} onClick={() => setOpen(o => !o)} aria-label={open ? t('menu.close', lang) : t('menu.open', lang)}>
             <span className="menu-burger" aria-hidden="true">
               <span/><span/><span/>
             </span>
@@ -85,52 +82,45 @@ function Header({ route, onRoute }) {
 // Footer
 // ─────────────────────────────────────────────────────────────────────────────
 function Footer() {
+  const [lang] = useLang();
   return (
     <footer className="site-footer">
       <div className="container">
         <div className="footer-top">
           <div className="footer-col">
             <BrandLockup />
-            <p style={{color: 'var(--text-dim)', marginTop: 20, fontSize: 14, maxWidth: 360, lineHeight: 1.6}}>
-              Spedycja międzynarodowa w transporcie drogowym. 11 lat doświadczenia,
-              sprawdzeni przewoźnicy, transparentne procesy.
-            </p>
             <div style={{marginTop: 24, display: 'flex', flexDirection: 'column', gap: 6, fontSize: 13, color: 'var(--text-dim)'}}>
-              <div>ul. Kopanina 28/32, Poznań</div>
-              <div>biuro@eslogistics.pl</div>
-              <div>Telefon — w przygotowaniu</div>
+              <div>office@eslogistics.pl</div>
+              <div>+48 539 849 869</div>
             </div>
           </div>
           <div className="footer-col">
-            <h5>Firma</h5>
+            <h5>{t('footer.col.company', lang)}</h5>
             <ul>
-              <li><a href="#/o-nas">O nas</a></li>
-              <li><a href="#/uslugi">Usługi</a></li>
-              <li><a href="#/kontakt">Kontakt</a></li>
-              <li><a href="#/o-nas">Kariera</a></li>
+              <li><a href="#/o-nas">{t('nav.about', lang)}</a></li>
+              <li><a href="#/kontakt">{t('nav.contact', lang)}</a></li>
             </ul>
           </div>
           <div className="footer-col">
-            <h5>Współpraca</h5>
+            <h5>{t('footer.col.collab', lang)}</h5>
             <ul>
-              <li><a href="#/dla-klienta">Zamów transport</a></li>
-              <li><a href="#/dla-przewoznika">Dla przewoźnika</a></li>
-              <li><a href="#/dla-przewoznika">Rejestracja przewoźnika</a></li>
+              <li><a href="#/dla-klienta">{t('cta.order', lang)}</a></li>
+              <li><a href="#/kontakt">{t('cta.contact', lang)}</a></li>
             </ul>
           </div>
           <div className="footer-col">
-            <h5>Informacje prawne</h5>
+            <h5>{t('footer.col.legal', lang)}</h5>
             <ul>
-              <li><a href="#/legal">Polityka prywatności</a></li>
-              <li><a href="#/legal">RODO</a></li>
-              <li><a href="#/legal">Regulamin</a></li>
-              <li><a href="#/legal">Cookies</a></li>
+              <li><a href="#/legal">{t('footer.privacy', lang)}</a></li>
+              <li><a href="#/legal">{t('footer.rodo', lang)}</a></li>
+              <li><a href="#/" onClick={() => setTimeout(() => { const el = document.getElementById('faq'); if (el) el.scrollIntoView({behavior: 'smooth'}); }, 100)}>{t('footer.faq', lang)}</a></li>
+              <li><a href="#/legal">{t('footer.cookies', lang)}</a></li>
             </ul>
           </div>
         </div>
         <div className="footer-bottom">
-          <span className="reg">© 2026 ES LOGISTICS Sp. z o.o.  ·  ul. Kopanina 28/32, Poznań</span>
-          <span>Made in Poznań</span>
+          <span className="reg">© 2026 ES LOGISTICS Sp. z o.o.</span>
+          <span>{t('footer.bottom.made', lang)}</span>
         </div>
       </div>
     </footer>
@@ -253,6 +243,20 @@ function PhotoPlaceholder({ label, ratio = '16/9', tone = 'dark', children, styl
         color: 'rgba(255,255,255,0.55)',
         padding: '6px 10px',
         border: '1px solid rgba(255,255,255,0.18)',
+        background: 'rgba(0,0,0,0.4)',
+        backdropFilter: 'blur(6px)',
+      }}>
+        {label}
+      </div>
+    </div>
+  );
+}
+
+Object.assign(window, {
+  LionMark, LionGraphic, BrandLockup, Header, Footer,
+  useHashRoute, useReveal, useCountUp, Stat, PhotoPlaceholder,
+});
+,
         background: 'rgba(0,0,0,0.4)',
         backdropFilter: 'blur(6px)',
       }}>
