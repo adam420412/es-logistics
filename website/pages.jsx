@@ -66,8 +66,35 @@ function HomePage({ heroVariant }) {
         </div>
       </div>
 
-      {/* DLACZEGO ES */}
+      {/* NASZE USŁUGI */}
       <section className="section">
+        <div className="container">
+          <div className="section-head scroll-reveal">
+            <div className="num">{t('services.section', lang)}</div>
+            <div>
+              <h2>{t('services.h2.a', lang)}<br/>{t('services.h2.b', lang)} <em>{t('services.h2.c', lang)}</em></h2>
+            </div>
+          </div>
+          <div className="services-grid scroll-reveal">
+            {[
+              { n: 1, icon: I.globe },
+              { n: 2, icon: I.truck },
+              { n: 3, icon: I.hand },
+              { n: 4, icon: I.warehouse },
+            ].map((s) => (
+              <div key={s.n} className="service-card">
+                <span className="num">{String(s.n).padStart(2,'0')}</span>
+                <div style={{color: 'var(--accent)'}}>{s.icon(28)}</div>
+                <h3>{t(`services.${s.n}.t`, lang)}</h3>
+                <p>{t(`services.${s.n}.d`, lang)}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* DLACZEGO ES */}
+      <section className="section" style={{paddingTop: 0}}>
         <div className="container">
           <div className="section-head scroll-reveal">
             <div className="num">{t('why.section', lang)}</div>

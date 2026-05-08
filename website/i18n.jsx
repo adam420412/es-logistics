@@ -29,8 +29,34 @@ const TR = {
   'hero.meta.reach.k': { pl: 'Zasięg', en: 'Coverage' },
   'hero.meta.reach.v': { pl: 'Cała Europa', en: 'All of Europe' },
 
+  // ─────── home: nasze usługi (services grid)
+  'services.section': { pl: '02 — Nasze usługi', en: '02 — Our services' },
+  'services.h2.a': { pl: 'Cztery filary', en: 'Four pillars' },
+  'services.h2.b': { pl: 'naszej', en: 'of our' },
+  'services.h2.c': { pl: 'pracy.', en: 'work.' },
+  'services.1.t': { pl: 'Transport międzynarodowy', en: 'International transport' },
+  'services.1.d': {
+    pl: 'Cała Europa — od Polski po Hiszpanię, od Norwegii po Włochy. Stałe trasy i zlecenia ad-hoc, FTL i LTL.',
+    en: 'All of Europe — from Poland to Spain, from Norway to Italy. Regular routes and ad-hoc orders, FTL and LTL.'
+  },
+  'services.2.t': { pl: 'Transport krajowy', en: 'Domestic transport' },
+  'services.2.d': {
+    pl: 'Realizacja zleceń na terenie Polski. Ładunki paletowe, drobnica, pełne pojazdy — krótki czas reakcji.',
+    en: 'Orders within Poland. Pallet shipments, LTL, full truck loads — short response time.'
+  },
+  'services.3.t': { pl: 'Doświadczeni spedytorzy', en: 'Experienced dispatchers' },
+  'services.3.d': {
+    pl: '12 lat praktyki w branży TSL. Bezpośredni kontakt z dyspozytorem, jasna kalkulacja, dokumentacja na czas.',
+    en: '12 years of TSL practice. Direct contact with a dispatcher, clear pricing, documentation on time.'
+  },
+  'services.4.t': { pl: 'Liczna flota', en: 'Large fleet' },
+  'services.4.d': {
+    pl: 'Sieć sprawdzonych partnerów + rozwijana własna flota pojazdów ciężarowych i busów. Pełna kontrola nad realizacją.',
+    en: 'Network of verified partners + a growing own fleet of trucks and vans. Full control over delivery.'
+  },
+
   // ─────── home: dlaczego ES (six reasons)
-  'why.section': { pl: '02 — Dlaczego ES Logistics', en: '02 — Why ES Logistics' },
+  'why.section': { pl: '03 — Dlaczego ES Logistics', en: '03 — Why ES Logistics' },
   'why.h2.a': { pl: 'Sześć powodów, dla których', en: 'Six reasons why our' },
   'why.h2.b': { pl: 'klienci do nas', en: 'clients keep' },
   'why.h2.c': { pl: 'wracają.', en: 'coming back.' },
@@ -56,8 +82,8 @@ const TR = {
   },
   'why.5.t': { pl: 'Obsługa wielojęzyczna', en: 'Multilingual service' },
   'why.5.d': {
-    pl: 'PL, EN i DE. Pracujemy z firmami zagranicznymi tak samo płynnie jak z polskimi.',
-    en: 'PL, EN and DE. We work with foreign companies as smoothly as with Polish ones.'
+    pl: 'Polski i angielski. Pracujemy z firmami zagranicznymi tak samo płynnie jak z polskimi.',
+    en: 'Polish and English. We work with foreign companies as smoothly as with Polish ones.'
   },
   'why.6.t': { pl: 'Własna flota', en: 'Own fleet' },
   'why.6.d': {
@@ -74,7 +100,7 @@ const TR = {
   },
 
   // ─────── home: FAQ
-  'faq.section': { pl: '03 — Najczęstsze pytania', en: '03 — Frequently asked questions' },
+  'faq.section': { pl: '04 — Najczęstsze pytania', en: '04 — Frequently asked questions' },
   'faq.h2.a': { pl: 'Co najczęściej pytają', en: 'What our clients' },
   'faq.h2.b': { pl: 'nasi', en: 'most often' },
   'faq.h2.c': { pl: 'klienci.', en: 'ask us.' },
@@ -99,7 +125,7 @@ const TR = {
   'faq.a5': { pl: 'Tak.', en: 'Yes.' },
 
   // ─────── home: contact teaser
-  'contact.section': { pl: '04 — Kontakt', en: '04 — Contact' },
+  'contact.section': { pl: '05 — Kontakt', en: '05 — Contact' },
   'contact.h2.a': { pl: 'Porozmawiajmy o', en: 'Let’s talk about' },
   'contact.h2.b': { pl: 'Twoim', en: 'your' },
   'contact.h2.c': { pl: 'ładunku.', en: 'shipment.' },
