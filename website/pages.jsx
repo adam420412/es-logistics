@@ -33,7 +33,7 @@ function HomePage({ heroVariant }) {
         <div className="container hero-content">
           <div className="hero-eyebrow"><span>{t('hero.eyebrow', lang)}</span></div>
           <h1>{t('hero.h1.a', lang)} <em className="accent">{t('hero.h1.b', lang)}</em><br/>{t('hero.h1.c', lang)}</h1>
-          {t('hero.sub', lang) && <p className="hero-sub">{t('hero.sub', lang)}</p>}
+          {t('hero.sub', lang).trim() && <p className="hero-sub">{t('hero.sub', lang)}</p>}
           <div className="hero-cta">
             <a href="#/dla-klienta" className="btn btn-primary"><span>{t('cta.order', lang)}</span><span className="btn-arrow"></span></a>
             <a href="#/kontakt" className="btn btn-ghost">{t('cta.contact', lang)}</a>
@@ -72,7 +72,7 @@ function HomePage({ heroVariant }) {
           <div className="section-head scroll-reveal">
             <div className="num">{t('services.section', lang)}</div>
             <div>
-              <h2>{t('services.h2.a', lang)}<br/>{t('services.h2.b', lang)} <em>{t('services.h2.c', lang)}</em></h2>
+              <h2>{t('services.h2.a', lang)} <em>{t('services.h2.c', lang)}</em></h2>
             </div>
           </div>
           <div className="services-grid scroll-reveal">

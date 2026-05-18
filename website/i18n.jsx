@@ -19,7 +19,7 @@ const TR = {
   'hero.h1.a': { pl: 'Transport i Spedycja', en: 'International Transport' },
   'hero.h1.b': { pl: 'międzynarodowa,', en: 'and freight forwarding,' },
   'hero.h1.c': { pl: 'na której można polegać.', en: 'you can rely on.' },
-  'hero.sub': { pl: '', en: '' },
+  'hero.sub': { pl: ' ', en: ' ' },
   'hero.meta.experience.k': { pl: 'Doświadczenie', en: 'Experience' },
   'hero.meta.experience.v': { pl: '12 lat w TSL', en: '12 years in TSL' },
   'hero.meta.specialization.k': { pl: 'Specjalizacja', en: 'Specialization' },
@@ -30,7 +30,6 @@ const TR = {
   // ─────── home: nasze usługi (services grid)
   'services.section': { pl: '02 — Nasze usługi', en: '02 — Our services' },
   'services.h2.a': { pl: 'Nasze', en: 'Our' },
-  'services.h2.b': { pl: '', en: '' },
   'services.h2.c': { pl: 'usługi', en: 'services' },
   'services.1.t': { pl: 'Transport międzynarodowy', en: 'International transport' },
   'services.1.d': {
