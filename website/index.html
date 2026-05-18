@@ -82,6 +82,7 @@ function App() {
   switch (route) {
     case '/':
     case '': page = <HomePage heroVariant={t.heroVariant}/>; break;
+    case '/uslugi': page = <ServicesPage/>; break;
     case '/o-nas': page = <AboutPage/>; break;
     case '/dla-klienta': page = <ClientPage/>; break;
     case '/kontakt': page = <ContactPage/>; break;

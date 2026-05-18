@@ -723,35 +723,103 @@ a { color: inherit; text-decoration: none; }
 .site-footer {
   background: var(--bg-elev);
   border-top: 1px solid var(--border);
-  padding: 80px 0 32px;
+  padding: 56px 0 28px;
   margin-top: 0;
 }
 .footer-top {
   display: grid;
-  grid-template-columns: 1.4fr 1fr 1fr 1fr;
-  gap: 48px;
-  padding-bottom: 56px;
+  grid-template-columns: 1.6fr 1fr 1fr 1fr;
+  gap: 32px;
+  padding-bottom: 40px;
   border-bottom: 1px solid var(--border);
 }
 .footer-col h5 {
   font-family: var(--font-display); font-weight: 700;
-  font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase;
+  font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase;
   color: var(--text-muted);
-  margin-bottom: 16px;
+  margin-bottom: 18px;
 }
-.footer-col ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px; }
-.footer-col a { color: var(--text-dim); font-size: 14px; }
+.footer-col ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 12px; }
+.footer-col a { color: var(--text-dim); font-size: 15px; }
 .footer-col a:hover { color: var(--text); }
 .footer-bottom {
   display: flex; justify-content: space-between; align-items: center;
-  padding-top: 28px;
-  font-size: 12px;
+  padding-top: 24px;
+  font-size: 13px;
   color: var(--text-muted);
   flex-wrap: wrap; gap: 12px;
 }
 .footer-bottom .reg { font-family: var(--font-display); letter-spacing: 0.08em; }
 @media (max-width: 800px) {
   .footer-top { grid-template-columns: 1fr 1fr; gap: 32px; }
+}
+
+/* ─────────────── Services hero (blue) ─────────────── */
+.services-hero {
+  background: var(--bg-elev);
+  border-bottom: 1px solid var(--border);
+  padding: calc(76px + 60px) 0 60px;
+}
+.services-hero-title {
+  text-align: center;
+  font-size: clamp(36px, 5vw, 56px);
+  color: #fff;
+  margin-bottom: 48px;
+}
+.services-hero-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+.services-hero-card {
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+  aspect-ratio: 3/4;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 24px;
+}
+.services-hero-card-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.services-hero-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,.55) 0%, transparent 60%);
+}
+.services-hero-card-icon {
+  position: relative;
+  z-index: 1;
+  color: #fff;
+  background: rgba(255,255,255,.15);
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 12px;
+}
+.services-hero-card-title {
+  position: relative;
+  z-index: 1;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 700;
+  margin: 0;
+}
+@media (max-width: 800px) {
+  .services-hero-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 480px) {
+  .services-hero-grid { grid-template-columns: 1fr; }
 }
 
 /* ─────────────── Page header (subpages) ─────────────── */

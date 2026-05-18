@@ -4,6 +4,7 @@
 const TR = {
   // ─────── header / nav
   'nav.start': { pl: 'Start', en: 'Home' },
+  'nav.services': { pl: 'Usługi', en: 'Services' },
   'nav.about': { pl: 'O nas', en: 'About' },
   'nav.contact': { pl: 'Kontakt', en: 'Contact' },
   'cta.order': { pl: 'Zamów transport', en: 'Order transport' },
@@ -15,28 +16,25 @@ const TR = {
 
   // ─────── hero
   'hero.eyebrow': { pl: '01 — ES Logistics · Poznań', en: '01 — ES Logistics · Poznań' },
-  'hero.h1.a': { pl: 'Transport i spedycja', en: 'International transport' },
+  'hero.h1.a': { pl: 'Transport i Spedycja', en: 'International Transport' },
   'hero.h1.b': { pl: 'międzynarodowa,', en: 'and freight forwarding,' },
   'hero.h1.c': { pl: 'na której można polegać.', en: 'you can rely on.' },
-  'hero.sub': {
-    pl: 'Działamy w całej Europie. 12 lat doświadczenia, bezpośredni kontakt z dyspozytorem, transparentne procesy.',
-    en: 'We operate across all of Europe. 12 years of experience, direct contact with a dispatcher, transparent processes.'
-  },
+  'hero.sub': { pl: '', en: '' },
   'hero.meta.experience.k': { pl: 'Doświadczenie', en: 'Experience' },
   'hero.meta.experience.v': { pl: '12 lat w TSL', en: '12 years in TSL' },
   'hero.meta.specialization.k': { pl: 'Specjalizacja', en: 'Specialization' },
-  'hero.meta.specialization.v': { pl: 'Transport i spedycja międzynarodowa', en: 'International transport & freight forwarding' },
+  'hero.meta.specialization.v': { pl: 'Transport i Spedycja międzynarodowa', en: 'International Transport & Freight Forwarding' },
   'hero.meta.reach.k': { pl: 'Zasięg', en: 'Coverage' },
   'hero.meta.reach.v': { pl: 'Cała Europa', en: 'All of Europe' },
 
   // ─────── home: nasze usługi (services grid)
   'services.section': { pl: '02 — Nasze usługi', en: '02 — Our services' },
-  'services.h2.a': { pl: 'Cztery filary', en: 'Four pillars' },
-  'services.h2.b': { pl: 'naszej', en: 'of our' },
-  'services.h2.c': { pl: 'pracy.', en: 'work.' },
+  'services.h2.a': { pl: 'Nasze', en: 'Our' },
+  'services.h2.b': { pl: '', en: '' },
+  'services.h2.c': { pl: 'usługi', en: 'services' },
   'services.1.t': { pl: 'Transport międzynarodowy', en: 'International transport' },
   'services.1.d': {
-    pl: 'Cała Europa — od Polski po Hiszpanię, od Norwegii po Włochy. Stałe trasy i zlecenia ad-hoc, FTL i LTL.',
+    pl: 'Cała Europa — od Polski po Hiszpanię, od Norwegii po Włochy. Stałe trasy i zlecenia jednorazowe, FTL i LTL.',
     en: 'All of Europe — from Poland to Spain, from Norway to Italy. Regular routes and ad-hoc orders, FTL and LTL.'
   },
   'services.2.t': { pl: 'Transport krajowy', en: 'Domestic transport' },
@@ -72,7 +70,7 @@ const TR = {
   },
   'why.3.t': { pl: 'Cała Europa', en: 'All of Europe' },
   'why.3.d': {
-    pl: 'Działamy w całej Europie — od Polski po Hiszpanię, od Norwegii po Włochy. Stałe trasy i zlecenia ad-hoc.',
+    pl: 'Działamy w całej Europie — od Polski po Hiszpanię, od Norwegii po Włochy. Stałe trasy i zlecenia jednorazowe.',
     en: 'We operate across all of Europe — from Poland to Spain, from Norway to Italy. Regular routes and ad-hoc orders.'
   },
   'why.4.t': { pl: 'Transparentne procesy', en: 'Transparent processes' },
@@ -82,8 +80,8 @@ const TR = {
   },
   'why.5.t': { pl: 'Obsługa wielojęzyczna', en: 'Multilingual service' },
   'why.5.d': {
-    pl: 'Polski i angielski. Pracujemy z firmami zagranicznymi tak samo płynnie jak z polskimi.',
-    en: 'Polish and English. We work with foreign companies as smoothly as with Polish ones.'
+    pl: 'Pracujemy z firmami zagranicznymi tak samo płynnie jak z polskimi.',
+    en: 'We work with foreign companies as smoothly as with Polish ones.'
   },
   'why.6.t': { pl: 'Własna flota', en: 'Own fleet' },
   'why.6.d': {
@@ -95,18 +93,18 @@ const TR = {
   'splitCta.tag': { pl: 'Dla klientów', en: 'For clients' },
   'splitCta.h3': { pl: 'Potrzebujesz transportu?', en: 'Need transport?' },
   'splitCta.p': {
-    pl: 'Wypełnij krótki formularz — przygotujemy wycenę i dobierzemy najlepsze rozwiązanie dla Twojego ładunku, zazwyczaj jeszcze tego samego dnia roboczego.',
-    en: 'Fill in a short form — we will prepare a quote and pick the best solution for your shipment, usually within the same business day.'
+    pl: 'Wypełnij krótki formularz — przygotujemy wycenę i dobierzemy najlepsze rozwiązanie dla Twojego ładunku, jeszcze tego samego dnia.',
+    en: 'Fill in a short form — we will prepare a quote and pick the best solution for your shipment, within the same day.'
   },
 
   // ─────── home: FAQ
   'faq.section': { pl: '04 — Najczęstsze pytania', en: '04 — Frequently asked questions' },
-  'faq.h2.a': { pl: 'Co najczęściej pytają', en: 'What our clients' },
+  'faq.h2.a': { pl: 'O co najczęściej pytają', en: 'What our clients' },
   'faq.h2.b': { pl: 'nasi', en: 'most often' },
   'faq.h2.c': { pl: 'klienci.', en: 'ask us.' },
   'faq.q1': { pl: 'Jak szybko otrzymam wycenę transportu?', en: 'How quickly will I receive a transport quote?' },
   'faq.a1': {
-    pl: 'Standardowo w ciągu kilku godzin roboczych od przesłania zapytania.',
+    pl: 'Standardowo w ciągu kilku godzin od przesłania zapytania.',
     en: 'Usually within a few business hours of submitting your inquiry.'
   },
   'faq.q2': { pl: 'Czy pomagacie w dokumentacji celnej?', en: 'Do you help with customs documentation?' },
@@ -128,7 +126,7 @@ const TR = {
   'contact.section': { pl: '05 — Kontakt', en: '05 — Contact' },
   'contact.h2.a': { pl: 'Porozmawiajmy o', en: 'Let’s talk about' },
   'contact.h2.b': { pl: 'Twoim', en: 'your' },
-  'contact.h2.c': { pl: 'ładunku.', en: 'shipment.' },
+  'contact.h2.c': { pl: 'transporcie.', en: 'transport.' },
   'contact.row.office': { pl: 'Biuro', en: 'Office' },
   'contact.row.phone': { pl: 'Telefon', en: 'Phone' },
   'contact.row.email': { pl: 'E-mail', en: 'E-mail' },
@@ -287,7 +285,7 @@ const TR = {
   'kontakt.h1.a': { pl: 'Porozmawiajmy.', en: 'Let’s talk.' },
   'kontakt.h1.b': { pl: 'Bezpośredni kontakt z dyspozytorem.', en: 'Direct contact with a dispatcher.' },
   'kontakt.lead': {
-    pl: 'Telefon, e-mail albo formularz. Odpowiadamy zazwyczaj w ciągu 24 godzin roboczych.',
+    pl: 'Telefon, e-mail albo formularz. Odpowiadamy zazwyczaj w ciągu 24 godzin.',
     en: 'Phone, e-mail or form. We usually reply within 24 business hours.'
   },
   'kontakt.form.section': { pl: '02 — Formularz', en: '02 — Form' },
@@ -295,7 +293,7 @@ const TR = {
   'kontakt.form.h2.b': { pl: 'wiadomość.', en: 'message.' },
   'kontakt.success.h': { pl: 'Wiadomość wysłana — dziękujemy!', en: 'Message sent — thank you!' },
   'kontakt.success.p': {
-    pl: 'Odpowiemy na wskazany adres w ciągu 24 godzin roboczych.',
+    pl: 'Odpowiemy na wskazany adres w ciągu 24 godzin.',
     en: 'We will reply to the address you provided within 24 business hours.'
   },
   'field.fullname': { pl: 'Imię i nazwisko', en: 'First and last name' },

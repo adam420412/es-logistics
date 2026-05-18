@@ -43,6 +43,7 @@ function Header({ route, onRoute }) {
 
   const links = [
     { href: '#/', label: t('nav.start', lang), match: '/' },
+    { href: '#/uslugi', label: t('nav.services', lang), match: '/uslugi' },
     { href: '#/o-nas', label: t('nav.about', lang), match: '/o-nas' },
     { href: '#/kontakt', label: t('nav.contact', lang), match: '/kontakt' },
   ];

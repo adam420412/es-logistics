@@ -33,7 +33,7 @@ function HomePage({ heroVariant }) {
         <div className="container hero-content">
           <div className="hero-eyebrow"><span>{t('hero.eyebrow', lang)}</span></div>
           <h1>{t('hero.h1.a', lang)} <em className="accent">{t('hero.h1.b', lang)}</em><br/>{t('hero.h1.c', lang)}</h1>
-          <p className="hero-sub">{t('hero.sub', lang)}</p>
+          {t('hero.sub', lang) && <p className="hero-sub">{t('hero.sub', lang)}</p>}
           <div className="hero-cta">
             <a href="#/dla-klienta" className="btn btn-primary"><span>{t('cta.order', lang)}</span><span className="btn-arrow"></span></a>
             <a href="#/kontakt" className="btn btn-ghost">{t('cta.contact', lang)}</a>
@@ -247,16 +247,29 @@ function ServicesPage() {
     { n: '03', t: 'Obsługa dokumentacji', d: 'Listy CMR, dokumenty celne (T1, EX, IM), faktury, protokoły. Każdy dokument zachowany w archiwum klienta — dostępny na żądanie.', items: ['CMR — wszystkie języki', 'Dokumentacja celna', 'Archiwizacja zleceń', 'Raporty miesięczne'] },
     { n: '04', t: 'Logistyka kontraktowa', d: 'Stała współpraca dla firm z powtarzalnymi potrzebami transportowymi. Jeden spedytor, jeden harmonogram, jedna umowa.', items: ['Linie regularne PL ⇄ DE/UE', 'Indywidualne SLA', 'Dedykowany spedytor', 'Magazynowanie — w fazie rozwoju'], badge: 'W rozwoju' },
   ];
+  const cards = [
+    { icon: I.globe, title: 'Transport międzynarodowy', img: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=600&q=80' },
+    { icon: I.truck, title: 'Transport krajowy', img: 'https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?w=600&q=80' },
+    { icon: I.hand, title: 'Doświadczeni spedytorzy', img: 'https://images.unsplash.com/photo-1521791136064-7986c2920216?w=600&q=80' },
+    { icon: I.truck, title: 'Liczna flota', img: 'https://images.unsplash.com/photo-1519003722824-194d4455a60c?w=600&q=80' },
+  ];
+
   return (
     <main>
-      <header className="page-header">
-        <div className="corner-lion"><LionGraphic/></div>
+      <section className="services-hero">
         <div className="container">
-          <div className="crumb">Start  ·  Usługi</div>
-          <h1>Pełen pakiet<br/>logistyczny — <em>cztery filary.</em></h1>
-          <p className="lead">Od pojedynczego zlecenia do stałej współpracy kontraktowej. Wybierz to, czego potrzebujesz — albo skorzystaj z całości pakietu.</p>
+          <h1 className="services-hero-title"><em>Nasze usługi</em></h1>
+          <div className="services-hero-grid">
+            {cards.map((c, i) => (
+              <div key={i} className="services-hero-card">
+                <img src={c.img} alt={c.title} className="services-hero-card-img"/>
+                <div className="services-hero-card-icon">{c.icon(28)}</div>
+                <h3 className="services-hero-card-title">{c.title}</h3>
+              </div>
+            ))}
+          </div>
         </div>
-      </header>
+      </section>
 
       <section className="section">
         <div className="container" style={{display: 'flex', flexDirection: 'column', gap: 0}}>
