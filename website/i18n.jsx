@@ -17,13 +17,13 @@ const TR = {
   // ─────── hero
   'hero.eyebrow': { pl: '01 — ES Logistics · Poznań', en: '01 — ES Logistics · Poznań' },
   'hero.h1.a': { pl: 'Transport i Spedycja', en: 'International Transport' },
-  'hero.h1.b': { pl: 'międzynarodowa,', en: 'and freight forwarding,' },
+  'hero.h1.b': { pl: 'międzynarodowa,', en: 'and FREIGHT FORWARDING,' },
   'hero.h1.c': { pl: 'na której można polegać.', en: 'you can rely on.' },
   'hero.sub': { pl: ' ', en: ' ' },
   'hero.meta.experience.k': { pl: 'Doświadczenie', en: 'Experience' },
   'hero.meta.experience.v': { pl: '12 lat w TSL', en: '12 years in TSL' },
   'hero.meta.specialization.k': { pl: 'Specjalizacja', en: 'Specialization' },
-  'hero.meta.specialization.v': { pl: 'Transport i Spedycja międzynarodowa', en: 'International Transport & Freight Forwarding' },
+  'hero.meta.specialization.v': { pl: 'Transport i Spedycja międzynarodowa', en: 'International Transport & FREIGHT FORWARDING' },
   'hero.meta.reach.k': { pl: 'Zasięg', en: 'Coverage' },
   'hero.meta.reach.v': { pl: 'Cała Europa', en: 'All of Europe' },
 
@@ -197,7 +197,7 @@ const TR = {
   'client.step1.t': { pl: 'Zapytanie', en: 'Inquiry' },
   'client.step1.d': {
     pl: 'Wypełniasz formularz lub piszesz e-mail. Otrzymujesz pierwszą informację zwrotną zazwyczaj w ciągu kilku godzin.',
-    en: 'Fill in the form or send an e-mail. You will get the first response usually within a few hours.'
+    en: 'Fill in the form or send an e-mail. You will get the first response usually within a couple of hours.'
   },
   'client.step2.t': { pl: 'Wycena', en: 'Quote' },
   'client.step2.d': {
@@ -284,16 +284,16 @@ const TR = {
   'kontakt.h1.a': { pl: 'Porozmawiajmy.', en: 'Let’s talk.' },
   'kontakt.h1.b': { pl: 'Bezpośredni kontakt z dyspozytorem.', en: 'Direct contact with a dispatcher.' },
   'kontakt.lead': {
-    pl: 'Telefon, e-mail albo formularz. Odpowiadamy zazwyczaj w ciągu 24 godzin.',
-    en: 'Phone, e-mail or form. We usually reply within 24 business hours.'
+    pl: 'Telefon, e-mail albo formularz. Odpowiadamy zazwyczaj w ciągu kilku godzin.',
+    en: 'Phone, e-mail or form. We usually reply within a couple of hours.'
   },
   'kontakt.form.section': { pl: '02 — Formularz', en: '02 — Form' },
   'kontakt.form.h2.a': { pl: 'Napisz', en: 'Write a' },
   'kontakt.form.h2.b': { pl: 'wiadomość.', en: 'message.' },
   'kontakt.success.h': { pl: 'Wiadomość wysłana — dziękujemy!', en: 'Message sent — thank you!' },
   'kontakt.success.p': {
-    pl: 'Odpowiemy na wskazany adres w ciągu 24 godzin.',
-    en: 'We will reply to the address you provided within 24 business hours.'
+    pl: 'Odpowiemy na wskazany adres w ciągu kilku godzin.',
+    en: 'We will reply to the address you provided within a couple of hours.'
   },
   'field.fullname': { pl: 'Imię i nazwisko', en: 'First and last name' },
   'field.subject': { pl: 'Temat', en: 'Subject' },
@@ -352,6 +352,58 @@ const TR = {
     en: 'You may change cookie settings in your browser at any time — disabling them may affect the site’s functionality.'
   },
 
+  // ─────── services page
+  'services.page.h1': { pl: 'Nasze usługi', en: 'Our services' },
+  'services.page.crumb': { pl: 'Start  ·  Usługi', en: 'Home  ·  Services' },
+
+  'services.page.s1.t': { pl: 'Spedycja międzynarodowa', en: 'International Freight Forwarding' },
+  'services.page.s1.d': {
+    pl: 'Pełna organizacja transportu drogowego pomiędzy Polską a krajami UE i EOG. Wycena, dobór przewoźnika, koordynacja załadunku, monitoring, dokumentacja.',
+    en: 'Full organisation of road transport between Poland and EU/EEA countries. Quoting, carrier selection, loading coordination, monitoring, documentation.'
+  },
+  'services.page.s1.i1': { pl: 'Wyceny indywidualne i ramowe', en: 'Individual and framework quotes' },
+  'services.page.s1.i2': { pl: 'Trasy stałe i ad-hoc', en: 'Regular and ad-hoc routes' },
+  'services.page.s1.i3': { pl: 'Komunikacja z odbiorcą zagranicznym', en: 'Communication with foreign consignee' },
+  'services.page.s1.i4': { pl: 'Monitoring statusu zlecenia', en: 'Order status monitoring' },
+
+  'services.page.s2.t': { pl: 'Transport drogowy', en: 'Road transport' },
+  'services.page.s2.d': {
+    pl: 'Realizacja zleceń całopojazdowych (FTL) i drobnicowych (LTL) w oparciu o sprawdzoną sieć przewoźników. Naczepy plandekowe, chłodnie, busy.',
+    en: 'Full truck load (FTL) and groupage (LTL) orders using a vetted carrier network. Curtainsiders, refrigerated trailers, vans.'
+  },
+  'services.page.s2.i1': { pl: 'FTL — całopojazdowe', en: 'FTL — full truck load' },
+  'services.page.s2.i2': { pl: 'LTL — drobnica', en: 'LTL — groupage' },
+  'services.page.s2.i3': { pl: 'Dostawy ekspresowe (busy)', en: 'Express deliveries (vans)' },
+  'services.page.s2.i4': { pl: 'Transporty ponadgabarytowe — na zapytanie', en: 'Oversized loads — on request' },
+
+  'services.page.s3.t': { pl: 'Obsługa dokumentacji', en: 'Documentation handling' },
+  'services.page.s3.d': {
+    pl: 'Listy CMR, dokumenty celne (T1, EX, IM), faktury, protokoły. Każdy dokument zachowany w archiwum klienta — dostępny na żądanie.',
+    en: 'CMR consignment notes, customs documents (T1, EX, IM), invoices, reports. Every document stored in the client archive — available on request.'
+  },
+  'services.page.s3.i1': { pl: 'CMR — wszystkie języki', en: 'CMR — all languages' },
+  'services.page.s3.i2': { pl: 'Dokumentacja celna', en: 'Customs documentation' },
+  'services.page.s3.i3': { pl: 'Archiwizacja zleceń', en: 'Order archiving' },
+  'services.page.s3.i4': { pl: 'Raporty miesięczne', en: 'Monthly reports' },
+
+  'services.page.s4.t': { pl: 'Logistyka kontraktowa', en: 'Contract logistics' },
+  'services.page.s4.d': {
+    pl: 'Stała współpraca dla firm z powtarzalnymi potrzebami transportowymi. Jeden spedytor, jeden harmonogram, jedna umowa.',
+    en: 'Ongoing cooperation for companies with recurring transport needs. One dispatcher, one schedule, one contract.'
+  },
+  'services.page.s4.i1': { pl: 'Linie regularne PL ⇄ DE/UE', en: 'Regular lanes PL ⇄ DE/EU' },
+  'services.page.s4.i2': { pl: 'Indywidualne SLA', en: 'Individual SLA' },
+  'services.page.s4.i3': { pl: 'Dedykowany spedytor', en: 'Dedicated dispatcher' },
+  'services.page.s4.i4': { pl: 'Magazynowanie — w fazie rozwoju', en: 'Warehousing — in development' },
+  'services.page.s4.badge': { pl: 'W rozwoju', en: 'In development' },
+
+  'services.page.cta.tag': { pl: 'Następny krok', en: 'Next step' },
+  'services.page.cta.h3': { pl: 'Gotowy na wycenę?', en: 'Ready for a quote?' },
+  'services.page.cta.p': {
+    pl: 'Wypełnij formularz „Zamów transport" — odpowiemy zazwyczaj jeszcze tego samego dnia roboczego.',
+    en: 'Fill in the "Order transport" form — we usually reply within the same business day.'
+  },
+
   // ─────── 404
   'nf.crumb': { pl: 'Błąd 404', en: 'Error 404' },
   'nf.h2.a': { pl: 'Tej strony tu nie ma —', en: 'This page is not here —' },
@@ -384,7 +436,7 @@ function getStoredLang() {
     const v = localStorage.getItem(LANG_KEY);
     if (v === 'pl' || v === 'en') return v;
   } catch (e) {}
-  return 'pl';
+  return 'en';
 }
 
 function useLang() {
@@ -407,7 +459,7 @@ function t(key, lang) {
   const entry = TR[key];
   if (!entry) return key;
   if (!lang) {
-    try { lang = localStorage.getItem(LANG_KEY) || 'pl'; } catch (e) { lang = 'pl'; }
+    try { lang = localStorage.getItem(LANG_KEY) || 'en'; } catch (e) { lang = 'en'; }
   }
   return entry[lang] || entry.pl || key;
 }

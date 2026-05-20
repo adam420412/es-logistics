@@ -91,7 +91,7 @@ function Footer() {
           <div className="footer-col">
             <BrandLockup />
             <div style={{marginTop: 24, display: 'flex', flexDirection: 'column', gap: 6, fontSize: 13, color: 'var(--text-dim)'}}>
-              <div>office@eslogistics.pl</div>
+              <div>transport@eslogistics.pl</div>
               <div>+48 539 849 869</div>
             </div>
           </div>

@@ -177,7 +177,7 @@ function HomePage({ heroVariant }) {
             <div className="contact-info">
               <div className="contact-row"><span className="k">{t('contact.row.office', lang)}</span><span className="v">{t('contact.officeAddr', lang)}</span></div>
               <div className="contact-row"><span className="k">{t('contact.row.phone', lang)}</span><span className="v">+48 539 849 869</span></div>
-              <div className="contact-row"><span className="k">{t('contact.row.email', lang)}</span><span className="v">office@eslogistics.pl</span></div>
+              <div className="contact-row"><span className="k">{t('contact.row.email', lang)}</span><span className="v">transport@eslogistics.pl</span></div>
               <div style={{marginTop: 12, display: 'flex', gap: 12, flexWrap: 'wrap'}}>
                 <a href="#/kontakt" className="btn btn-primary"><span>{t('cta.allChannels', lang)}</span><span className="btn-arrow"></span></a>
               </div>
@@ -241,30 +241,32 @@ function AboutPage() {
 // ═════════════════════════════════════════════════════════════════════════════
 function ServicesPage() {
   useReveal();
+  const [lang] = useLang();
+
   const services = [
-    { n: '01', t: 'Spedycja międzynarodowa', d: 'Pełna organizacja transportu drogowego pomiędzy Polską a krajami UE i EOG. Wycena, dobór przewoźnika, koordynacja załadunku, monitoring, dokumentacja.', items: ['Wyceny indywidualne i ramowe', 'Trasy stałe i ad-hoc', 'Komunikacja z odbiorcą zagranicznym', 'Monitoring statusu zlecenia'] },
-    { n: '02', t: 'Transport drogowy', d: 'Realizacja zleceń całopojazdowych (FTL) i drobnicowych (LTL) w oparciu o sprawdzoną sieć przewoźników. Naczepy plandekowe, chłodnie, busy.', items: ['FTL — całopojazdowe', 'LTL — drobnica', 'Dostawy ekspresowe (busy)', 'Transporty ponadgabarytowe — na zapytanie'] },
-    { n: '03', t: 'Obsługa dokumentacji', d: 'Listy CMR, dokumenty celne (T1, EX, IM), faktury, protokoły. Każdy dokument zachowany w archiwum klienta — dostępny na żądanie.', items: ['CMR — wszystkie języki', 'Dokumentacja celna', 'Archiwizacja zleceń', 'Raporty miesięczne'] },
-    { n: '04', t: 'Logistyka kontraktowa', d: 'Stała współpraca dla firm z powtarzalnymi potrzebami transportowymi. Jeden spedytor, jeden harmonogram, jedna umowa.', items: ['Linie regularne PL ⇄ DE/UE', 'Indywidualne SLA', 'Dedykowany spedytor', 'Magazynowanie — w fazie rozwoju'], badge: 'W rozwoju' },
+    { n: '01', key: 's1', items: ['i1','i2','i3','i4'] },
+    { n: '02', key: 's2', items: ['i1','i2','i3','i4'] },
+    { n: '03', key: 's3', items: ['i1','i2','i3','i4'] },
+    { n: '04', key: 's4', items: ['i1','i2','i3','i4'], badge: true },
   ];
   const cards = [
-    { icon: I.globe, title: 'Transport międzynarodowy', img: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=600&q=80' },
-    { icon: I.truck, title: 'Transport krajowy', img: 'https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?w=600&q=80' },
-    { icon: I.hand, title: 'Doświadczeni spedytorzy', img: 'https://images.unsplash.com/photo-1521791136064-7986c2920216?w=600&q=80' },
-    { icon: I.truck, title: 'Liczna flota', img: 'https://images.unsplash.com/photo-1519003722824-194d4455a60c?w=600&q=80' },
+    { icon: I.globe, tKey: 'services.1.t', img: 'https://images.unsplash.com/photo-1597661497070-d472246a71d3?w=600&q=80' },
+    { icon: I.truck, tKey: 'services.2.t', img: 'https://images.unsplash.com/photo-1694802180731-1ee2ea37692a?w=600&q=80' },
+    { icon: I.hand,  tKey: 'services.3.t', img: 'https://images.unsplash.com/photo-1521791136064-7986c2920216?w=600&q=80' },
+    { icon: I.truck, tKey: 'services.4.t', img: 'https://images.unsplash.com/photo-1565793298595-6a879b1d9492?w=600&q=80' },
   ];
 
   return (
     <main>
       <section className="services-hero">
         <div className="container">
-          <h1 className="services-hero-title"><em>Nasze usługi</em></h1>
+          <h1 className="services-hero-title"><em>{t('services.page.h1', lang)}</em></h1>
           <div className="services-hero-grid">
             {cards.map((c, i) => (
               <div key={i} className="services-hero-card">
-                <img src={c.img} alt={c.title} className="services-hero-card-img"/>
+                <img src={c.img} alt={t(c.tKey, lang)} className="services-hero-card-img"/>
                 <div className="services-hero-card-icon">{c.icon(28)}</div>
-                <h3 className="services-hero-card-title">{c.title}</h3>
+                <h3 className="services-hero-card-title">{t(c.tKey, lang)}</h3>
               </div>
             ))}
           </div>
@@ -277,17 +279,17 @@ function ServicesPage() {
             <div key={s.n} className="scroll-reveal" style={{display: 'grid', gridTemplateColumns: '160px 1fr 1.2fr', gap: 48, padding: '56px 0', borderTop: i === 0 ? 'none' : '1px solid var(--border)', alignItems: 'start'}}>
               <div>
                 <div style={{fontFamily: 'var(--font-display)', fontWeight: 700, fontStyle: 'italic', fontSize: 56, lineHeight: 1, color: 'var(--text-muted)'}}>{s.n}</div>
-                {s.badge && <div style={{marginTop: 16, fontFamily: 'var(--font-display)', fontWeight: 700, fontSize: 10, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--accent)', border: '1px solid var(--accent)', padding: '4px 8px', display: 'inline-block', borderRadius: 2}}>{s.badge}</div>}
+                {s.badge && <div style={{marginTop: 16, fontFamily: 'var(--font-display)', fontWeight: 700, fontSize: 10, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--accent)', border: '1px solid var(--accent)', padding: '4px 8px', display: 'inline-block', borderRadius: 2}}>{t(`services.page.${s.key}.badge`, lang)}</div>}
               </div>
               <div>
-                <h3 style={{fontStyle: 'italic'}}>{s.t}</h3>
-                <p style={{marginTop: 16, color: 'var(--text-dim)', fontSize: 17}}>{s.d}</p>
+                <h3 style={{fontStyle: 'italic'}}>{t(`services.page.${s.key}.t`, lang)}</h3>
+                <p style={{marginTop: 16, color: 'var(--text-dim)', fontSize: 17}}>{t(`services.page.${s.key}.d`, lang)}</p>
               </div>
               <div>
                 <ul style={{listStyle: 'none', margin: 0, padding: 0, display: 'flex', flexDirection: 'column', gap: 0, borderTop: '1px solid var(--border)'}}>
-                  {s.items.map((it, j) => (
+                  {s.items.map((item, j) => (
                     <li key={j} style={{padding: '14px 0', borderBottom: '1px solid var(--border)', display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
-                      <span style={{fontSize: 15}}>{it}</span>
+                      <span style={{fontSize: 15}}>{t(`services.page.${s.key}.${item}`, lang)}</span>
                       <span style={{color: 'var(--accent)', fontFamily: 'var(--font-display)'}}>—→</span>
                     </li>
                   ))}
@@ -303,12 +305,12 @@ function ServicesPage() {
           <div className="split-cta scroll-reveal" style={{gridTemplateColumns: '1fr'}}>
             <div className="split-panel dark">
               <div className="corner-lion"><LionGraphic/></div>
-              <span className="tag">Następny krok</span>
-              <h3>Gotowy na wycenę?</h3>
-              <p>Wypełnij formularz „Zamów transport" — odpowiemy zazwyczaj jeszcze tego samego dnia roboczego.</p>
+              <span className="tag">{t('services.page.cta.tag', lang)}</span>
+              <h3>{t('services.page.cta.h3', lang)}</h3>
+              <p>{t('services.page.cta.p', lang)}</p>
               <div className="actions">
-                <a href="#/dla-klienta" className="btn btn-primary"><span>Zamów transport</span><span className="btn-arrow"></span></a>
-                <a href="#/kontakt" className="btn btn-ghost">Skontaktuj się</a>
+                <a href="#/dla-klienta" className="btn btn-primary"><span>{t('cta.order', lang)}</span><span className="btn-arrow"></span></a>
+                <a href="#/kontakt" className="btn btn-ghost">{t('cta.contact', lang)}</a>
               </div>
             </div>
           </div>

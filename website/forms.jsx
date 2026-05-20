@@ -186,7 +186,7 @@ function ContactPage() {
       data.wiadomosc,
     ].join('\n');
     const subject = data.temat ? `${data.temat} — ${data.imie}` : `${isEN ? 'Website message' : 'Wiadomość ze strony'} — ${data.imie}`;
-    window.location.href = `mailto:office@eslogistics.pl?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    window.location.href = `mailto:transport@eslogistics.pl?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     setSubmitted(true);
   };
 
@@ -213,8 +213,7 @@ function ContactPage() {
             <div className="contact-info">
               <div className="contact-row"><span className="k">{t('contact.row.address', lang)}</span><span className="v">{t('contact.officeAddrLong', lang).split('\n').map((line, i) => <React.Fragment key={i}>{i>0 && <br/>}{line}</React.Fragment>)}</span></div>
               <div className="contact-row"><span className="k">{t('contact.row.phone', lang)}</span><span className="v">+48 539 849 869</span></div>
-              <div className="contact-row"><span className="k">{t('contact.row.email', lang)}</span><span className="v">office@eslogistics.pl</span></div>
-              <div className="contact-row"><span className="k">{t('contact.row.transport', lang)}</span><span className="v">transport@eslogistics.pl</span></div>
+              <div className="contact-row"><span className="k">{t('contact.row.email', lang)}</span><span className="v">transport@eslogistics.pl</span></div>
               <div className="contact-row"><span className="k">{t('contact.row.companyData', lang)}</span><span className="v">ES Logistics Sp. z o.o.<br/>NIP 7831941973 · KRS 0001206499</span></div>
             </div>
             <div style={{display: 'flex', flexDirection: 'column', gap: 24}}>
@@ -273,7 +272,7 @@ function LegalPage() {
         <div className="container">
           <div className="crumb">{t('legal.crumb', lang)}</div>
           <h1>{t('legal.h1.a', lang)} <em>{t('legal.h1.b', lang)}</em></h1>
-          <p className="lead">{t('legal.lead.a', lang)} <a href="mailto:office@eslogistics.pl" style={{color: 'var(--accent)'}}>office@eslogistics.pl</a>.</p>
+          <p className="lead">{t('legal.lead.a', lang)} <a href="mailto:transport@eslogistics.pl" style={{color: 'var(--accent)'}}>transport@eslogistics.pl</a>.</p>
         </div>
       </header>
       <section className="section">
@@ -286,7 +285,7 @@ function LegalPage() {
               {t('legal.admin.p2', lang)}<br/>
               {t('legal.admin.p3', lang)}
             </p>
-            <p>{t('legal.admin.contactLine', lang)} <a href="mailto:office@eslogistics.pl" style={{color: 'var(--accent)'}}>office@eslogistics.pl</a></p>
+            <p>{t('legal.admin.contactLine', lang)} <a href="mailto:transport@eslogistics.pl" style={{color: 'var(--accent)'}}>transport@eslogistics.pl</a></p>
           </div>
 
           <div>
@@ -306,7 +305,7 @@ function LegalPage() {
               <li>{t('legal.rodo.li5', lang)}</li>
               <li>{t('legal.rodo.li6', lang)}</li>
             </ul>
-            <p>{t('legal.rodo.outro', lang)} <a href="mailto:office@eslogistics.pl" style={{color: 'var(--accent)'}}>office@eslogistics.pl</a>.</p>
+            <p>{t('legal.rodo.outro', lang)} <a href="mailto:transport@eslogistics.pl" style={{color: 'var(--accent)'}}>transport@eslogistics.pl</a>.</p>
           </div>
 
           <div>
