@@ -33,6 +33,7 @@ function ClientPage() {
   const [data, setData] = useStateF({ firma: '', nip: '', email: '', telefon: '', zaladunek: '', rozladunek: '', typ: '', waga: '', data: '', uwagi: '', dodatkowe: '', rodo: false });
   const [errors, setErrors] = useStateF({});
   const [submitted, setSubmitted] = useStateF(false);
+  const [submitting, setSubmitting] = useStateF(false);
 
   const set = (k, v) => { setData(d => ({...d, [k]: v})); setErrors(e => ({...e, [k]: ''})); };
   const setBool = (k, v) => { setData(d => ({...d, [k]: v})); setErrors(e => ({...e, [k]: ''})); };
@@ -49,27 +50,35 @@ function ClientPage() {
     return Object.keys(e).length === 0;
   };
 
-  const onSubmit = (ev) => {
+  const onSubmit = async (ev) => {
     ev.preventDefault();
     if (!validate()) return;
     const isEN = lang === 'en';
     const L = (pl, en) => isEN ? en : pl;
-    const body = [
-      `${L('Firma','Company')}: ${data.firma}`,
-      `${L('NIP','Tax ID')}: ${data.nip}`,
-      `${L('E-mail','E-mail')}: ${data.email}`,
-      `${L('Telefon','Phone')}: ${data.telefon}`,
-      `${L('Miejsce załadunku','Pick-up')}: ${data.zaladunek}`,
-      `${L('Miejsce rozładunku','Drop-off')}: ${data.rozladunek}`,
-      `${L('Opis ładunku (typ, wymiary)','Cargo description (type, dimensions)')}: ${data.typ}`,
-      `${L('Waga (kg)','Weight (kg)')}: ${data.waga}`,
-      `${L('Planowana data załadunku','Planned loading date')}: ${data.data}`,
-      `${L('Uwagi dodatkowe','Additional notes')}: ${data.uwagi}`,
-      `${L('Dodatkowe cenne informacje','Additional valuable information')}: ${data.dodatkowe}`,
-    ].join('\n');
-    const subject = `${L('Zapytanie o transport','Transport inquiry')} — ${data.firma}`;
-    window.location.href = `mailto:transport@eslogistics.pl?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    setSubmitted(true);
+    setSubmitting(true);
+    try {
+      const res = await fetch('https://formspree.io/f/mqejpzen', {
+        method: 'POST',
+        headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          email: data.email,
+          _subject: `${L('Zapytanie o transport','Transport inquiry')} — ${data.firma}`,
+          [L('Firma','Company')]: data.firma,
+          [L('NIP','Tax ID')]: data.nip,
+          [L('Telefon','Phone')]: data.telefon,
+          [L('Załadunek','Pick-up')]: data.zaladunek,
+          [L('Rozładunek','Drop-off')]: data.rozladunek,
+          [L('Ładunek','Cargo')]: data.typ,
+          [L('Waga kg','Weight kg')]: data.waga,
+          [L('Data załadunku','Loading date')]: data.data,
+          [L('Uwagi','Notes')]: data.uwagi,
+          [L('Dodatkowe','Additional')]: data.dodatkowe,
+        }),
+      });
+      if (res.ok) setSubmitted(true);
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
@@ -142,7 +151,7 @@ function ClientPage() {
               </label>
 
               <div className="full" style={{display: 'flex', gap: 14, alignItems: 'center', flexWrap: 'wrap', marginTop: 12}}>
-                <button type="submit" className="btn btn-primary"><span>{t('btn.send', lang)}</span><span className="btn-arrow"></span></button>
+                <button type="submit" className="btn btn-primary" disabled={submitting}><span>{submitting ? '...' : t('btn.send', lang)}</span><span className="btn-arrow"></span></button>
                 <span style={{fontSize: 12, color: 'var(--text-muted)', fontFamily: 'var(--font-display)', letterSpacing: '0.1em'}}>{t('submit.note', lang)}</span>
               </div>
             </form>
@@ -162,6 +171,7 @@ function ContactPage() {
   const [data, setData] = useStateF({ imie: '', email: '', temat: '', wiadomosc: '', rodo: false });
   const [errors, setErrors] = useStateF({});
   const [submitted, setSubmitted] = useStateF(false);
+  const [submitting, setSubmitting] = useStateF(false);
   const set = (k, v) => { setData(d => ({...d, [k]: v})); setErrors(e => ({...e, [k]: ''})); };
   const setBool = (k, v) => { setData(d => ({...d, [k]: v})); setErrors(e => ({...e, [k]: ''})); };
 
@@ -174,20 +184,27 @@ function ContactPage() {
     setErrors(e);
     return Object.keys(e).length === 0;
   };
-  const onSubmit = (ev) => {
+  const onSubmit = async (ev) => {
     ev.preventDefault();
     if (!validate()) return;
     const isEN = lang === 'en';
-    const body = [
-      `${isEN ? 'Name' : 'Imię i nazwisko'}: ${data.imie}`,
-      `${isEN ? 'E-mail' : 'E-mail'}: ${data.email}`,
-      `${isEN ? 'Subject' : 'Temat'}: ${data.temat}`,
-      ``,
-      data.wiadomosc,
-    ].join('\n');
-    const subject = data.temat ? `${data.temat} — ${data.imie}` : `${isEN ? 'Website message' : 'Wiadomość ze strony'} — ${data.imie}`;
-    window.location.href = `mailto:transport@eslogistics.pl?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    setSubmitted(true);
+    setSubmitting(true);
+    try {
+      const res = await fetch('https://formspree.io/f/mqejpzen', {
+        method: 'POST',
+        headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          email: data.email,
+          _subject: data.temat ? `${data.temat} — ${data.imie}` : `${isEN ? 'Website message' : 'Wiadomość ze strony'} — ${data.imie}`,
+          [isEN ? 'Name' : 'Imię i nazwisko']: data.imie,
+          [isEN ? 'Subject' : 'Temat']: data.temat,
+          [isEN ? 'Message' : 'Wiadomość']: data.wiadomosc,
+        }),
+      });
+      if (res.ok) setSubmitted(true);
+    } finally {
+      setSubmitting(false);
+    }
   };
 
 
@@ -245,7 +262,7 @@ function ContactPage() {
                 <span>{t('rodo.consent.short', lang)} {errors.rodo && <span style={{color: '#ff6b6b', display: 'block', marginTop: 4}}>{errors.rodo}</span>}</span>
               </label>
               <div className="full" style={{marginTop: 12}}>
-                <button type="submit" className="btn btn-primary"><span>{t('btn.sendMsg', lang)}</span><span className="btn-arrow"></span></button>
+                <button type="submit" className="btn btn-primary" disabled={submitting}><span>{submitting ? '...' : t('btn.sendMsg', lang)}</span><span className="btn-arrow"></span></button>
               </div>
             </form>
           )}

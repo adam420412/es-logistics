@@ -223,12 +223,12 @@ const TR = {
   },
   'client.success.h': { pl: 'Dziękujemy — zapytanie zostało wysłane.', en: 'Thank you — your inquiry has been sent.' },
   'client.success.p': {
-    pl: 'Twój klient pocztowy powinien otworzyć przygotowaną wiadomość do',
-    en: 'Your e-mail client should open a prepared message to'
+    pl: 'Zapytanie zostało wysłane. Odpiszemy na adres',
+    en: 'Your inquiry has been sent. We will reply to'
   },
   'client.success.fallback': {
-    pl: 'Jeśli to nie nastąpiło — skontaktuj się z nami bezpośrednio:',
-    en: 'If that did not happen — contact us directly:'
+    pl: 'w ciągu kilku godzin. Pilne sprawy:',
+    en: 'within a couple of hours. For urgent matters:'
   },
   'client.success.again': { pl: 'Wyślij kolejne zapytanie', en: 'Send another inquiry' },
   'field.firma': { pl: 'Firma', en: 'Company' },
