@@ -190,11 +190,6 @@ function ContactPage() {
     setSubmitted(true);
   };
 
-  const subjectOptions = [
-    { value: t('subj.opt1','pl'), label: t('subj.opt1', lang) },
-    { value: t('subj.opt2','pl'), label: t('subj.opt2', lang) },
-    { value: t('subj.opt3','pl'), label: t('subj.opt3', lang) },
-  ];
 
   return (
     <main>
@@ -243,7 +238,7 @@ function ContactPage() {
             <form className="form scroll-reveal" onSubmit={onSubmit} noValidate>
               <Field label={t('field.fullname', lang)} name="imie" value={data.imie} onChange={set} error={errors.imie} required/>
               <Field label={t('field.email', lang)} name="email" type="email" value={data.email} onChange={set} error={errors.email} required/>
-              <Field label={t('field.subject', lang)} name="temat" type="select" value={data.temat} onChange={set} options={subjectOptions} full/>
+              <Field label={t('field.subject', lang)} name="temat" value={data.temat} onChange={set} full/>
               <Field label={t('field.message', lang)} name="wiadomosc" type="textarea" value={data.wiadomosc} onChange={set} error={errors.wiadomosc} required full rows={6}/>
               <label className={`consent ${errors.rodo ? 'has-err' : ''}`}>
                 <input type="checkbox" checked={data.rodo} onChange={(e) => setBool('rodo', e.target.checked)}/>

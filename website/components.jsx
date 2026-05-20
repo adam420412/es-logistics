@@ -121,7 +121,7 @@ function Footer() {
         </div>
         <div className="footer-bottom">
           <span className="reg">© 2026 ES LOGISTICS Sp. z o.o.</span>
-          <span>{t('footer.bottom.made', lang)}</span>
+
         </div>
       </div>
     </footer>

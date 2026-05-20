@@ -17,13 +17,13 @@ const TR = {
   // ─────── hero
   'hero.eyebrow': { pl: '01 — ES Logistics · Poznań', en: '01 — ES Logistics · Poznań' },
   'hero.h1.a': { pl: 'Transport i Spedycja', en: 'International Transport' },
-  'hero.h1.b': { pl: 'międzynarodowa,', en: 'and FREIGHT FORWARDING,' },
+  'hero.h1.b': { pl: 'międzynarodowa,', en: 'and Freight Forwarding,' },
   'hero.h1.c': { pl: 'na której można polegać.', en: 'you can rely on.' },
   'hero.sub': { pl: ' ', en: ' ' },
   'hero.meta.experience.k': { pl: 'Doświadczenie', en: 'Experience' },
   'hero.meta.experience.v': { pl: '12 lat w TSL', en: '12 years in TSL' },
   'hero.meta.specialization.k': { pl: 'Specjalizacja', en: 'Specialization' },
-  'hero.meta.specialization.v': { pl: 'Transport i Spedycja międzynarodowa', en: 'International Transport & FREIGHT FORWARDING' },
+  'hero.meta.specialization.v': { pl: 'Transport i Spedycja międzynarodowa', en: 'International Transport & Freight Forwarding' },
   'hero.meta.reach.k': { pl: 'Zasięg', en: 'Coverage' },
   'hero.meta.reach.v': { pl: 'Cała Europa', en: 'All of Europe' },
 
