@@ -231,9 +231,10 @@ function ContactPage() {
             <div style={{display: 'flex', flexDirection: 'column', gap: 24}}>
               <div className="map-frame" style={{aspectRatio: '4/3'}}>
                 <iframe title="Office ES Logistics — Święty Marcin 29/8, Poznań" loading="lazy"
-                  src="https://www.openstreetmap.org/export/embed.html?bbox=16.918%2C52.404%2C16.938%2C52.412&layer=mapnik&marker=52.4076%2C16.9276"/>
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2434.5!2d16.9276!3d52.4076!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47045b4e4c4b1b1b%3A0x0!2zNTLCsDI0JzI3LjQiTiAxNsKwNTUnMzkuNCJF!5e0!3m2!1spl!2spl!4v1"
+                  referrerPolicy="no-referrer-when-downgrade" allowFullScreen=""/>
               </div>
-              <a href="https://www.openstreetmap.org/?mlat=52.4076&mlon=16.9276#map=18/52.4076/16.9276" target="_blank" rel="noreferrer" className="btn btn-ghost" style={{alignSelf: 'flex-start'}}>{t('contact.openMap', lang)}</a>
+              <a href="https://www.google.com/maps/search/Święty+Marcin+29%2F8,+Poznań" target="_blank" rel="noreferrer" className="btn btn-ghost" style={{alignSelf: 'flex-start'}}>{t('contact.openMap', lang)}</a>
             </div>
           </div>
         </div>
